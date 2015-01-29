@@ -1,0 +1,1200 @@
+/*
+    引导文档
+    内容：
+
+
+*/
+body {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	line-height: 20px;
+	color: #6c6c6c;
+	background-color: #ffffff;
+}
+
+.icheckbox {
+	background-position: 0 0;
+}
+
+.icheckbox.hover {
+	background-position: -24px 0;
+}
+
+.icheckbox.checked {
+	background-position: -48px 0;
+}
+
+.icheckbox_square-blue.checked {
+	background-position: -48px 0;
+}
+
+a {
+	blr: expression(this.onFocus = this.blur ());
+	outline: none;
+}
+
+a:focus {
+	outline: none;
+}
+
+.modal-body [type="checkbox"] {
+	vertical-align: top;
+}
+
+.modal-footer {
+	text-align: center;
+}
+
+form {
+	margin: 0;
+}
+
+.main-body.mt0 {
+	margin: 0;
+}
+
+.mt20,.mb20 {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+/*table开始*/
+.table {
+	margin: 0;
+}
+
+.table th,.table td {
+	padding: 10px 4px 9px;
+	border-top: 1px solid #cfe6ee;
+}
+
+.table thead th {
+	background: #f6fbfd;
+}
+
+.table-bordered {
+	border: 1px solid #cfe6ee;
+	border-collapse: separate;
+	*border-collapse: collapse;
+	border-left: 0;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+
+.table-bordered th,.table-bordered td {
+	text-align: center;
+	border-left: 1px solid #cfe6ee;
+}
+
+.table-bordered caption+thead tr:first-child th,.table-bordered caption+tbody tr:first-child th,.table-bordered caption+tbody tr:first-child td,.table-bordered colgroup+thead tr:first-child th,.table-bordered colgroup+tbody tr:first-child th,.table-bordered colgroup+tbody tr:first-child td,.table-bordered thead:first-child tr:first-child th,.table-bordered tbody:first-child tr:first-child th,.table-bordered tbody:first-child tr:first-child td
+	{
+	border-top: 0;
+}
+
+.table-bordered thead:first-child tr:first-child>th:first-child,.table-bordered tbody:first-child tr:first-child>td:first-child,.table-bordered tbody:first-child tr:first-child>th:first-child
+	{
+	-webkit-border-top-left-radius: 0;
+	border-top-left-radius: 0;
+	-moz-border-radius-topleft: 0;
+}
+
+.table-bordered thead:first-child tr:first-child>th:last-child,.table-bordered tbody:first-child tr:first-child>td:last-child,.table-bordered tbody:first-child tr:first-child>th:last-child
+	{
+	-webkit-border-top-right-radius: 0;
+	border-top-right-radius: 0;
+	-moz-border-radius-topright: 0;
+}
+
+.table-bordered thead:last-child tr:last-child>th:first-child,.table-bordered tbody:last-child tr:last-child>td:first-child,.table-bordered tbody:last-child tr:last-child>th:first-child,.table-bordered tfoot:last-child tr:last-child>td:first-child,.table-bordered tfoot:last-child tr:last-child>th:first-child
+	{
+	-webkit-border-bottom-left-radius: 0;
+	border-bottom-left-radius: 0;
+	-moz-border-radius-bottomleft: 0;
+}
+
+.table-bordered thead:last-child tr:last-child>th:last-child,.table-bordered tbody:last-child tr:last-child>td:last-child,.table-bordered tbody:last-child tr:last-child>th:last-child,.table-bordered tfoot:last-child tr:last-child>td:last-child,.table-bordered tfoot:last-child tr:last-child>th:last-child
+	{
+	-webkit-border-bottom-right-radius: 0;
+	border-bottom-right-radius: 0;
+	-moz-border-radius-bottomright: 0;
+}
+
+.table-bordered tfoot+tbody:last-child tr:last-child td:first-child {
+	-webkit-border-bottom-left-radius: 0;
+	border-bottom-left-radius: 0;
+	-moz-border-radius-bottomleft: 0;
+}
+
+.table-bordered tfoot+tbody:last-child tr:last-child td:last-child {
+	-webkit-border-bottom-right-radius: 0;
+	border-bottom-right-radius: 0;
+	-moz-border-radius-bottomright: 0;
+}
+
+.table-bordered caption+thead tr:first-child th:first-child,.table-bordered caption+tbody tr:first-child td:first-child,.table-bordered colgroup+thead tr:first-child th:first-child,.table-bordered colgroup+tbody tr:first-child td:first-child
+	{
+	-webkit-border-top-left-radius: 0;
+	border-top-left-radius: 0;
+	-moz-border-radius-topleft: 0;
+}
+
+.table-bordered caption+thead tr:first-child th:last-child,.table-bordered caption+tbody tr:first-child td:last-child,.table-bordered colgroup+thead tr:first-child th:last-child,.table-bordered colgroup+tbody tr:first-child td:last-child
+	{
+	-webkit-border-top-right-radius: 0;
+	border-top-right-radius: 0;
+	-moz-border-radius-topright: 0;
+}
+
+.table-hover tbody tr:hover>td,.table-hover tbody tr:hover>th {
+	background-color: #fafbfb;
+}
+
+.tfoot {
+	border-top: none;
+	overflow: hidden;
+	padding: 30px 0 11px;
+	text-align: center;
+}
+
+.tfoot .page-txt {
+	line-height: 40px;
+	padding: 0 0 0 12px;
+}
+
+/*table结束*/
+
+/*=====top 开始======*/
+#top {
+	height: 37px;
+	background: #90abc4;
+	line-height: 37px;
+	color: #fff;
+}
+
+#top .user-name {
+	margin: 0 15px 0 0;
+}
+
+#top .exit {
+	margin: 0 0 0 8px;
+	color: #fff;
+}
+
+/*=====top 开始======*/
+/*=====header 开始======*/
+#header {
+	padding: 40px 0 21px;
+}
+
+#header #logo {
+	float: left;
+	width: 334px;
+	height: 58px;
+	background: url(../images/global/teacher-logo.png) no-repeat;
+	margin: 0;
+	text-indent: -999em;
+}
+
+#header .span4 {
+	
+}
+
+#header .span8 {
+	padding: 12px 0 0;
+	overflow: hidden;
+}
+
+#header .question-btn {
+	font-size: 14px;
+	color: #494949;
+	font-weight: bold;
+	margin: 10px 0 0 23px;
+}
+
+.teacher-form-search .input-append .search-query {
+	width: 406px;
+	height: 30px;
+	border-radius: 0;
+	padding: 4px 6px;
+	border: 1px solid #e2e0e0;
+	border-right: none;
+}
+
+.teacher-form-search .input-append .btn {
+	width: 80px;
+	height: 40px;
+	border-radius: 0;
+	background: #f9a834;
+	border: none;
+	color: #fff;
+	font-size: 14px;
+}
+
+/*=====header 结束======*/
+/*=====nav 开始======*/
+.wrap-nav {
+	background: #13a5fa;
+	line-height: 45px;
+}
+
+.wrap-nav .nav {
+	margin: 0;
+}
+
+.student-nav>li {
+	display: inline-block;
+	*display: inline;
+	float: none;
+	line-height: 45px;
+	margin: 0;
+	border-radius: 0;
+}
+
+.student-nav.nav>li>a {
+	color: #fff;
+	display: inline-block;
+	padding: 0 64px;
+	line-height: 45px;
+	margin: 0;
+	border-radius: 0;
+	font-size: 14px;
+}
+
+.student-nav>li>a:hover,.student-nav>li>a:focus,.student-nav>.active>a,.student-nav>.active>a:hover,.student-nav>.active>a:focus
+	{
+	background: #009af4;
+	line-height: 45px;
+	margin: 0;
+	border-radius: 0;
+}
+
+/*=====nav 结束======*/
+/*=====main 开始======*/
+#main {
+	padding: 20px 0;
+	background: #f9fdff url(../images/global/mainBg.jpg) repeat-x left top;
+}
+
+/*左侧菜单开始*/
+#siderbar.nav-tabs>li:first-child>a {
+	border-radius: 0;
+}
+
+#siderbar.nav-tabs>li>a {
+	border-radius: 0;
+	background: #f8f8f8;
+	color: #414141;
+	font-size: 14px;
+	line-height: 34px;
+}
+
+#siderbar.nav-tabs>li>a,.nav-pills>li>a {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+[class^="icon-"],[class*=" icon-"] {
+	display: inline-block;
+	*display : inline;
+	_zoom : 1;
+	vertical-align: text-top;
+	background-image: url(../images/global/global.png);
+	background-position: 14px 14px;
+	background-repeat: no-repeat;
+	position: relative;
+	top: -5px;
+	*top : 0px;
+	*vertical-align: middle;
+}
+
+#siderbar [class^="icon-"],#siderbar [class*=" icon-"] {
+	width: 27px;
+	height: 27px;
+	margin: 0px 14px 0 0;
+	/**margin-right: .3em;*/
+	line-height: 14px;
+}
+
+.icon-groupQuery {
+	background-position: 2px 0;
+}
+
+.icon-detail {
+	background-position: -326px 0;
+}
+
+.icon-studentInfo {
+	background-position: -27px 0;
+}
+
+.icon-dormitoryCheckIn {
+	background-position: -54px 0;
+}
+
+.icon-finance {
+	background-position: -81px 0;
+}
+
+.icon-link {
+	background-position: -108px 0;
+}
+
+.icon-mobile {
+	background-position: -135px 0;
+}
+
+.icon-live {
+	background-position: -162px 0;
+}
+
+.icon-selectClass {
+	background-position: -189px 0;
+}
+
+.icon-mealCard {
+	background-position: -216px 0;
+}
+
+.icon-militaryTraining {
+	background-position: -242px 0;
+}
+
+.icon-addressBook {
+	background-position: -269px 0;
+}
+
+.icon-dormitory {
+	background-position: -296px 0;
+}
+
+.icon-militaryUniform {
+	background-position: -354px 0;
+}
+
+.icon-divideClasses {
+	background-position: -379px 0;
+}
+
+.icon-bbs {
+	background-position: -406px 0;
+}
+
+.icon-mobileManagement {
+	background-position: -594px 0;
+}
+
+.icon-SystemSettings {
+	background-position: -433px 0;
+}
+
+.icon-rightsManagement {
+	background-position: -460px 0;
+}
+
+.icon-configuration {
+	background-position: -487px 0;
+}
+
+.icon-systemTesting {
+	background-position: -514px 0;
+}
+
+.icon-logManagement {
+	background-position: -541px 0;
+}
+
+.icon-dataImport {
+	background-position: -567px 0;
+}
+
+#siderbar.nav-tabs>.active>a,#siderbar.nav-tabs>.active>a:hover,#siderbar.nav-tabs>.active>a:focus
+	{
+	background: #fff;
+}
+
+.nav-tabs>.active .icon-groupQuery {
+	background-position: 2px -27px;
+}
+
+.nav-tabs>.active .icon-detail {
+	background-position: -326px -27px;
+}
+
+.nav-tabs>.active .icon-studentInfo {
+	background-position: -27px -27px;
+}
+
+.nav-tabs>.active .icon-dormitoryCheckIn {
+	background-position: -54px -27px;
+}
+
+.nav-tabs>.active .icon-finance {
+	background-position: -81px -27px;
+}
+
+.nav-tabs>.active .icon-link {
+	background-position: -108px -27px;
+}
+
+.nav-tabs>.active .icon-mobile {
+	background-position: -135px -27px;
+}
+
+.nav-tabs>.active .icon-live {
+	background-position: -162px -27px;
+}
+
+.nav-tabs>.active .icon-selectClass {
+	background-position: -189px -27px;
+}
+
+.nav-tabs>.active .icon-mealCard {
+	background-position: -216px -27px;
+}
+
+.nav-tabs>.active .icon-militaryTraining {
+	background-position: -242px -27px;
+}
+
+.nav-tabs>.active .icon-addressBook {
+	background-position: -269px -27px;
+}
+
+.nav-tabs>.active .icon-dormitory {
+	background-position: -296px -27px;
+}
+
+.nav-tabs>.active .icon-militaryUniform {
+	background-position: -354px -27px;
+}
+
+.nav-tabs>.active .icon-divideClasses {
+	background-position: -379px -27px;
+}
+
+.nav-tabs>.active .icon-bbs {
+	background-position: -406px -27px;
+}
+
+.nav-tabs>.active .icon-mobileManagement {
+	background-position: -594px -27px;
+}
+
+.nav-tabs>.active .icon-SystemSettings {
+	background-position: -433px -27px;
+}
+
+.nav-tabs>.active .icon-rightsManagement {
+	background-position: -460px -27px;
+}
+
+.nav-tabs>.active .icon-configuration {
+	background-position: -487px -27px;
+}
+
+.nav-tabs>.active .icon-systemTesting {
+	background-position: -514px -27px;
+}
+
+.nav-tabs>.active .icon-logManagement {
+	background-position: -541px -27px;
+}
+
+.nav-tabs>.active .icon-dataImport {
+	background-position: -567px -27px;
+}
+
+/*左侧菜单结束*/
+/*主体框架开始*/
+.main-header {
+	/*background: #fff;*/
+	/*border: 1px solid #e0e0e0;*/
+	/*-webkit-border-radius: 5px;*/
+	/*-moz-border-radius: 5px;*/
+	/*border-radius: 5px;*/
+	
+}
+
+.main-header-t {
+	height: 50px;
+	background: #f8f8f8;
+	margin: 0;
+	padding: 0 0 0 20px;
+	font-size: 14px;
+	line-height: 50px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px 5px 0 0;
+	-moz-border-radius: 5px 5px 0 0;
+	border-radius: 5px 5px 0 0;
+	border: 1px solid #e0e0e0;
+}
+
+.main-body {
+	background: #fff;
+	border: 1px solid #e0e0e0;
+	margin: 10px 0 0;
+	clear: both;
+	overflow: hidden;
+	padding: 19px;
+}
+
+.main-header [class^="icon-"],.main-header [class*=" icon-"],.table [class^="icon-"],.table [class*=" icon-"]
+	{
+	width: 18px;
+	height: 18px;
+	margin: 0px 4px 0 0;
+	*margin-right: .1em;
+	line-height: 14px;
+}
+
+.table .operation-link {
+	margin: 0 2px 0 8px;
+}
+
+.main-header .row-fluid .span2 {
+	text-align: center;
+	margin: 0;
+	width: 16.66665%;
+}
+
+.main-header .row-fluid .span4 {
+	text-align: center;
+	margin: 0;
+	width: 33.33333333%;
+}
+
+.main-header .row-fluid .span3 {
+	text-align: center;
+	margin: 0;
+	width: 24.9999975%;
+}
+
+.main-header .row-fluid .span6 {
+	margin: 0;
+	text-align: center;
+	width: 49.999999%;
+}
+
+.icon-add {
+	background-position: 0 -57px;
+}
+
+.icon-amend {
+	background-position: -18px -57px;
+}
+
+.icon-delete {
+	background-position: -36px -57px;
+}
+
+.icon-look {
+	background-position: -54px -57px;
+}
+
+.icon-Import {
+	background-position: -72px -57px;
+}
+
+.icon-export {
+	background-position: -90px -57px;
+}
+
+.icon-pwd {
+	background-position: -125px -55px;
+}
+
+.icon-settings {
+	background-position: -106px -55px;
+}
+
+.main-header .pointer:hover {
+	background: #fff;
+	color: #13a5fa;
+}
+
+.main-header .pointer:hover .icon-add {
+	background-position: 0 -75px;
+}
+
+.main-header .pointer:hover .icon-amend {
+	background-position: -18px -74px;
+}
+
+.main-header .pointer:hover .icon-delete {
+	background-position: -36px -75px;
+}
+
+.main-header .pointer:hover .icon-look {
+	background-position: -54px -75px;
+}
+
+.main-header .pointer:hover .icon-Import {
+	background-position: -72px -75px;
+}
+
+.main-header .pointer:hover .icon-export {
+	background-position: -90px -75px;
+}
+
+.main-header .pointer:hover .icon-pwd {
+	background-position: -125px -73px;
+}
+
+.icon-checkbox {
+	background-position: -150px -60px;
+}
+
+.icon-checked {
+	background-position: -150px -76px;
+}
+
+.operation-box {
+	border: 1px solid #e0e0e0;
+	border-top: none;
+	line-height: 49px;
+	background: #f7f7f7;
+	text-align: center;
+}
+
+.operation-box .cols {
+	border-right: 1px solid #e0e0e0;
+}
+
+.main-header-bd {
+	background: #fff;
+	padding: 10px 0 20px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px 5px 0 0;
+	-moz-border-radius: 5px 5px 0 0;
+	border-radius: 0 0 5px 5px;
+	border: 1px solid #e0e0e0;
+	border-top: none;
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+.operation-box .no-rbor {
+	border-right: none;
+}
+
+.btn {
+	background: #3dacec;
+	color: #fff;
+}
+
+.main-form-btn .btn {
+	width: 90px;
+	height: 30px;
+	margin: 0 auto;
+	display: block;
+}
+
+select,textarea,input[type="text"] {
+	border-radius: 0;
+}
+
+.table-bordered th,.table-bordered td {
+	vertical-align: middle;
+}
+
+/*分页开始*/
+.pagination {
+	font-size: 12px;
+	margin: 0;
+}
+
+.pagination a {
+	text-decoration: none;
+	border: solid 1px #e0e0e0;
+	color: #626262;
+}
+
+.pagination a,.pagination span {
+	display: block;
+	float: left;
+	padding: 7px 14px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	background: #f9f9f9;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px
+		rgba(0, 0, 0, 0.05);
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) #B3B3B3;
+}
+
+.pagination .current {
+	background: #3dacec;
+	color: #fff;
+	border: solid 1px #3dacec;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px
+		rgba(0, 0, 0, 0.05);
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) #B3B3B3;
+}
+
+.pagination .current.prev,.pagination .current.next {
+	color: #eaeaea;
+	background: #fafafa;
+	font-weight: bold;
+	border: solid 1px #f3f3f3;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px
+		rgba(0, 0, 0, 0.05);
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) #B3B3B3;
+}
+
+.go-pagination {
+	float: right;
+}
+
+.go-pagination a {
+	display: inline-block;
+	padding: 7px 14px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	background: #f9f9f9;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.go-pagination input {
+	text-align: center;
+	display: inline-block;
+	padding: 7px 14px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	background: #fff;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	width: 20px;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px
+		rgba(0, 0, 0, 0.05);
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) #B3B3B3;
+}
+
+.go-pagination a.btn {
+	color: #333;
+}
+
+/*分页结束*/
+/*复选框开始*/
+/* blue */
+.icheckbox_square-blue,.iradio_square-blue, .icheckbox {
+	display: inline-block;
+	*display: inline;
+	zoom :1;
+	vertical-align: middle;
+	margin: 0;
+	padding: 0;
+	width: 22px;
+	height: 22px;
+	background-image :url("../js/plugin/icheck/blue.png");
+	background-repeat: no-repeat;
+	border: none;
+	cursor: pointer;
+}
+
+.icheckbox_square-blue {
+	background-position: 0 0;
+}
+
+.icheckbox_square-blue.hover {
+	background-position: -24px 0;
+}
+
+.icheckbox_square-blue.checked {
+	background-position: -48px 0;
+}
+
+.icheckbox_square-blue.disabled {
+	background-position: -72px 0;
+	cursor: default;
+}
+
+.icheckbox_square-blue.checked.disabled {
+	background-position: -96px 0;
+}
+
+.iradio_square-blue {
+	background-position: -120px 0;
+}
+
+.iradio_square-blue.hover {
+	background-position: -144px 0;
+}
+
+.iradio_square-blue.checked {
+	background-position: -168px 0;
+}
+
+.iradio_square-blue.disabled {
+	background-position: -192px 0;
+	cursor: default;
+}
+
+.iradio_square-blue.checked.disabled {
+	background-position: -216px 0;
+}
+
+/* Retina support */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5) , only screen and
+		(-moz-min-device-pixel-ratio: 1.5) , only screen and
+		(-o-min-device-pixel-ratio: 3/2) , only screen and
+	(min-device-pixel-ratio: 1.5) {
+	.icheckbox_square-blue,.iradio_square-blue {
+		background-image: url("../js/plugin/icheck/blue@2x.png");
+		-webkit-background-size: 240px 24px;
+		background-size: 240px 24px;
+	}
+}
+
+/*复选框结束*/
+/*分页结束*/
+/*主体框架结束*/
+/*=====main 结束======*/
+
+/*=====footer 开始======*/
+#footer {
+	border-top: 1px solid #e2e2e2;
+	background: #f9f9f9;
+	color: #787878;
+	padding: 15px 0 10px;
+}
+
+#footer .links a {
+	color: #787878;
+}
+
+/*=====footer 结束======*/
+@media ( max-width : 979px) {
+	.teacher-form-search .input-append .search-query {
+		width: 198px;
+	}
+	.main-header .row-fluid .span3 {
+		clear: both;
+		margin: 10px 0;
+	}
+}
+
+@media ( max-width : 767px) {
+	.teacher-form-search .input-append .search-query {
+		width: 198px;
+	}
+	#nav .navbar .nav>li {
+		margin: 0;
+	}
+	#nav .navbar .nav>li>a {
+		padding: 0 20px;
+	}
+	.main-header .row-fluid [class*="span"] {
+		float: left;
+	}
+}
+
+@media ( max-width : 480px) {
+	.teacher-form-search .input-append .search-query {
+		width: 198px;
+	}
+}
+
+.nobor-bottom {
+	border-bottom: 0;
+}
+
+.nobor-top {
+	border-top: 0;
+}
+
+/*权限管理表单开始*/
+.main-header-c .form-horizontal .control-label {
+	width: 80px;
+}
+
+.input-small120 {
+	width: 120px;
+}
+
+.main-header-c .form-horizontal .controls {
+	margin-left: 80px;
+	*margin-left: 0px;
+}
+
+.main-header-c .form-horizontal .control-group {
+	margin-bottom: 0;
+}
+
+/*权限管理表单结束*/
+/*确认信息弹层*/
+#mainConfirmModal .modal-body,#messageModal .modal-body {
+	text-align: center;
+	padding: 50px 20px;
+	font-size: 14px;
+	line-height: 30px;
+}
+
+/* 信息弹出层解决方案 */
+#messageModal .shade {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	/*background: none;*/
+	background: red;
+}
+
+@media ( max-width : 767px) {
+	.modal {
+		margin-left: 0px !important;
+	}
+}
+
+.artErrorMsg {
+	color: #FC0303;
+	font-size: 14px;
+}
+
+.artWarnMsg,.artSuccessMsg {
+	font-size: 14px;
+}
+
+.modal-body {
+	max-height: 280px;
+}
+
+.modal-header .close {
+	padding: 0;
+	top: 4px;
+	right: 4px;
+	width: 21px;
+	height: 21px;
+	line-height: 21px;
+	font-size: 18px;
+	color: #68767b;
+	text-align: center;
+	font-family: Helvetica, STHeiti;
+	_font-family: Tahoma, '\u9ed1\u4f53', 'Book Antiqua', Palatino;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, .9);
+	font-weight: normal;
+	opacity: 1;
+	filter: alpha(opacity = 100)
+}
+
+
+
+/** font-size**/
+.ftz14{
+	font-size : 14px;
+}
+
+.ftz16{
+	font-size : 16px;
+}
+
+.ftz18{
+	font-size : 18px;
+}
+
+.ftz20{
+	font-size : 20px;
+}
+
+.ml15{
+	margin-left:15px;
+}
+/*推荐:IE67*/
+.inline-block{
+	display:inline-block; _zoom:1;*display:inline;
+}
+
+
+.nav li{
+	*display:inline;
+	_zoom:1;
+}
+
+.form-horizontal .controls{
+	*padding-left: 0px;
+}
+
+
+
+.icon-18{
+	width: 18px !important;
+height: 18px !important;
+margin: 0px 4px 0 0 !important;
+line-height: 14px !important;
+}
+
+
+/** 左侧导航样式 **/
+
+
+/** 左侧导航样式 **/
+/** 左侧导航样式 **/
+.left-nav-cursor{
+	display:block;
+	
+	border : 1px solid #ddd;
+	border-bottom : 0;
+	border-radius: 0;
+background: #f8f8f8;
+color: #414141;
+font-size: 14px;
+line-height: 34px;
+cursor: pointer;
+
+}
+.left-nav-cursor a, a.left-nav-cursor{
+	display: block;
+	padding-left :15px;
+	padding-right: 15px;
+	padding-top : 8px;
+	padding-bottom : 8px;
+}
+.left-nav-cursor.sub{
+	padding-left :30px;	
+}
+/** 手风琴菜单 样式 **/
+.left-nav-cursor a{
+	color: #414141;
+}
+
+.left-nav-cursor a:hover,.left-nav-cursor:hover{
+	text-decoration: none;
+	color :#414141;
+}
+
+.accordion-title.active{
+	background: #FFFFFF;
+}
+
+.accordion-content{
+	display: none;
+	list-style: none;
+	margin: 0;
+
+}
+
+
+.ajaxify_default {
+	position: relative;
+}
+.accordion-title .icon-18{
+	top: 15px;
+	*top:10px;
+position: absolute;
+right: 15px;
+}
+
+.left-nav-cursor.sub.active{
+	background: #FFFFFF;	
+}
+
+
+
+#siderbar .active .icon-groupQuery {
+    background-position: 2px -27px;
+}
+
+#siderbar .active .icon-detail {
+    background-position: -326px -27px;
+}
+
+#siderbar .active .icon-studentInfo {
+    background-position: -27px -27px;
+}
+
+#siderbar .active .icon-dormitoryCheckIn {
+    background-position: -54px -27px;
+}
+
+#siderbar .active .icon-finance {
+    background-position: -81px -27px;
+}
+
+#siderbar .active .icon-link {
+    background-position: -108px -27px;
+}
+
+#siderbar .active .icon-mobile {
+    background-position: -135px -27px;
+}
+
+#siderbar .active .icon-live {
+    background-position: -162px -27px;
+}
+
+#siderbar .active .icon-selectClass {
+    background-position: -189px -27px;
+}
+
+#siderbar .active .icon-mealCard {
+    background-position: -216px -27px;
+}
+
+#siderbar .active .icon-militaryTraining {
+    background-position: -242px -27px;
+}
+
+#siderbar .active .icon-addressBook {
+    background-position: -269px -27px;
+}
+
+#siderbar .active .icon-dormitory {
+    background-position: -296px -27px;
+}
+
+#siderbar .active .icon-militaryUniform {
+    background-position: -354px -27px;
+}
+
+#siderbar .active .icon-divideClasses {
+    background-position: -379px -27px;
+}
+
+#siderbar .active .icon-bbs {
+    background-position: -406px -27px;
+}
+
+#siderbar .active .icon-mobileManagement {
+    background-position: -594px -27px;
+}
+
+#siderbar .active .icon-SystemSettings {
+    background-position: -433px -27px;
+}
+
+#siderbar .active .icon-rightsManagement {
+    background-position: -460px -27px;
+}
+
+#siderbar .active .icon-configuration {
+    background-position: -487px -27px;
+}
+
+#siderbar .active .icon-systemTesting {
+    background-position: -514px -27px;
+}
+
+#siderbar .active .icon-logManagement {
+    background-position: -541px -27px;
+}
+
+#siderbar .active .icon-dataImport {
+    background-position: -567px -27px;
+}
+
+
+
+/** input 美化 **/
+.fileInput{ background:none;);overflow:hidden;position:relative;}
+.upfile{position:absolute;top:0; left : 0; opacity: 0;  filter:alpha(opacity:1);  left:-150px\9;}
+.upFileBtn{cursor:pointer;}

@@ -10,7 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>分拣系统平台DEMO显示</title>
 <link href="themes/css/login.css" rel="stylesheet" type="text/css" />
-<script src="javascripts/jquery-1.4.2.js" type="text/javascript"></script>
+<script src="${ctx}/static/jquery/jquery-1.7.1.min.js" type="text/javascript"></script>
 <script>
 		$(document).ready(function() {
 			//聚焦第一个输入框

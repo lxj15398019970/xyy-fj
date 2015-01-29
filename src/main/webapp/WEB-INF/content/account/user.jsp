@@ -37,8 +37,8 @@
 				<li class=""><a class="icon" href="#"><span>导出EXCEL</span></a></li>
 			</ul>
 		</div>
-	
-		<table class="list" width="98%" layoutH="116">
+        <div layouth="111">
+		<table class="list" width="98%">
 			<thead>
 				<tr>
 					<th width="80">登录名</th>
@@ -58,6 +58,7 @@
 				</s:iterator>
 			</tbody>
 		</table>
+            </div>
 		
 		<div class="panelBar" >
 			<div class="pages">

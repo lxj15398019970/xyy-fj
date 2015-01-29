@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ include file="/common/taglibs.jsp" %>
-<script src="${ctx}/javascripts/app.js" type="text/javascript"></script>
+<script src="${ctx}/static/dwz/js/app.js" type="text/javascript"></script>
 <div class="accordion" fillSpace="sidebar">
 <div class="accordionContent page-sidebar">
     <ul class="page-sidebar-menu">

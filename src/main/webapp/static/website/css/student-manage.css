@@ -1,0 +1,7 @@
+.modal-student-info{
+    font-size: 14px;
+}
+.modal-student-info .student-label{
+    width: 150px;
+    display:inline-block;
+}

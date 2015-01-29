@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bootstrap Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+    <link href="../wisdom-report/css/global.css" rel="stylesheet" media="screen">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <![endif]-->
+
+    <style>
+        .show-grid {
+            margin-bottom: 20px;
+            margin-top: 10px;
+        }
+        .show-grid [class*="span"] {
+            background-color: #EEEEEE;
+            border-radius: 3px;
+            line-height: 40px;
+            min-height: 40px;
+            text-align: center;
+        }
+        .siderBar{
+            width: 270px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="span3">
+            <ul class="nav nav-list siderBar" data-spy="affix" data-offset-top="0">
+                <li class="active"><a href="#gridSystem"><i class="icon-chevron-right"></i> 栅格系统</a></li>
+                <li class=""><a href="#typography"><i class="icon-chevron-right"></i> 排版</a></li>
+                <li class=""><a href="#tables"><i class="icon-chevron-right"></i> 表格</a></li>
+                <li class=""><a href="#buttons"><i class="icon-chevron-right"></i> 按钮</a></li>
+                <li class=""><a href="#images"><i class="icon-chevron-right"></i> 图片</a></li>
+                <li class=""><a href="#forms"><i class="icon-chevron-right"></i> 表单</a></li>
+            </ul>
+        </div>
+        <div class="span9">
+            <section id="gridSystem">
+                <div class="page-header">
+                    <h1>栅格系统示例</h1>
+                </div>
+                <p>Bootstrap默认的栅格系统为<strong>12列</strong> ，形成一个940px宽的容器，默认没有启用响应式布局特性。如果加入响应式布局CSS文件，栅格系统会自动根据可视窗口的宽度从724px到1170px进行动态调整。在可视窗口低于767px宽的情况下，列将不再固定并且会在垂直方向堆叠。</p>
+                <div class="row show-grid">
+                    <div class="span1" data-original-title="" title="">1</div>
+                    <div class="span1" data-original-title="" title="">1</div>
+                    <div class="span1" data-original-title="" title="">1</div>
+                    <div class="span1" data-original-title="" title="">1</div>
+                    <div class="span1">1</div>
+                    <div class="span1">1</div>
+                    <div class="span1">1</div>
+                    <div class="span1">1</div>
+                    <div class="span1">1</div>
+                </div>
+                <div class="row show-grid">
+                    <div class="span2" data-original-title="" title="">2</div>
+                    <div class="span3" data-original-title="" title="">3</div>
+                    <div class="span4">4</div>
+                </div>
+                <div class="row show-grid">
+                    <div class="span5">5</div>
+                    <div class="span4">4</div>
+                </div>
+                <div class="row show-grid">
+                    <div class="span9">9</div>
+                </div>
+                <div class="page-header">
+                    <h1>流式栅格系统</h1>
+                </div>
+                <p>流式栅格系统对每一列的宽度使用百分比而不是像素数量。它和固定栅格系统一样拥有响应式布局的能力，这就保证它能对不同的分辨率和设备做出适当的调整。</p>
+                <div class="row-fluid show-grid">
+                    <div class="span1">1</div>
+                    <div class="span1">1</div>
+                    <div class="span1">1</div>
+                    <div class="span1">1</div>
+                    <div class="span1">1</div>
+                    <div class="span1">1</div>
+                    <div class="span1">1</div>
+                    <div class="span1">1</div>
+                    <div class="span1">1</div>
+                    <div class="span1">1</div>
+                    <div class="span1">1</div>
+                    <div class="span1">1</div>
+                </div>
+                <div class="row-fluid show-grid">
+                    <div class="span4">4</div>
+                    <div class="span4">4</div>
+                    <div class="span4">4</div>
+                </div>
+                <div class="row-fluid show-grid">
+                    <div class="span5">5</div>
+                    <div class="span4">4</div>
+                    <div class="span3">3</div>
+                </div>
+                <div class="row-fluid show-grid">
+                    <div class="span6">6</div>
+                    <div class="span6">6</div>
+                </div>
+                <div class="row-fluid show-grid">
+                    <div class="span12">12</div>
+                </div>
+            </section>
+            <section id="typography">
+                <div class="page-header">
+                    <h1>排版</h1>
+                </div>
+                <h2>标题</h2>
+                <p>HTML中定义的所有标题标签, 从<code>&lt;h1&gt;</code> 到 <code>&lt;h6&gt;</code> 都是可用的。</p>
+                <h1>h1. Heading 1</h1>
+                <h2>h2. Heading 2</h2>
+                <h3>h3. Heading 3</h3>
+                <h4>h4. Heading 4</h4>
+                <h5>h5. Heading 5</h5>
+                <h6>h6. Heading 6</h6>
+            </section>
+            <section id="tables">
+                <div class="page-header">
+                    <h1>表格</h1>
+                </div>
+                <h2>默认样式</h2>
+                <p>为标签增加基本样式--很少的内补(padding)并只增加水平分隔线--只要为其增加 .table 类即可</p>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Username</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <h2>可选的类 .table-striped</h2>
+                <p>为表格中的行添加斑马纹样式</p>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Username</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <h2>可选的类  .table-bordered</h2>
+                <p>为表格增加边框(border)和圆角(rounded corner)</p>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Username</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td rowspan="2">1</td>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@TwBootstrap</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <h2>可选的类  .table-hover</h2>
+                <p>每一行赋予鼠标悬停样式</p>
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Username</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <h2>可选的类  .table-condensed</h2>
+                <p>每个单元格的内补(padding)减半可使表格更紧凑</p>
+                <table class="table table-condensed">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Username</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <h2>可选的行属性</h2>
+                <p>选择情景(contextual)类为表格添加颜色</p>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Username</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="success">
+                        <td>1</td>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr class="error">
+                        <td>2</td>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr class="warning">
+                        <td>3</td>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                    <tr class="info">
+                        <td>3</td>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section id="buttons">
+                <div class="page-header">
+                    <h1>按钮</h1>
+                </div>
+                <h2>默认样式</h2>
+                <p>任何赋予.btn类的页面元素都会显示按钮样式。</p>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>按钮</th>
+                        <th>class=""</th>
+                        <th>描述</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><button class="btn" type="button">默认</button></td>
+                        <td><code>btn</code></td>
+                        <td>带渐变的标准灰色按钮</td>
+                    </tr>
+                    <tr>
+                        <td><button class="btn btn-primary" type="button">主要</button></td>
+                        <td><code>btn btn-primary</code></td>
+                        <td>提供额外的视觉感, 可在一系列的按钮中指出主要操作</td>
+                    </tr>
+                    <tr>
+                        <td><button class="btn btn-info" type="button">信息</button></td>
+                        <td><code>btn btn-info</code></td>
+                        <td>默认样式的替代样式</td>
+                    </tr>
+                    <tr>
+                        <td><button class="btn btn-success" type="button">成功</button></td>
+                        <td><code>btn btn-success</code></td>
+                        <td>表示成功或积极的动作</td>
+                    </tr>
+                    <tr>
+                        <td><button class="btn btn-warning" type="button">警告</button></td>
+                        <td><code>btn btn-warning</code></td>
+                        <td>提醒应该谨慎采取这个动作</td>
+                    </tr>
+                    <tr>
+                        <td><button class="btn btn-danger" type="button">危险</button></td>
+                        <td><code>btn btn-danger</code></td>
+                        <td>表示这个动作危险或存在危险</td>
+                    </tr>
+                    <tr>
+                        <td><button class="btn btn-inverse" type="button">反向</button></td>
+                        <td><code>btn btn-inverse</code></td>
+                        <td>备用的暗灰色按钮，不依赖于语义和用途</td>
+                    </tr>
+                    <tr>
+                        <td><button class="btn btn-link" type="button">链接</button></td>
+                        <td><code>btn btn-link</code></td>
+                        <td>简化一个按钮, 使它看起来像一个链接，同时保持按钮的行为</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <h2>按钮大小</h2>
+                <p>添加.btn-large、.btn-small 或 .btn-mini即可改变按钮大小</p>
+                <p>
+                    <button class="btn btn-large btn-primary" type="button">Large button</button>
+                    <button class="btn btn-large" type="button">Large button</button>
+                </p>
+                <p>
+                    <button class="btn btn-primary" type="button">Default button</button>
+                    <button class="btn" type="button">Default button</button>
+                </p>
+                <p>
+                    <button class="btn btn-small btn-primary" type="button">Small button</button>
+                    <button class="btn btn-small" type="button">Small button</button>
+                </p>
+                <p>
+                    <button class="btn btn-mini btn-primary" type="button">Mini button</button>
+                    <button class="btn btn-mini" type="button">Mini button</button>
+                </p>
+                <h2>添加.btn-block</h2>
+                <p>通过添加.btn-block类，可使按钮变为块级元素，同时会填充整个父级元素。</p>
+                <div style="max-width: 400px; margin: 0 auto 10px;" class="well">
+                    <button class="btn btn-large btn-block btn-primary" type="button">Block level button</button>
+                    <button class="btn btn-large btn-block" type="button">Block level button</button>
+                </div>
+                <h2>禁用状态 .disabled</h2>
+                <p>颜色淡出50%，让按钮看起来无法点击。</p>
+                <a href="#" class="btn btn-large btn-primary disabled">Primary link</a>
+                <a href="#" class="btn btn-large disabled">Link</a>
+                <button type="button" class="btn btn-large btn-primary disabled" disabled="disabled">Primary button</button>
+                <button type="button" class="btn btn-large" disabled>Button</button>
+            </section>
+            <section id="images">
+                <div class="page-header">
+                    <h1>图片</h1>
+                </div>
+                <p>为<code>&lt;img&gt;</code>元素添加相应的类就可以很容易的给图片设置样式。</p>
+                <p>由于IE7-8不支持border-radius，因此.img-rounded 和 .img-circle无法正常使用。</p>
+                <img data-src="holder.js/140x140" class="img-rounded">
+                <img data-src="holder.js/140x140" class="img-circle">
+                <img data-src="holder.js/140x140" class="img-polaroid">
+            </section>
+            <section id="forms">
+                <div class="page-header">
+                    <h1>表单</h1>
+                </div>
+                <h2>默认样式</h2>
+                <p>无需对<code>&lt;form&gt;</code>添加任何类或改变标签结构，每个单独的表单控件都已经被赋予了样式。默认是堆叠、label左侧对齐并在控件之上。</p>
+                <form class="form-horizontal">
+                    <div class="control-group">
+                        <label class="control-label" for="inputEmail">Email</label>
+                        <div class="controls">
+                            <input type="text" id="inputEmail" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputPassword">Password</label>
+                        <div class="controls">
+                            <input type="password" id="inputPassword" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Textarea</label>
+                        <div class="controls">
+                            <textarea rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="checkbox inline">
+                            <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+                        </label>
+                        <label class="checkbox inline">
+                            <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+                        </label>
+                        <label class="checkbox inline">
+                            <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+                        </label>
+                    </div>
+                    <div class="control-group">
+                        <label class="radio inline">
+                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> 1
+                        </label>
+                        <label class="radio inline">
+                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> 2
+                        </label>
+                    </div>
+                    <div class="control-group">
+                        <select>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                        <select multiple="multiple">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <label class="checkbox">
+                                <input type="checkbox"> Remember me
+                            </label>
+                            <button type="submit" class="btn">Sign in</button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script src="js/bootstrap-transition.js"></script>
+<script src="js/bootstrap-alert.js"></script>
+<script src="js/bootstrap-modal.js"></script>
+<script src="js/bootstrap-dropdown.js"></script>
+<script src="js/bootstrap-scrollspy.js"></script>
+<script src="js/bootstrap-tab.js"></script>
+<script src="js/bootstrap-tooltip.js"></script>
+<script src="js/bootstrap-popover.js"></script>
+<script src="js/bootstrap-button.js"></script>
+<script src="js/bootstrap-collapse.js"></script>
+<script src="js/bootstrap-carousel.js"></script>
+<script src="js/bootstrap-typeahead.js"></script>
+<script src="js/holder.js"></script>
+</body>
+</html>

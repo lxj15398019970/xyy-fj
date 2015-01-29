@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>权限管理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="../../bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+    <link href="../../wisdom-report/css/global.css" rel="stylesheet" media="screen">
+    <script src="../../bootstrap/2.3.2/js/jquery.js"></script>
+    <script src="../../bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="../../bootstrap/2.3.2/js/html5shiv.js"></script>
+    <![endif]-->
+    <script src="../js/plugin/icheck/icheck.js"></script>
+
+</head>
+<body>
+<!--顶部开始-->
+<div id="top">
+    <div class="container">
+        <p class="text-right"><span class="user-name">赵军章老师</span>欢迎您&nbsp;&nbsp;登录使用智慧迎新平台<a href="#" class="exit">［退出登录］</a></p>
+    </div>
+</div>
+<!--顶部结束-->
+<!--头部开始-->
+<header id="header">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span4">
+                <h1 id="logo">智慧迎新教师管理平台</h1>
+            </div>
+            <div class="span8">
+                <a href="#" class="question-btn pull-right">我要提问</a>
+                <form class="form-search teacher-form-search pull-right">
+                    <div class="input-append">
+                        <input class="search-query" type="text" />
+                        <button type="submit" class="btn">搜索</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<!--头部结束-->
+<!--导航开始-->
+<nav id="nav">
+    <div class="container">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <ul class="nav">
+                    <li><a href="#">统计查询</a></li>
+                    <li><a href="#">学生平台管理</a></li>
+                    <li class="active"><a href="#">系统管理</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+<!--导航结束-->
+<!--头部结束-->
+<!--主体开始-->
+<section id="main">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span3">
+                <ul class="nav nav-tabs nav-stacked" id="siderbar">
+                    <li>
+                        <a href="#"><i class="icon-SystemSettings"></i>系统设置</a>
+                    </li>
+                    <li class="active">
+                        <a href="#"><i class="icon-rightsManagement"></i>权限管理</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="icon-configuration"></i>环节配置</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="icon-systemTesting"></i>系统检测</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="icon-logManagement"></i>日志管理</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="icon-dataImport"></i>数据导入</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="span9">
+                <div id="rights-management">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!--主体结束-->
+<!--底部开始-->
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <p class="text-center links">
+                    <a href="#">报到流程</a> ｜ <a href="#">自助报到</a> ｜ <a href="#">绿色通道</a> ｜ <a href="#">在线咨询</a>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span12">
+                <p class="text-center copyright">
+                    Copyright © 2003-2013 智慧迎新版权所有&nbsp;&nbsp;&nbsp;&nbsp;增值电信业务经营许可证：陕B2-20080224 陕ICP备05012247号
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--底部结束-->
+
+
+<script>
+    $(function(){
+        $("#rights-management").load("权限管理.html");
+    })
+</script>
+</body>
+</html>

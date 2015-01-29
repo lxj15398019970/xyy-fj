@@ -1,0 +1,152 @@
+body {
+    margin: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    line-height: 20px;
+    color: #6c6c6c;
+    background-color: #ffffff;
+}
+#header{
+    height: 97px;
+    background: #f6f6f6;
+    border-bottom:1px solid #e7e7e7;
+}
+#header #logo{
+    float: left;
+    width: 334px;
+    height: 58px;
+    background: url(../images/global/teacher-logo.png) no-repeat;
+    margin:23px 0 0;
+    text-indent:-999em;
+}
+#login-main{
+    height: auto;
+    background: #00acee;
+}
+#login-main .login-content{
+    height: 541px;
+    background: url(../images/global/login-main-bg.png) no-repeat 0 128px;
+}
+.login-form{
+    margin: 110px 0 0 ;
+    width: 320px;
+    padding: 0 0 39px;
+    background: #fbfafa;
+    border-radius: 3px;
+    box-shadow:0 -4px 0 #008abe inset;
+}
+.login-form .form-title{
+    font-size: 16px;
+    color: #565656;
+    margin: 43px 0 37px 27px;
+    line-height: 20px;
+}
+
+.login-form .control-label{
+    width: 58px;
+}
+.login-form .control-group{
+    margin-bottom:10px;
+    clear: both;
+}
+.login-form .forget-pwd{
+    padding: 0 0 0 215px;
+
+}
+
+.login-form .controls {
+    *display: inline-block;
+    *padding-left: 20px;
+    margin-left: 70px;
+    *margin-left: 0;
+}
+
+.login-form .controls:first-child {
+    *padding-left: 180px;
+}
+
+
+
+
+
+@media (max-width: 767px) {
+    body {
+        padding-right:0;
+        padding-left:0;
+    }
+    .login-form{
+        margin-right: 20px;
+    }
+}
+@media (max-width: 480px) {
+    body {
+        padding-right:0;
+        padding-left:0;
+    }
+    .login-form{
+        margin-right: 20px;
+    }
+    .login-form .control-group{
+        padding: 0 0 0 28px;
+    }
+    .login-form .controls{
+        margin-left:0;
+    }
+}
+.login-form .controls .login-input{
+    width: 186px;
+    border-radius:2px;
+}
+.login-form .controls .forget-pwd{
+    padding: 0 0 0 147px;
+}
+.login-form .controls .forget-pwd a{
+    color: #4d4d4d;
+}
+.login-form .controls .span180{
+    width: 180px;
+    display:inline-block;
+}
+.login-form .btn{
+    border-radius:0;
+    width:180px;
+    height: 40px;
+    border: 1px solid #75b716;
+    background: #79bd1a;
+    color: white;
+    font-size: 14px;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#7ec11d', endColorstr = '#74b817');
+    /*INNER ELEMENTS MUST NOT BREAK THIS ELEMENTS BOUNDARIES*/
+    /*Element must have a height (not auto)*/
+    /*All filters must be placed together*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr = '#7ec11d', endColorstr = '#74b817')";
+    /*Element must have a height (not auto)*/
+    /*All filters must be placed together*/
+    background-image: -moz-linear-gradient(top, #7ec11d, #74b817);
+    background-image: -ms-linear-gradient(top, #7ec11d, #74b817);
+    background-image: -o-linear-gradient(top, #7ec11d, #74b817);
+    background-image: -webkit-gradient(linear, center top, center bottom, from(#7ec11d), to(#74b817));
+    background-image: -webkit-linear-gradient(top, #7ec11d, #74b817);
+    background-image: linear-gradient(top, #7ec11d, #74b817);
+    /*--IE9 DOES NOT SUPPORT CSS3 GRADIENT BACKGROUNDS--*/
+}
+.login-form .login-btn{
+    margin:0 0 0 70px ;
+    *margin:0 0 0 80px ;
+    *border:none;
+}
+#footer{
+    line-height: 57px;
+    background: #576673;
+}
+#footer p{
+    margin: 0;
+}
+#footer .links,
+#footer .links a{
+    color: #fff;
+}
+#footer .copyright{
+    color:#94a4b2;
+}
+

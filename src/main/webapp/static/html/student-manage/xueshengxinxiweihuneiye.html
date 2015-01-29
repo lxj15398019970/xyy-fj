@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学生信息维护内页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="../../bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+    <link href="../../wisdom-report/css/global.css" rel="stylesheet" media="screen">
+    <link href="../../wisdom-report/css/student-info-inner.css" rel="stylesheet" media="screen">
+    <script src="../../bootstrap/2.3.2/js/jquery.js"></script>
+    <script src="../../bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="../../bootstrap/2.3.2/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+<!--顶部开始-->
+<div id="top">
+    <div class="container">
+        <p class="text-right"><span class="user-name">赵军章老师</span>欢迎您&nbsp;&nbsp;登录使用智慧迎新平台<a href="#" class="exit">［退出登录］</a></p>
+    </div>
+</div>
+<!--顶部结束-->
+<!--头部开始-->
+<header id="header">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span4">
+                <h1 id="logo">智慧迎新教师管理平台</h1>
+            </div>
+            <div class="span8">
+                <a href="#" class="question-btn pull-right">我要提问</a>
+                <form class="form-search teacher-form-search pull-right">
+                    <div class="input-append">
+                        <input class="search-query" type="text" />
+                        <button type="submit" class="btn">搜索</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<!--头部结束-->
+<!--导航开始-->
+<nav id="nav">
+    <div class="container">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <ul class="nav">
+                    <li><a href="#">统计查询</a></li>
+                    <li class="active"><a href="#">学生平台管理</a></li>
+                    <li><a href="#">系统管理</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+<!--导航结束-->
+<!--头部结束-->
+<!--主体开始-->
+<section id="main">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span3">
+                <ul class="nav nav-tabs nav-stacked" id="siderbar">
+                    <li>
+                        <a href="#"><i class="icon-dormitory"></i>宿舍信息维护</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="icon-groupQuery"></i>收费清单</a>
+                    </li>
+                    <li  class="active">
+                        <a href="#"><i class="icon-studentInfo"></i>学生信息</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="icon-militaryUniform"></i>军训服装</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="icon-live"></i>生活用品</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="icon-divideClasses"></i>分班</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="icon-mealCard"></i>饭卡办理</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="icon-addressBook"></i>通讯录</a>
+                    </li>
+					 <li>
+                        <a href="#"><i class="icon-bbs"></i>咨询回复</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="icon-mobileManagement"></i>手机维护</a>
+                    </li>
+                   
+
+                </ul>
+            </div>
+            <div class="span9">
+			   <div id="student-info">
+			      <div class="main-header">
+					 <h3 class="main-header-t bb0">学生信息维护</h3>
+				  </div>
+				   <div class="main-body mt0">
+					    <div class="first">
+					      <div class="row">
+							<div class="span4">
+								<p>
+								    <span class="span4-left text-right">考生号：</span>
+									<span class="span4-right">622901198823489930</span>
+								</p>
+								<p>
+									<span class="span4-left text-right">学院：</span>
+									<span class="span4-right">商学院</span>
+								</p>
+								<p>
+								    <span class="span4-left text-right">民族：</span>
+									<span class="span4-right">汉族</span>
+								</p>
+								<p>
+									<span class="span4-left text-right">出生日期：</span>
+									<span class="span4-right">111111</span>
+								</p>
+								<p>
+									<span class="span4-left text-right">何时入党（团）：</span>
+									<input class="search-query span4-right" type="text" />
+						        </p>
+								<p>
+                                    <span class="span4-left text-right">血型：</span>
+									<select class="search-query span4-right" >
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+										<option>5</option>
+									</select> 
+								</p>
+							</div>
+							<div class="span4">
+								<p>
+								    <span class="span4-left text-right">姓名：</span>
+									<span class="span4-right">赵军章</span>
+								</p>
+								<p>
+								    <span class="span4-left text-right">专业：</span>
+									<span class="span4-right">广告策划</span> 
+								</p>
+								<p>
+								    <span class="span4-left text-right">身份证：</span>
+									<span class="span4-right">610103198812083410</span>
+								</p>
+								<p>
+								    <span class="span4-left text-right">录取省份：</span>
+									<span class="span4-right">陕西省西安市</span>
+								</p>
+								<p>
+									<span class="span4-left text-right">手机号码：</span>
+	                               	<input class="search-query span4-right" type="text" />
+								</p>
+								<p>
+									<span class="span4-left text-right">健康状况：</span>
+	                               	<input class="search-query span4-right" type="text" />
+								</p>
+							</div>
+							<div class="span4">		
+								<p>
+								    <span class="span4-left text-right">性别：</span>
+									<span class="span4-right">男</span>
+								</p>
+								<p>
+								    <span class="span4-left text-right">班级：</span>
+									<span class="span4-right">12</span>
+								</p>
+								<p>
+								    <span class="span4-left text-right">考生号：</span>
+									<span class="span4-right">622901198823489930</span>
+								</p>
+								<p>
+								    <span class="span4-left text-right">政治面貌：</span>
+									<span class="span4-right">中国共产主义青年团团员</span>
+								</p>
+								<p>
+									<span class="span4-left text-right">固定电话：</span>
+	                               	<input class="search-query span4-right" type="text" />
+								</p>
+								<p>
+									<span class="span4-left text-right">QQ：</span>
+	                               	<input class="search-query span4-right" type="text" />
+								</p>
+							</div>
+						  </div>
+						  	<div class="row">
+						    <p> 
+							 <span class="span4-left-1 text-right">户口性质：</span>
+							 <input class="input-medium search-query home" type="text">
+							</p>
+							 </div>
+						  	<div class="row">
+							  <div class="span8">
+								  <p>
+                                      <span class="span4-left-2 text-right ">户口人数：</span>
+									  <input class="input-medium search-query home" type="text">
+								 </p>
+							  </div>
+							  <div class="span4">
+							   <p>			
+ 							     <span class="span4-left text-right">家庭平均收入：</span>
+								 <input class="span4-right input-medium search-query " type="text">
+							  </p>
+						      </div>
+						  </div>
+						 </div>
+						 <div class="second">
+						 	<div class="row">
+						   	<p id="family-info">
+				              家庭成员信息<span id="family-info-tip">（请至少填写一位家庭成员的姓名、称谓以及联系电话）</span>
+			                </p>
+							<table  class="table table-bordered second-table">
+								<thead>
+									<tr>
+										<th class="one1" >
+											姓名
+										</th>
+										<th class="one2">
+											称谓
+										</th>
+										<th class="one3">
+											年龄
+										</th>
+										<th class="one4">
+											工作单位及地址
+										</th>
+										<th class="one5">
+											职位
+										</th>
+										<th class="one6">
+											政治面貌
+										</th>
+										<th class="one7">
+											联系电话
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											 <input type="text">
+										</td>
+										<td>
+											 <input type="text">
+										</td>
+										<td>
+											 <input type="text"> 
+										</td>
+										<td>
+											  <input type="text">
+										</td>
+										<td>
+											  <input type="text">
+										</td>
+										<td>
+											 <input type="text">
+										</td>
+										<td>
+											 <input type="text"> 
+										</td>
+										
+									</tr>
+									<tr>
+									   <td>
+										 <input type="text">
+										</td>
+										<td>
+											 <input type="text">
+										</td>
+										<td>
+											 <input type="text"> 
+										</td>
+										<td>
+											  <input type="text">
+										</td>
+										<td>
+											  <input type="text">
+										</td>
+										<td>
+											 <input type="text">
+										</td>
+										<td>
+											 <input type="text"> 
+										</td>
+										
+									</tr>
+								</tbody>
+							</table>
+						 </div> 
+				      </div>
+					    <div class="third">
+					  	 	<div class="row">
+						   	<p id="family-info-myself">
+				              本人学历及社会经历
+							</p>
+							<table  class="table table-bordered third-table">
+								<thead>
+									<tr>
+										<th  class="one8">
+											自何时起到何时止
+										</th>
+										<th class="one8">
+											在何单位或何学校学习或工作
+										</th>
+										<th class="one8">
+											证明人现在何单位任职、政治面貌
+										</th>
+										 
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											 <input class="from-to" type="text"><span class="to">至</span><input class="from-to" type="text">
+										</td>
+										<td>
+											 <input type="text">
+										</td>
+										<td>
+											 <input type="text"> 
+										</td> 
+									</tr>
+									<tr>
+									   <td>
+										 <input class="from-to" type="text"><span class="to">至</span><input class="from-to" type="text">
+										</td>
+										<td>
+											 <input type="text">
+										</td>
+										<td>
+											 <input type="text"> 
+										</td>
+										 
+										
+									</tr>
+								</tbody>
+							</table>
+							<div id="submit-cancel">
+                                <a href=""> <button class="btn" type="submit">提交</button></a>
+                                <a href=""><button class="btn cancel" type="submit">取消</button></a>
+							 </div>
+						    </div> 
+					    </div> 
+				    </div> 
+               </div>  
+       </div>
+    </div>
+  </div>
+</section>						  
+ 
+      
+<!--主体结束-->
+<!--底部开始-->
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <p class="text-center links">
+                    <a href="#">报到流程</a> ｜ <a href="#">自助报到</a> ｜ <a href="#">绿色通道</a> ｜ <a href="#">在线咨询</a>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span12">
+                <p class="text-center copyright">
+                    Copyright © 2003-2013 智慧迎新版权所有&nbsp;&nbsp;&nbsp;&nbsp;增值电信业务经营许可证：陕B2-20080224 陕ICP备05012247号
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--底部结束-->
+
+
+
+</body>
+</html>
