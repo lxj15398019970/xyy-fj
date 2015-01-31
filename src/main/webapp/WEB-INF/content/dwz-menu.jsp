@@ -25,7 +25,9 @@
                 <span class="arrow"></span>
             </a>
             <ul class="sub-menu">
-                <li><a href="${ctx}/account/role.action" target="navTab" rel="w_role">行政区管理</a></li>
+                <li><a href="${ctx}/account/role.action" target="navTab" rel="w_role">省数据管理</a></li>
+                <li><a href="${ctx}/account/role.action" target="navTab" rel="w_role">市数据管理</a></li>
+                <li><a href="${ctx}/account/role.action" target="navTab" rel="w_role">区域数据管理</a></li>
             </ul>
         </li>
 
