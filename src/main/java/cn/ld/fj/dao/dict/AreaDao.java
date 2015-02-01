@@ -1,9 +1,9 @@
 package cn.ld.fj.dao.dict;
 
+import cn.ld.fj.entity.Area;
 import net.esoar.modules.orm.hibernate.HibernateDao;
 import org.springframework.stereotype.Component;
 
-import java.awt.geom.Area;
 
 /**
  * 用户对象的泛型DAO类.

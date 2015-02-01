@@ -1,11 +1,13 @@
 package cn.ld.fj.web.dict;
 
+import cn.ld.fj.entity.City;
 import cn.ld.fj.entity.Province;
-import cn.ld.fj.service.account.AccountManager;
+import cn.ld.fj.service.dict.CityManager;
 import cn.ld.fj.service.dict.ProvinceManager;
 import cn.ld.fj.util.DwzUtil;
 import cn.ld.fj.web.JsonActionSupport;
 import cn.ld.fj.web.SimpleJsonActionSupport;
+import com.google.common.collect.Lists;
 import net.esoar.modules.orm.Page;
 import net.esoar.modules.orm.PropertyFilter;
 import net.esoar.modules.utils.web.struts2.Struts2Utils;
@@ -17,29 +19,40 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 /**
- * 用户管理Action.
  * <p/>
  * 使用Struts2 convention-plugin annotation定义Action参数. 演示带分页的管理界面.
  *
  * @author fly
  */
-@Namespace("/province")
-@Results({@Result(name = JsonActionSupport.RELOAD, location = "province.action", type = "redirect")})
-public class ProvinceAction extends SimpleJsonActionSupport<Province> {
+@Namespace("/city")
+@Results({@Result(name = JsonActionSupport.RELOAD, location = "city.action", type = "redirect")})
+public class CityAction extends SimpleJsonActionSupport<City> {
 
     private static final long serialVersionUID = 8683878162525847072L;
     @Autowired
     private ProvinceManager provinceManager;
 
-    private Page<Province> page = new Page<Province>(10);// 每页5条记录
+    private Page<City> page = new Page<City>(10);// 每页5条记录
 
+    @Autowired
+    private CityManager cityManager;
+
+    private List<Province> provinces = Lists.newArrayList();
+
+    public List<Province> getProvinces() {
+        return provinces;
+    }
+
+    public void setProvinces(List<Province> provinces) {
+        this.provinces = provinces;
+    }
 
     @Override
     protected void prepareModel() throws Exception {
         if (id != null) {
-              entity = provinceManager.getProvince(id);
+            entity = cityManager.getEntity(id);
         } else {
-            entity = new Province();
+            entity = new City();
         }
     }
 
@@ -53,38 +66,48 @@ public class ProvinceAction extends SimpleJsonActionSupport<Province> {
             page.setOrderBy("id");
             page.setOrder(Page.ASC);
         }
-         page = provinceManager.searchProvince(page, filters);
+        page = cityManager.searchList(page, filters);
+
+        for (City city : page.getResult()) {
+            if (city.getProvinceId() != null) {
+                Province province = provinceManager.getProvince(city.getProvinceId());
+                if (province != null) {
+                    city.setProvinceName(province.getProvinceName());
+                }
+            }
+        }
+
+        provinces = provinceManager.findAll();
+
         return SUCCESS;
     }
 
     @Override
     public String input() throws Exception {
+        provinces = provinceManager.findAll();
         return INPUT;
     }
 
     @Override
     public void save() throws Exception {
-        provinceManager.save(entity);
+        cityManager.save(entity);
 //        Struts2Utils.renderHtml(DwzUtil
 //                .getFailReturn("操作失败，打开了异网，但是没有选择资源"));
-        Struts2Utils.renderHtml(DwzUtil.getCloseCurrentReturn("w_province",
+        Struts2Utils.renderHtml(DwzUtil.getCloseCurrentReturn("w_city",
                 "操作成功"));
 
     }
 
     @Override
     public void delete() throws Exception {
-        provinceManager.delete(id);
-        Struts2Utils.renderHtml(DwzUtil.getNavtabReturn("w_province",
+        cityManager.delete(id);
+        Struts2Utils.renderHtml(DwzUtil.getNavtabReturn("w_city",
                 "操作成功"));
 
     }
 
 
-    /**
-     * list页面显示用户分页列表.
-     */
-    public Page<Province> getPage() {
+    public Page<City> getPage() {
         return page;
     }
 

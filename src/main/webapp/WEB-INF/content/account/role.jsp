@@ -9,12 +9,8 @@
 		<div class="panelBar">
 			<ul class="toolBar">
 				<li><a class="add" href="${ctx}/account/role!input.action" target="dialog"><span>添加</span></a></li>
-				<li><a class="delete" href="${ctx}/account/role!delete.action?id={sid_role}" target="navTabTodo" title="确定要删除吗？" warn="请选择一个角色"><span>删除</span></a></li>
+				<li><a class="delete" href="${ctx}/account/role!delete.action?id={sid_role}" target="ajaxTodo" title="确定要删除吗？" warn="请选择一个角色"><span>删除</span></a></li>
 				<li><a class="edit" href="${ctx}/account/role!input.action?id={sid_role}" target="dialog" warn="请选择一个角色"><span>查看/修改</span></a></li>
-				<li class="line">line</li>
-				<li class=""><a class="icon" href="#"><span>导入EXCEL</span></a></li>
-				<li class="line">line</li>
-				<li class=""><a class="icon" href="#"><span>导出EXCEL</span></a></li>
 			</ul>
 		</div>
 	

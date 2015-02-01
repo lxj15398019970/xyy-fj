@@ -33,11 +33,20 @@ public class ProvinceManager {
     }
 
     @Transactional(readOnly = true)
-    public Page<Province> searchUser(Page<Province> page, List<PropertyFilter> filters) {
+    public Page<Province> searchProvince(Page<Province> page, List<PropertyFilter> filters) {
         return provinceDao.findPage(page, filters);
     }
 
     public void save(Province entity) {
         provinceDao.save(entity);
+    }
+
+    public void delete(Long id) {
+        provinceDao.delete(id);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Province> findAll() {
+        return provinceDao.getAll();
     }
 }

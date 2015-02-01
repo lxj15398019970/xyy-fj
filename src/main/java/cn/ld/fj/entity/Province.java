@@ -14,7 +14,6 @@ import javax.persistence.Table;
 @Entity
 //表名与类名不相同时重新定义表名.
 @Table(name = "ES_PROVINCE")
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Province extends IdEntity {
     private String provinceName;
 

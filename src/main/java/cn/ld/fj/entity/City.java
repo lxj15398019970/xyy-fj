@@ -5,6 +5,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * Created by xjli on 15-1-28.
@@ -18,6 +19,19 @@ public class City extends IdEntity {
     private String cityName;
 
     private Long provinceId;
+
+
+
+    private String provinceName;
+
+    @Transient
+    public String getProvinceName() {
+        return provinceName;
+    }
+
+    public void setProvinceName(String provinceName) {
+        this.provinceName = provinceName;
+    }
 
     public String getCityName() {
         return cityName;
