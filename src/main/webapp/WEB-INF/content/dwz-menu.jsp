@@ -27,7 +27,7 @@
             <ul class="sub-menu">
                 <li><a href="${ctx}/province/province.action" target="navTab" rel="w_province">省数据管理</a></li>
                 <li><a href="${ctx}/city/city.action" target="navTab" rel="w_city">市数据管理</a></li>
-                <li><a href="${ctx}/area/area.action" target="navTab" rel="w_area">区域数据管理</a></li>
+                <li><a href="${ctx}/area/area.action" target="navTab" rel="w_area">区县数据管理</a></li>
             </ul>
         </li>
 

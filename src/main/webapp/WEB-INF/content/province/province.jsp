@@ -26,7 +26,7 @@
 		<div class="panelBar">
 			<ul class="toolBar">
 				<li><a class="add" href="${ctx}/province/province!input.action" target="dialog"><span>添加</span></a></li>
-				<li><a class="delete" href="${ctx}/province/province!delete.action?id={sid_user}" target="ajaxTodo" title="确定要删除吗？" warn="请选择一个用户"><span>删除</span></a></li>
+				<li><a class="delete" href="${ctx}/province/province!delete.action?id={sid_user}" target="ajaxTodo" title="确定要删除吗?删除将会删除该省下所有市、区县信息" warn="请选择一个省份"><span>删除</span></a></li>
 				<li><a class="edit" href="${ctx}/province/province!input.action?id={sid_user}" target="dialog" warn="请选择一个用户"><span>查看/修改</span></a></li>
 			</ul>
 		</div>

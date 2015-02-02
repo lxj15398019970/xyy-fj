@@ -18,7 +18,7 @@
                     <li>
                         <label>省份:</label>
                         <select name="provinceId" id="provinceId">
-                            <option value="">全部</option>
+                            <option value="0">全部</option>
                             <s:iterator value="provinces">
                                 <option value="${id}" <c:if test="${provinceId ==id}">
                                     selected
@@ -29,8 +29,16 @@
 
                     <li>
                         <label>城市:</label>
-                        <select name="filter_EQL_cityId">
+                        <select name="filter_EQL_cityId" id="cityId">
                             <option value="">全部</option>
+                            <c:if test="${not empty cities}">
+                                <s:iterator value="cities">
+                                    <option value="${id}" <c:if test="${param['filter_EQL_cityId'] ==id}">
+                                        selected
+                                    </c:if>>${cityName}</option>
+                                </s:iterator>
+                            </c:if>
+
                         </select>
                     </li>
 
@@ -96,3 +104,46 @@
 
     </div>
 </div>
+
+
+<script>
+    $(function(){
+
+
+        //根据省份获取城市列表
+         $("#provinceId").change(function(){
+             var provinceId = $(this).val();
+             if(provinceId != '0'){
+                 $.post("city/city!getCities.action",{
+                     provinceId:provinceId
+                 },function(result){
+                     $("#cityId").empty();
+                     var option;
+                     for(var i = 0;i<result.length;i++){
+                         option = '<option value="'+result[i].id+'">'+result[i].cityName+'</option>'
+                         $("#cityId").append(option);
+                     }
+
+
+                 })
+
+
+             }
+
+
+
+         })
+
+
+
+
+
+
+
+
+
+    })
+
+
+
+</script>

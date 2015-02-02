@@ -46,4 +46,8 @@ public class CityManager {
     public void delete(Long id) {
         cityDao.delete(id);
     }
+
+    public List<City> getCites(long provinceId) {
+        return cityDao.findBy("provinceId", provinceId);
+    }
 }

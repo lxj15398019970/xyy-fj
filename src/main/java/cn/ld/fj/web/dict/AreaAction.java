@@ -13,6 +13,7 @@ import com.google.common.collect.Lists;
 import net.esoar.modules.orm.Page;
 import net.esoar.modules.orm.PropertyFilter;
 import net.esoar.modules.utils.web.struts2.Struts2Utils;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
@@ -43,21 +44,51 @@ public class AreaAction extends SimpleJsonActionSupport<Area> {
 
     private List<Province> provinces = Lists.newArrayList();
 
+    private List<City> cities = Lists.newArrayList();
+
     public List<Province> getProvinces() {
         return provinces;
+    }
+
+    private long provinceId;
+
+    public long getProvinceId() {
+        return provinceId;
+    }
+
+    public void setProvinceId(long provinceId) {
+        this.provinceId = provinceId;
     }
 
     public void setProvinces(List<Province> provinces) {
         this.provinces = provinces;
     }
 
+    public List<City> getCities() {
+        return cities;
+    }
+
+    public void setCities(List<City> cities) {
+        this.cities = cities;
+    }
+
     @Override
     protected void prepareModel() throws Exception {
+        provinces = provinceManager.findAll();
         if (id != null) {
             entity = areaManager.getEntity(id);
+            City city = cityManager.getEntity(entity.getCityId());
+            if (city != null) {
+                provinceId = city.getProvinceId();
+
+            }
         } else {
             entity = new Area();
+            if (CollectionUtils.isNotEmpty(provinces)) {
+                provinceId = provinces.get(0).getId();
+            }
         }
+        cities = cityManager.getCites(provinceId);
     }
 
     // -- CRUD Action 函数 --//
@@ -72,7 +103,7 @@ public class AreaAction extends SimpleJsonActionSupport<Area> {
         }
         page = areaManager.searchList(page, filters);
         for (Area area : page.getResult()) {
-            City city = cityManager.getEntity(area.getId());
+            City city = cityManager.getEntity(area.getCityId());
             if (city != null) {
                 area.setCityName(city.getCityName());
             }
@@ -83,6 +114,10 @@ public class AreaAction extends SimpleJsonActionSupport<Area> {
 
         }
 
+
+        if (provinceId > 0) {
+            cities = cityManager.getCites(provinceId);
+        }
 
         provinces = provinceManager.findAll();
 
