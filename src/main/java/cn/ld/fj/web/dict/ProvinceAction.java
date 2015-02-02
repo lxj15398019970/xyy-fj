@@ -1,11 +1,16 @@
 package cn.ld.fj.web.dict;
 
+import cn.ld.fj.entity.Area;
+import cn.ld.fj.entity.City;
 import cn.ld.fj.entity.Province;
 import cn.ld.fj.service.account.AccountManager;
+import cn.ld.fj.service.dict.AreaManager;
+import cn.ld.fj.service.dict.CityManager;
 import cn.ld.fj.service.dict.ProvinceManager;
 import cn.ld.fj.util.DwzUtil;
 import cn.ld.fj.web.JsonActionSupport;
 import cn.ld.fj.web.SimpleJsonActionSupport;
+import com.sun.jndi.url.corbaname.corbanameURLContextFactory;
 import net.esoar.modules.orm.Page;
 import net.esoar.modules.orm.PropertyFilter;
 import net.esoar.modules.utils.web.struts2.Struts2Utils;
@@ -32,6 +37,10 @@ public class ProvinceAction extends SimpleJsonActionSupport<Province> {
     private ProvinceManager provinceManager;
 
     private Page<Province> page = new Page<Province>(10);// 每页5条记录
+    @Autowired
+    private CityManager cityManager;
+    @Autowired
+    private AreaManager areaManager;
 
 
     @Override
@@ -75,6 +84,18 @@ public class ProvinceAction extends SimpleJsonActionSupport<Province> {
     @Override
     public void delete() throws Exception {
         provinceManager.delete(id);
+
+        //同时删除该省下的市、区
+
+        List<City> cities = cityManager.getCites(id);
+         for(City city : cities){
+             List<Area> areas = areaManager.getAreaByCityId(city.getId());
+             for(Area area : areas){
+                 areaManager.delete(area.getId());
+             }
+             cityManager.delete(city.getId());
+         }
+
         Struts2Utils.renderHtml(DwzUtil.getNavtabReturn("w_province",
                 "操作成功"));
 

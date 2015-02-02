@@ -64,7 +64,7 @@
             <ul class="toolBar">
                 <li><a class="add" href="${ctx}/area/area!input.action" target="dialog"><span>添加</span></a></li>
                 <li><a class="delete" href="${ctx}/area/area!delete.action?id={sid_user}" target="ajaxTodo"
-                       title="确定要删除吗？" warn="请选择一个用户"><span>删除</span></a></li>
+                       title="确定要删除吗？" warn="请选择一个区县"><span>删除</span></a></li>
                 <li><a class="edit" href="${ctx}/area/area!input.action?id={sid_user}" target="dialog"
                        warn="请选择一个用户"><span>查看/修改</span></a></li>
             </ul>

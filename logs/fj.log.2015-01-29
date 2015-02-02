@@ -1,0 +1,12 @@
+2015-01-29 09:22:16,709 [main] WARN  [org.hibernate.cache.EhCacheProvider] - Could not find configuration [cn.ld.fj.entity.Province]; using defaults.
+2015-01-29 09:22:16,841 [main] WARN  [org.hibernate.cache.EhCacheProvider] - Could not find configuration [cn.ld.fj.entity.Area]; using defaults.
+2015-01-29 09:22:16,857 [main] WARN  [org.hibernate.cache.EhCacheProvider] - Could not find configuration [cn.ld.fj.entity.City]; using defaults.
+2015-01-29 10:23:53,775 [main] WARN  [org.hibernate.cache.EhCacheProvider] - Could not find configuration [cn.ld.fj.entity.Province]; using defaults.
+2015-01-29 10:23:53,863 [main] WARN  [org.hibernate.cache.EhCacheProvider] - Could not find configuration [cn.ld.fj.entity.Area]; using defaults.
+2015-01-29 10:23:53,878 [main] WARN  [org.hibernate.cache.EhCacheProvider] - Could not find configuration [cn.ld.fj.entity.City]; using defaults.
+2015-01-29 10:30:29,255 [main] WARN  [org.hibernate.cache.EhCacheProvider] - Could not find configuration [cn.ld.fj.entity.Province]; using defaults.
+2015-01-29 10:30:29,344 [main] WARN  [org.hibernate.cache.EhCacheProvider] - Could not find configuration [cn.ld.fj.entity.Area]; using defaults.
+2015-01-29 10:30:29,357 [main] WARN  [org.hibernate.cache.EhCacheProvider] - Could not find configuration [cn.ld.fj.entity.City]; using defaults.
+2015-01-29 10:45:53,858 [main] WARN  [org.hibernate.cache.EhCacheProvider] - Could not find configuration [cn.ld.fj.entity.Province]; using defaults.
+2015-01-29 10:45:53,999 [main] WARN  [org.hibernate.cache.EhCacheProvider] - Could not find configuration [cn.ld.fj.entity.Area]; using defaults.
+2015-01-29 10:45:54,017 [main] WARN  [org.hibernate.cache.EhCacheProvider] - Could not find configuration [cn.ld.fj.entity.City]; using defaults.

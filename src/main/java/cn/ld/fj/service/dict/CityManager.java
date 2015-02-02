@@ -50,4 +50,5 @@ public class CityManager {
     public List<City> getCites(long provinceId) {
         return cityDao.findBy("provinceId", provinceId);
     }
+
 }

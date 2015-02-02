@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: cn.thinkjoy.tecc:tecc-common-nodep:0.0.2-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/cn/thinkjoy/tecc/tecc-common-nodep/0.0.2-SNAPSHOT/tecc-common-nodep-0.0.2-20140918.004632-1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/cn/thinkjoy/tecc/tecc-common-nodep/0.0.2-SNAPSHOT/tecc-common-nodep-0.0.2-20140918.004632-1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/cn/thinkjoy/tecc/tecc-common-nodep/0.0.2-SNAPSHOT/tecc-common-nodep-0.0.2-20140918.004632-1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

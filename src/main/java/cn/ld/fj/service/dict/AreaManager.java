@@ -48,4 +48,7 @@ public class AreaManager {
         areaDao.delete(id);
     }
 
+    public List<Area> getAreaByCityId(Long cityId) {
+        return areaDao.findBy("cityId",cityId);
+    }
 }

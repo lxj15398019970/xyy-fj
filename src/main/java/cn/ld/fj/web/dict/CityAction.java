@@ -1,7 +1,9 @@
 package cn.ld.fj.web.dict;
 
+import cn.ld.fj.entity.Area;
 import cn.ld.fj.entity.City;
 import cn.ld.fj.entity.Province;
+import cn.ld.fj.service.dict.AreaManager;
 import cn.ld.fj.service.dict.CityManager;
 import cn.ld.fj.service.dict.ProvinceManager;
 import cn.ld.fj.util.DwzUtil;
@@ -40,6 +42,8 @@ public class CityAction extends SimpleJsonActionSupport<City> {
 
     @Autowired
     private CityManager cityManager;
+    @Autowired
+    private AreaManager areaManager;
 
     private List<Province> provinces = Lists.newArrayList();
 
@@ -122,6 +126,10 @@ public class CityAction extends SimpleJsonActionSupport<City> {
 
     @Override
     public void delete() throws Exception {
+        List<Area> areas = areaManager.getAreaByCityId(id);
+        for(Area area : areas){
+            areaManager.delete(area.getId());
+        }
         cityManager.delete(id);
         Struts2Utils.renderHtml(DwzUtil.getNavtabReturn("w_city",
                 "操作成功"));
