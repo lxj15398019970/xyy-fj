@@ -7,7 +7,10 @@
 
 
             <security:authorize ifAnyGranted="ROLE_系统管理">
-                <li>
+                <li <c:if test="${type == 'user'}">
+                    class = "active"
+                </c:if>
+                        >
                     <a href="javascript:;">
                         <i class="icon-user"></i>
                         <span class="title">系统管理</span>
@@ -24,7 +27,10 @@
 
 
             <security:authorize ifAnyGranted="ROLE_行政区管理">
-                <li>
+                <li    <c:if test="${type == 'dict'}">
+                    class = "active"
+                </c:if>
+                        >
                     <a href="javascript:;">
                         <i class="icon-table"></i>
                         <span class="title">行政区管理</span>
@@ -42,7 +48,10 @@
 
 
             <security:authorize ifAnyGranted="ROLE_代理商管理">
-                <li>
+                <li    <c:if test="${type == 'agent'}">
+                    class = "active"
+                </c:if>
+                        >
                     <a href="javascript:;">
                         <i class="icon-bar-chart"></i>
                         <span class="title">代理商管理</span>

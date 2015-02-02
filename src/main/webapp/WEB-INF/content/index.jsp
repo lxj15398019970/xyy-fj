@@ -84,10 +84,10 @@
         <div id="navMenu">
             <h1 id="logo">直销管家</h1>
             <ul>
-                <li class="select"><a href="#"><span>用户管理</span></a></li>
-                <li><a href="#"><span>代理商管理</span></a></li>
-                <li><a href="#"><span>行政区域管理</span></a></li>
-                <li><a href="#"><span>直销统计</span></a></li>
+                <li class="select"><a href="${ctx}/main.action?type=user"><span>用户管理</span></a></li>
+                <li><a href="${ctx}/main.action?type=agent"><span>代理商管理</span></a></li>
+                <li><a href="${ctx}/main.action?type=dict"><span>行政区域管理</span></a></li>
+                <li><a href="${ctx}/main.action?type=statistic"><span>直销统计</span></a></li>
             </ul>
             <p class="text-right">
 					<span class="user-name">
