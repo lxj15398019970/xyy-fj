@@ -84,9 +84,17 @@
         <div id="navMenu">
             <h1 id="logo">直销管家</h1>
             <ul>
-                <li class="select"><a href="${ctx}/main.action?type=user"><span>用户管理</span></a></li>
-                <li><a href="${ctx}/main.action?type=agent"><span>代理商管理</span></a></li>
-                <li><a href="${ctx}/main.action?type=dict"><span>行政区域管理</span></a></li>
+                <security:authorize ifAnyGranted="ROLE_系统管理">
+                    <li class="select"><a href="${ctx}/main.action?type=user"><span>用户管理</span></a></li>
+                </security:authorize>
+
+                <security:authorize ifAnyGranted="ROLE_代理商管理">
+                    <li><a href="${ctx}/main.action?type=agent"><span>代理商管理</span></a></li>
+                </security:authorize>
+                <security:authorize ifAnyGranted="ROLE_行政区管理">
+                    <li><a href="${ctx}/main.action?type=dict"><span>行政区域管理</span></a></li>
+                </security:authorize>
+                <li><a href="${ctx}/main.action?type=orderps"><span>订单配送</span></a></li>
                 <li><a href="${ctx}/main.action?type=statistic"><span>直销统计</span></a></li>
             </ul>
             <p class="text-right">

@@ -74,29 +74,66 @@
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
-                        <li><a href="${ctx}/account/role.action" target="navTab" rel="w_role">订单备份</a></li>
+                        <li><a href="${ctx}/agent/agent.action" target="navTab" rel="w_role">订单备份</a></li>
                     </ul>
                 </li>
 
             </security:authorize>
 
+
+            <security:authorize ifAnyGranted="ROLE_订单配送">
+                <li  <c:if test="${type == 'orderps'}">
+                    class = "active"
+                </c:if>>
+                    <a href="javascript:;">
+                        <i class="icon-bar-chart"></i>
+                        <span class="title">订单配送</span>
+                        <span class="selected"></span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="${ctx}/order/order.action" target="navTab" rel="w_role">未配送订单</a></li>
+                        <li><a href="${ctx}/order/order.action" target="navTab" rel="w_role">已配送订单统计</a></li>
+                    </ul>
+                </li>
+
+            </security:authorize>
+
+
             <security:authorize ifAnyGranted="ROLE_产品管理">
-            <li>
-                <a href="javascript:;">
-                    <i class="icon-bar-chart"></i>
-                    <span class="title">产品管理</span>
-                    <span class="selected"></span>
-                    <span class="arrow"></span>
-                </a>
-                <ul class="sub-menu">
-                    <li><a href="${ctx}/account/role.action" target="navTab" rel="w_role">产品管理</a></li>
-                </ul>
-            </li>
+                <li>
+                    <a href="javascript:;">
+                        <i class="icon-bar-chart"></i>
+                        <span class="title">产品管理</span>
+                        <span class="selected"></span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="${ctx}/agent/agent.action" target="navTab" rel="w_role">产品管理</a></li>
+                    </ul>
+                </li>
 
 
+            </security:authorize>
+
+
+            <security:authorize ifAnyGranted="ROLE_直销统计">
+                <li  <c:if test="${type == 'statistic'}">
+                    class = "active"
+                </c:if>>
+                    <a href="javascript:;">
+                        <i class="icon-bar-chart"></i>
+                        <span class="title">直销统计</span>
+                        <span class="selected"></span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="${ctx}/agent/agent.action" target="navTab" rel="w_role">直销统计</a></li>
+                    </ul>
+                </li>
+
+            </security:authorize>
         </ul>
-        </security:authorize>
-
 
     </div>
 </div>
