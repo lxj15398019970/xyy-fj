@@ -17,6 +17,17 @@
                     <label>用户名:</label>
                     <input type="text" id="name" name="name" size="40" class="required" value="${name}"/>
                 </div>
+
+                <div class="unit">
+                    <label>用户类型:</label>
+                    <select name="userType">
+                        <option value="1"  <c:if test="${userType == 1}">selected</c:if>>工厂管理员</option>
+                        <option value="2"  <c:if test="${userType == 2}">selected</c:if>>代理商</option>
+                        <option value="3"  <c:if test="${userType == 3}">selected</c:if>>产品管理员</option>
+                    </select>
+
+                </div>
+
                 <div class="unit">
                     <label>密码:</label>
                     <input type="password" id="password" name="password" size="40" class="required"

@@ -10,9 +10,9 @@ import net.esoar.modules.test.utils.JettyUtils;
  */
 public class Start {
 
-	public static final int PORT = 8080;
+	public static final int PORT = 8085;
 	public static final String CONTEXT = "/fj";
-	public static final String BASE_URL = "http://localhost:8080/fj";
+	public static final String BASE_URL = "http://localhost:8085/fj";
 
 	public static void main(String[] args) throws Exception {
 		Server server = JettyUtils.buildNormalServer(PORT, CONTEXT);

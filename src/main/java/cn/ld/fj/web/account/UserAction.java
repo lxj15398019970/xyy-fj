@@ -3,13 +3,11 @@ package cn.ld.fj.web.account;
 import cn.ld.fj.dao.HibernateUtils;
 import cn.ld.fj.entity.account.Role;
 import cn.ld.fj.entity.account.User;
-import cn.ld.fj.service.ServiceException;
 import cn.ld.fj.service.account.AccountManager;
+import cn.ld.fj.util.DwzUtil;
 import cn.ld.fj.web.JsonActionSupport;
-import cn.ld.fj.web.pojo.JsonMessagePojo;
 import net.esoar.modules.orm.Page;
 import net.esoar.modules.orm.PropertyFilter;
-import net.esoar.modules.utils.encode.JsonBinder;
 import net.esoar.modules.utils.web.struts2.Struts2Utils;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -84,48 +82,20 @@ public class UserAction extends JsonActionSupport<User> {
 
     @Override
     public void save() throws Exception {
-
-        JsonMessagePojo jmp = new JsonMessagePojo();
-
-        jmp.setCallbackType("dialogAjaxDone");
-        jmp.setForwardUrl("");
-        jmp.setNavTabId("w_user");
-
         // 根据页面上的checkbox选择 整合User的Roles Set
         HibernateUtils.mergeByCheckedIds(entity.getRoleList(), checkedRoleIds,
                 Role.class);
 
         accountManager.saveUser(entity);
-        addActionMessage("保存用户成功");
-
-        jmp.setMessage("保存用户成功");
-        jmp.setStatusCode("200");
-
-        String returnMessage = JsonBinder.buildNormalBinder().toJson(jmp);
-        Struts2Utils.renderJson(returnMessage);
+        Struts2Utils.renderHtml(DwzUtil.getCloseCurrentReturn("w_user",
+                "操作成功"));
     }
 
     @Override
     public void delete() throws Exception {
-
-        JsonMessagePojo jmp = new JsonMessagePojo();
-
-        jmp.setCallbackType("navTabAjaxDone");
-        jmp.setForwardUrl("");
-        jmp.setNavTabId("w_user");
-
-        try {
-            accountManager.deleteUser(id);
-            jmp.setMessage("删除用户成功");
-            jmp.setStatusCode("200");
-        } catch (ServiceException e) {
-            logger.error(e.getMessage(), e);
-            jmp.setMessage("删除用户失败");
-            jmp.setStatusCode("200");
-        }
-
-        String returnMessage = JsonBinder.buildNormalBinder().toJson(jmp);
-        Struts2Utils.renderJson(returnMessage);
+        accountManager.deleteUser(id);
+        Struts2Utils.renderHtml(DwzUtil.getNavtabReturn("w_user",
+                "操作成功"));
     }
 
     // -- 其他Action函数 --//
