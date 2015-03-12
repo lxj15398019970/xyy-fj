@@ -125,4 +125,9 @@ public class AccountManager {
 	public void setAuthorityDao(AuthorityDao authorityDao) {
 		this.authorityDao = authorityDao;
 	}
+
+    @Transactional(readOnly = true)
+    public List<User> findAll() {
+        return userDao.getAll();
+    }
 }

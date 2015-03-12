@@ -109,7 +109,8 @@
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
-                        <li><a href="${ctx}/agent/agent.action" target="navTab" rel="w_role">产品管理</a></li>
+                        <li><a href="${ctx}/production/production.action" target="navTab" rel="w_production">产品管理</a>
+                        </li>
                     </ul>
                 </li>
 

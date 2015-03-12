@@ -4,13 +4,16 @@ import cn.ld.fj.dao.dict.ProvinceDao;
 import cn.ld.fj.entity.Province;
 import net.esoar.modules.orm.Page;
 import net.esoar.modules.orm.PropertyFilter;
+import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 安全相关实体的管理类, 包括用户,角色,资源与授权类.
@@ -48,5 +51,17 @@ public class ProvinceManager {
     @Transactional(readOnly = true)
     public List<Province> findAll() {
         return provinceDao.getAll();
+    }
+
+    public Map<Long, String> getProvinceMap() {
+
+        Map<Long, String> map = new HashMap<Long, String>();
+        List<Province> provinces = provinceDao.getAll();
+        if (CollectionUtils.isNotEmpty(provinces)) {
+            for (Province province : provinces) {
+                map.put(province.getId(), province.getProvinceName());
+            }
+        }
+        return map;
     }
 }

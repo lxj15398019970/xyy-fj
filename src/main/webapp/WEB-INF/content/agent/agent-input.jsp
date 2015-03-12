@@ -3,25 +3,33 @@
 <div class="page">
     <div class="pageContent">
 
-        <form method="post" action="${ctx}/area/area!save.action" class="pageForm required-validate"
+        <form method="post" action="${ctx}/agent/agent!save.action" class="pageForm required-validate"
               onsubmit="return validateCallback(this, dialogAjaxDone)">
             <input type="hidden" name="id" value="${id}"/>
 
             <div class="pageFormContent" layoutH="58">
 
                 <div class="unit">
-                    <label>区域名称:</label>
-                    <input type="text" name="areaName" size="40" id="areaName" class="required" value="${areaName}"/>
+                    <label>代理商称:</label>
+                    <select name="agentName" required="required">
+                        <option value="">--请选择--</option>
+                        <c:forEach items="${users}" var="item">
+                            <option value="${item.loginName}"
+                                    <c:if test="${item.loginName == agentName}">selected</c:if>>${item.loginName}</option>
+                        </c:forEach>
+
+                    </select>
                 </div>
 
                 <div class="unit">
                     <label>所属省份:</label>
                     <select name="provinceId" id="province">
-                        <s:iterator value="provinces">
-                            <option value="${id}" <c:if test="${provinceId ==id}">
+                        <option value="">--请选择--</option>
+                        <c:forEach items="${provinces}" var="item">
+                            <option value="${item.id}" <c:if test="${provinceId ==item.id}">
                                 selected
-                            </c:if>>${provinceName}</option>
-                        </s:iterator>
+                            </c:if>>${item.provinceName}</option>
+                        </c:forEach>
                     </select>
                 </div>
 
@@ -29,14 +37,43 @@
                 <div class="unit">
                     <label>所属城市:</label>
                     <select name="cityId" id="city">
-                        <c:if test="${not empty cities}">
-                            <s:iterator value="cities">
-                                <option value="${id}" <c:if test="id ==cityId}">
-                                    selected
-                                </c:if>>${cityName}</option>
-                            </s:iterator>
-                        </c:if>
+                        <option value="">--请选择--</option>
+                        <c:forEach items="${cities}" var="item">
+                            <option value="${item.id}" <c:if test="${cityId ==item.id}">
+                                selected
+                            </c:if>>${item.cityName}</option>
+                        </c:forEach>
                     </select>
+                </div>
+
+                <div class="unit">
+                    <label>所属区域:</label>
+                    <select name="areaId" id="area">
+                        <option value="">--请选择--</option>
+                        <c:forEach items="${areas}" var="item">
+                            <option value="${item.id}" <c:if test="${areaId ==item.id}">
+                                selected
+                            </c:if>>${item.areaName}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+
+                <div class="unit">
+                    <label>代理产品:</label>
+                    <select name="productionId" id="productionId">
+                        <option value="">--请选择--</option>
+                        <c:forEach items="${productions}" var="item">
+                            <option value="${item.id}" <c:if test="${productionId ==item.id}">
+                                selected
+                            </c:if>>${item.productionName}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+
+                <div class="unit">
+                    <label>配送范围:</label>
+                    <input type="text" name="areaScope" value="${areaScope}" required size="40">
+
                 </div>
 
 
@@ -76,16 +113,33 @@
                     provinceId: provinceId
                 }, function (result) {
                     $("#city").empty();
-                    var option;
+                    var option = "<option value=''>--请选择--</option>";
+                    $("#city").append(option);
                     for (var i = 0; i < result.length; i++) {
                         option = '<option value="' + result[i].id + '">' + result[i].cityName + '</option>'
                         $("#city").append(option);
                     }
 
+                })
+            }
+
+        });
+
+        $("#city").change(function () {
+            var cityId = $(this).val();
+            if (cityId != '') {
+                $.post("area/area!getAreas.action", {
+                    cityId: cityId
+                }, function (result) {
+                    $("#area").empty();
+                    var option = "<option value=''>--请选择--</option>";
+                    $("#area").append(option);
+                    for (var i = 0; i < result.length; i++) {
+                        option = '<option value="' + result[i].id + '">' + result[i].areaName + '</option>'
+                        $("#area").append(option);
+                    }
 
                 })
-
-
             }
 
         })

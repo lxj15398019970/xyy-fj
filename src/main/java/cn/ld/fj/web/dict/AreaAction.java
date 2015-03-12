@@ -51,6 +51,15 @@ public class AreaAction extends SimpleJsonActionSupport<Area> {
     }
 
     private long provinceId;
+    private long cityId;
+
+    public long getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(long cityId) {
+        this.cityId = cityId;
+    }
 
     public long getProvinceId() {
         return provinceId;
@@ -144,6 +153,12 @@ public class AreaAction extends SimpleJsonActionSupport<Area> {
         areaManager.delete(id);
         Struts2Utils.renderHtml(DwzUtil.getNavtabReturn("w_area",
                 "操作成功"));
+
+    }
+
+    public void getAreas() {
+        List<Area> areas = areaManager.getAreaByCityId(cityId);
+        Struts2Utils.renderJson(areas);
 
     }
 
