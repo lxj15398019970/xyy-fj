@@ -3,7 +3,7 @@
 
 <div class="page">
     <div class="pageHeader">
-        <form id="pagerForm" onsubmit="return navTabSearch(this);" action="${ctx}/area/area.action" method="post">
+        <form id="pagerForm" onsubmit="return navTabSearch(this);" action="${ctx}/agent/agent.action" method="post">
             <input type="hidden" name="page.pageNo" id="pageNum" value="${page.pageNo}"/>
             <input type="hidden" name="page.orderBy" id="orderField" value="${page.orderBy}"/>
             <input type="hidden" name="page.order" id="order" value="${page.order}"/>
@@ -11,8 +11,8 @@
             <div class="searchBar">
                 <ul class="searchContent">
                     <li>
-                        <label>区域名称:</label><input type="text" name="filter_EQS_areaName"
-                                                   value="${param['filter_EQS_areaName']}" size="9"/>
+                        <label>代理商名称:</label><input type="text" name="filter_EQS_agentName"
+                                                   value="${param['filter_EQS_agentName']}" size="9"/>
                     </li>
 
                 </ul>

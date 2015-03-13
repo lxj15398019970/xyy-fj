@@ -1,0 +1,16 @@
+/target
+/logs
+/bin
+.classpath
+.project
+.settings
+.DS_Store
+.externalToolBuilders
+/target
+/.idea
+/out
+/*.iml
+.ideal
+.gradle
+.project
+.classpath
