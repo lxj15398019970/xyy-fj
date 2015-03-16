@@ -42,6 +42,12 @@
                 </div>
 
                 <div class="unit">
+                    <label>产品参数:</label>
+                    <input type="text" name="para" size="40" id="para" class="required"
+                           value="${para}"/>
+                </div>
+
+                <div class="unit">
                     <label>库存:</label>
                     <input type="text" name="inventory" size="40" id="inventory" class="required" value="${inventory}"/>
                 </div>

@@ -3,7 +3,8 @@
 
 <div class="page">
     <div class="pageHeader">
-        <form id="pagerForm" onsubmit="return navTabSearch(this);" action="${ctx}/production/production.action" method="post">
+        <form id="pagerForm" onsubmit="return navTabSearch(this);" action="${ctx}/production/production.action"
+              method="post">
             <input type="hidden" name="page.pageNo" id="pageNum" value="${page.pageNo}"/>
             <input type="hidden" name="page.orderBy" id="orderField" value="${page.orderBy}"/>
             <input type="hidden" name="page.order" id="order" value="${page.order}"/>
@@ -39,7 +40,8 @@
     <div class="pageContent">
         <div class="panelBar">
             <ul class="toolBar">
-                <li><a class="add" href="${ctx}/production/production!input.action" target="dialog"><span>添加</span></a></li>
+                <li><a class="add" href="${ctx}/production/production!input.action" target="dialog"><span>添加</span></a>
+                </li>
                 <li><a class="delete" href="${ctx}/production/production!delete.action?id={sid_user}" target="ajaxTodo"
                        title="确定要删除吗？" warn="请选择一个产品"><span>删除</span></a></li>
                 <li><a class="edit" href="${ctx}/production/production!input.action?id={sid_user}" target="dialog"
@@ -56,6 +58,7 @@
                     <th width="80">产品条形码</th>
                     <th width="80">产品颜色</th>
                     <th width="80">产品价格</th>
+                    <th width="80">产品参数</th>
                     <th width="80">库存</th>
                 </tr>
                 </thead>
@@ -68,6 +71,7 @@
                         <td>${code}&nbsp;</td>
                         <td>${color}&nbsp;</td>
                         <td>${price}&nbsp;</td>
+                        <td>${para}&nbsp;</td>
                         <td>${inventory}&nbsp;</td>
                     </tr>
                 </s:iterator>

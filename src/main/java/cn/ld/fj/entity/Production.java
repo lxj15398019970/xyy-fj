@@ -45,6 +45,19 @@ public class Production extends IdEntity {
      */
     private String description;
 
+    /**
+     * 参数参数
+     */
+    private String para;
+
+    public String getPara() {
+        return para;
+    }
+
+    public void setPara(String para) {
+        this.para = para;
+    }
+
     public String getDescription() {
         return description;
     }

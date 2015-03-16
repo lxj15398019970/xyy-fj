@@ -100,6 +100,21 @@
             </security:authorize>
 
 
+            <li  <c:if test="${type == 'orderps'}">
+                class = "active"
+            </c:if>>
+                <a href="javascript:;">
+                    <i class="icon-bar-chart"></i>
+                    <span class="title">订单管理</span>
+                    <span class="selected"></span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li><a href="${ctx}/order/order.action" target="navTab" rel="w_order">订单管理</a></li>
+                </ul>
+            </li>
+
+
             <security:authorize ifAnyGranted="ROLE_产品管理">
                 <li>
                     <a href="javascript:;">
