@@ -2,8 +2,8 @@ package cn.ld.fj.web.agent;
 
 import cn.ld.fj.entity.*;
 import cn.ld.fj.entity.account.User;
-import cn.ld.fj.service.AgentManager;
 import cn.ld.fj.service.account.AccountManager;
+import cn.ld.fj.service.agent.AgentManager;
 import cn.ld.fj.service.dict.AreaManager;
 import cn.ld.fj.service.dict.CityManager;
 import cn.ld.fj.service.dict.ProvinceManager;

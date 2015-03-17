@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.ld.fj.dao.mybatis.OrderMybatisDao">
+
+    <resultMap id="OrderMap" type="Order">
+        <id property="id" column="id"/>
+        <result property="productionId" column="productionId"/>
+        <result property="provinceId" column="provinceId"/>
+        <result property="cityId" column="cityId"/>
+        <result property="areaId" column="areaId"/>
+        <result property="buyCount" column="buyCount"/>
+        <result property="totalMoney" column="totalMoney"/>
+        <result property="address" column="address"/>
+        <result property="customName" column="customName"/>
+        <result property="phone" column="phone"/>
+        <result property="provinceName" column="provinceName"/>
+        <result property="cityName" column="cityName"/>
+        <result property="areaName" column="areaName"/>
+        <result property="status" column="status"/>
+        <association property="production" column="productionId=productionId" select="getProduction"/>
+
+    </resultMap>
+
+
+    <select id="getProduction" resultType="Production">
+        select *,
+         production_name as productionName
+         where id=#{productionId}
+    </select>
+
+
+    <select id="getOrders" parameterType="Map" resultMap="OrderMap">
+          select o.id as id,
+         o.province_id as provinceId,
+          o.production_id as productionId,
+          o.city_id as cityId,
+          o.area_id as areaId,
+          o.buy_count as buyCount,
+          o.total_money as totalMoney,
+          o.address as address,
+          o.custom_name as customName,
+          o.phone as phone,
+          o.status as status,
+          o.order_time as orderTime,
+          p.province_name as provinceName,
+          c.city_name as cityName,
+          a.area_name as areaName
+          from es_order o
+          left join es_province p
+          on o.province_id = p.id
+          left join es_city c
+          on o.city_id = c.id
+          left join es_area a
+          on o.area_id = a.id
+          order by o.order_time desc
+          limit #{start},#{end}
+
+    </select>
+
+    <select id="getTotalCount" parameterType="Map" resultType="Integer">
+        select count(1)
+        from es_order
+    </select>
+
+
+</mapper>
+

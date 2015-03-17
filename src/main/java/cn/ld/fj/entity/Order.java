@@ -94,6 +94,40 @@ public class Order extends IdEntity {
      */
     private int status;
 
+    /**
+     * 代理商
+     */
+    private long agentId;
+
+    /**
+     * 配送时间
+     */
+    private Date assignTime;
+
+    public long getAgentId() {
+        return agentId;
+    }
+
+    public void setAgentId(long agentId) {
+        this.agentId = agentId;
+    }
+
+    public Date getAssignTime() {
+        return assignTime;
+    }
+
+    public void setAssignTime(Date assignTime) {
+        this.assignTime = assignTime;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
     @Transient
     public String getProvinceName() {
         return provinceName;

@@ -1,10 +1,8 @@
-package cn.ld.fj.dao;
+package cn.ld.fj.dao.agent;
 
 import cn.ld.fj.entity.Agent;
-import cn.ld.fj.entity.Area;
 import net.esoar.modules.orm.hibernate.HibernateDao;
 import org.springframework.stereotype.Component;
-import sun.management.resources.agent;
 
 
 /**
