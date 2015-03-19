@@ -61,4 +61,8 @@ public class OrderManager {
     public int getTotalCount(Map<String, Object> map) {
         return orderMybatisDao.getTotalCount(map);
     }
+
+    public List<Order> getAllOrders() {
+        return orderDao.getAll();
+    }
 }

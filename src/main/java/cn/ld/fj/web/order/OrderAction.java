@@ -1,9 +1,14 @@
 package cn.ld.fj.web.order;
 
-import cn.ld.fj.entity.Agent;
-import cn.ld.fj.entity.Order;
+import cn.ld.fj.entity.*;
+import cn.ld.fj.entity.account.OrderBackup;
 import cn.ld.fj.service.agent.AgentManager;
+import cn.ld.fj.service.dict.AreaManager;
+import cn.ld.fj.service.dict.CityManager;
+import cn.ld.fj.service.dict.ProvinceManager;
+import cn.ld.fj.service.order.OrderBackupManager;
 import cn.ld.fj.service.order.OrderManager;
+import cn.ld.fj.service.production.ProductionManager;
 import cn.ld.fj.util.DwzUtil;
 import cn.ld.fj.web.JsonActionSupport;
 import cn.ld.fj.web.SimpleJsonActionSupport;
@@ -42,6 +47,58 @@ public class OrderAction extends SimpleJsonActionSupport<Order> {
     private AgentManager agentManager;
 
 
+    @Autowired
+    private ProductionManager productionManager;
+    @Autowired
+    private ProvinceManager provinceManager;
+    @Autowired
+    private CityManager cityManager;
+    @Autowired
+    private AreaManager areaManager;
+    @Autowired
+    private OrderBackupManager orderBackupManager;
+
+
+    private List<Production> productions = Lists.newArrayList();
+
+    private List<Province> provinces = Lists.newArrayList();
+
+    private List<City> cities = Lists.newArrayList();
+
+    private List<Area> areas = Lists.newArrayList();
+
+    public List<Production> getProductions() {
+        return productions;
+    }
+
+    public void setProductions(List<Production> productions) {
+        this.productions = productions;
+    }
+
+    public List<Province> getProvinces() {
+        return provinces;
+    }
+
+    public void setProvinces(List<Province> provinces) {
+        this.provinces = provinces;
+    }
+
+    public List<City> getCities() {
+        return cities;
+    }
+
+    public void setCities(List<City> cities) {
+        this.cities = cities;
+    }
+
+    public List<Area> getAreas() {
+        return areas;
+    }
+
+    public void setAreas(List<Area> areas) {
+        this.areas = areas;
+    }
+
     @Override
     protected void prepareModel() throws Exception {
         if (id != null) {
@@ -51,6 +108,11 @@ public class OrderAction extends SimpleJsonActionSupport<Order> {
             entity = new Order();
 
         }
+
+        productions = productionManager.findAll();
+        provinces = provinceManager.findAll();
+        cities = cityManager.findAll();
+        areas = areaManager.findAll();
     }
 
     // -- CRUD Action 函数 --//
@@ -64,6 +126,9 @@ public class OrderAction extends SimpleJsonActionSupport<Order> {
         map.put("end", page.getPageNo() * 10);
 
         List<Order> orderList = orderManager.getOrders(map);
+        for (Order order : orderList) {
+            order.setTotalMoney(order.getBuyCount() * order.getProduction().getPrice());
+        }
         int totalCount = orderManager.getTotalCount(map);
 
         page.setResult(orderList);
@@ -86,9 +151,11 @@ public class OrderAction extends SimpleJsonActionSupport<Order> {
          */
 
         List<PropertyFilter> filters = Lists.newArrayList();
-        filters.add(new PropertyFilter("provinceId", entity.getProvinceId() + ""));
-        filters.add(new PropertyFilter("cityId", entity.getProvinceId() + ""));
-        filters.add(new PropertyFilter("provinceId", entity.getProvinceId() + ""));
+        filters.add(new PropertyFilter("EQL_provinceId", entity.getProvinceId() + ""));
+        filters.add(new PropertyFilter("EQL_cityId", entity.getCityId() + ""));
+        filters.add(new PropertyFilter("EQL_areaId", entity.getAreaId() + ""));
+        filters.add(new PropertyFilter("EQL_productionId", entity.getProductionId() + ""));
+
 
         List<Agent> agents = agentManager.getAgents(filters);
         if (CollectionUtils.isEmpty(agents)) {
@@ -109,8 +176,68 @@ public class OrderAction extends SimpleJsonActionSupport<Order> {
 //        agentManager.delete(id);
         Struts2Utils.renderHtml(DwzUtil.getNavtabReturn("w_area",
                 "操作成功"));
+    }
+
+
+    /**
+     * 备份订单
+     *
+     * @throws Exception
+     */
+    public void backup() throws Exception {
+
+        Map<String, Object> map = new HashMap<String, Object>();
+
+        map.put("start", 0);
+        int totalCount = orderManager.getTotalCount(map);
+        map.put("end", totalCount);
+
+        List<Order> orderList = orderManager.getOrders(map);
+        for (Order order : orderList) {
+            order.setTotalMoney(order.getBuyCount() * order.getProduction().getPrice());
+        }
+
+
+        Date date = new Date();
+        for (Order order : orderList) {
+            OrderBackup backup = new OrderBackup();
+            backup.setTotalMoney(order.getBuyCount() * order.getProduction().getPrice());
+            backup.setAgentId(order.getAgentId());
+            backup.setOrderTime(order.getOrderTime());
+            backup.setStatus(order.getStatus());
+            backup.setAddress(order.getAddress());
+            backup.setAssignTime(order.getAssignTime());
+            backup.setBuyCount(order.getBuyCount());
+            backup.setProvinceId(order.getProvinceId());
+            backup.setCityId(order.getCityId());
+            backup.setAreaId(order.getAreaId());
+            backup.setProductionId(order.getProductionId());
+            backup.setPhone(order.getPhone());
+            backup.setAddress(order.getAddress());
+            backup.setCustomName(order.getCustomName());
+            backup.setBackupTime(date);
+            orderBackupManager.save(backup);
+
+        }
+        Struts2Utils.renderHtml(DwzUtil.getNavtabReturn("w_order",
+                "备份成功"));
 
     }
+
+
+    /**
+     * 导入订单
+     *
+     * @throws Exception
+     */
+    public void importOrder() throws Exception
+
+    {
+//        agentManager.delete(id);
+        Struts2Utils.renderHtml(DwzUtil.getNavtabReturn("w_order",
+                "操作成功"));
+    }
+
 
     public Page<Order> getPage() {
         return page;

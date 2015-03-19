@@ -53,4 +53,8 @@ public class AgentManager {
 
         return agentDao.find(filters);
     }
+
+    public Agent findByProperty(String property, String agentName) {
+        return agentDao.findUniqueBy(property, agentName);
+    }
 }

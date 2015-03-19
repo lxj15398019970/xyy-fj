@@ -65,22 +65,6 @@
             </security:authorize>
 
 
-            <security:authorize ifAnyGranted="ROLE_订单备份">
-                <li>
-                    <a href="javascript:;">
-                        <i class="icon-bar-chart"></i>
-                        <span class="title">订单备份</span>
-                        <span class="selected"></span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li><a href="${ctx}/agent/agent.action" target="navTab" rel="w_role">订单备份</a></li>
-                    </ul>
-                </li>
-
-            </security:authorize>
-
-
             <security:authorize ifAnyGranted="ROLE_订单配送">
                 <li  <c:if test="${type == 'orderps'}">
                     class = "active"
@@ -100,7 +84,7 @@
             </security:authorize>
 
 
-            <li  <c:if test="${type == 'orderps'}">
+            <li <c:if test="${type == 'orderps'}">
                 class = "active"
             </c:if>>
                 <a href="javascript:;">
@@ -111,6 +95,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li><a href="${ctx}/order/order.action" target="navTab" rel="w_order">订单管理</a></li>
+                    <li><a href="${ctx}/order/order-backup.action" target="navTab" rel="w_order">订单备份管理</a></li>
                 </ul>
             </li>
 
