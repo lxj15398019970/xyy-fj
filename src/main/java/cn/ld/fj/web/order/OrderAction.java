@@ -230,12 +230,14 @@ public class OrderAction extends SimpleJsonActionSupport<Order> {
      *
      * @throws Exception
      */
-    public void importOrder() throws Exception
+    public String importOrderInput() throws Exception {
+        return "import";
+    }
 
-    {
-//        agentManager.delete(id);
+    public void importOrder() throws Exception {
+
         Struts2Utils.renderHtml(DwzUtil.getNavtabReturn("w_order",
-                "操作成功"));
+                "导入成功"));
     }
 
 

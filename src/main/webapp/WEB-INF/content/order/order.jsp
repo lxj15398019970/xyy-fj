@@ -40,7 +40,7 @@
                 <li><a class="edit" href="${ctx}/order/order!input.action?id={sid_user}" target="dialog"
                        warn="请选择一条订单"><span>查看/修改订单</span></a></li>
 
-                <li><a class="add" href="${ctx}/order/order!import.action"
+                <li><a class="add" href="${ctx}/order/order!importOrderInput.action"
                        target="dialog"><span>导入订单</span></a></li>
 
                 <li><a class="add" href="${ctx}/order/order!backup.action"
