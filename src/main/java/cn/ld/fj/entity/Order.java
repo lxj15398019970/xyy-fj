@@ -109,6 +109,19 @@ public class Order extends IdEntity {
      */
     private String agentName;
 
+    /**
+     * 成交时间
+     */
+    private Date dealTime;
+
+    public Date getDealTime() {
+        return dealTime;
+    }
+
+    public void setDealTime(Date dealTime) {
+        this.dealTime = dealTime;
+    }
+
     @Transient
     public String getAgentName() {
         return agentName;

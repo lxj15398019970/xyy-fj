@@ -1,7 +1,6 @@
 package cn.ld.fj.web.order;
 
 import cn.ld.fj.entity.*;
-import cn.ld.fj.entity.account.OrderBackup;
 import cn.ld.fj.service.agent.AgentManager;
 import cn.ld.fj.service.dict.AreaManager;
 import cn.ld.fj.service.dict.CityManager;
@@ -258,6 +257,7 @@ public class OrderAction extends SimpleJsonActionSupport<Order> {
             backup.setAddress(order.getAddress());
             backup.setCustomName(order.getCustomName());
             backup.setBackupTime(date);
+            backup.setDealTime(order.getDealTime());
             orderBackupManager.save(backup);
 
         }

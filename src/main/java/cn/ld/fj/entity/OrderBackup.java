@@ -1,7 +1,4 @@
-package cn.ld.fj.entity.account;
-
-import cn.ld.fj.entity.IdEntity;
-import cn.ld.fj.entity.Production;
+package cn.ld.fj.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -115,6 +112,20 @@ public class OrderBackup extends IdEntity {
     private String agentName;
 
     private Production production;
+
+    /**
+     * 成交时间
+     */
+    private Date dealTime;
+
+    public Date getDealTime() {
+        return dealTime;
+    }
+
+    public void setDealTime(Date dealTime) {
+        this.dealTime = dealTime;
+    }
+
 
     @Transient
     public Production getProduction() {
