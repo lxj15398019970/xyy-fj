@@ -19,6 +19,7 @@ import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -103,6 +104,8 @@ public class AreaAction extends SimpleJsonActionSupport<Area> {
     // -- CRUD Action 函数 --//
     @Override
     public String list() throws Exception {
+
+        HttpServletRequest request = Struts2Utils.getRequest();
         List<PropertyFilter> filters = PropertyFilter
                 .buildFromHttpRequest(Struts2Utils.getRequest());
         // 设置默认排序方式

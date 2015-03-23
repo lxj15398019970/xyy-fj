@@ -67,8 +67,11 @@ public class CityManager {
     }
 
     public List<City> findAll() {
-        return  cityDao.getAll();
+        return cityDao.getAll();
     }
 
 
+    public City getCityByProperty(String cityName) {
+        return cityDao.findUniqueBy("cityName", cityName);
+    }
 }

@@ -70,4 +70,8 @@ public class ProductionManager {
         }
         return map;
     }
+
+    public Production getProductionByProperty(String productionName) {
+        return productionDao.findUniqueBy("productionName", productionName);
+    }
 }

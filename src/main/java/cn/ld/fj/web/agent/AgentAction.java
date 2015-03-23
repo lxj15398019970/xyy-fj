@@ -2,8 +2,8 @@ package cn.ld.fj.web.agent;
 
 import cn.ld.fj.entity.*;
 import cn.ld.fj.entity.account.User;
-import cn.ld.fj.service.AgentManager;
 import cn.ld.fj.service.account.AccountManager;
+import cn.ld.fj.service.agent.AgentManager;
 import cn.ld.fj.service.dict.AreaManager;
 import cn.ld.fj.service.dict.CityManager;
 import cn.ld.fj.service.dict.ProvinceManager;
@@ -15,6 +15,7 @@ import com.google.common.collect.Lists;
 import net.esoar.modules.orm.Page;
 import net.esoar.modules.orm.PropertyFilter;
 import net.esoar.modules.utils.web.struts2.Struts2Utils;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
@@ -122,6 +123,9 @@ public class AgentAction extends SimpleJsonActionSupport<Agent> {
     public String list() throws Exception {
         List<PropertyFilter> filters = PropertyFilter
                 .buildFromHttpRequest(Struts2Utils.getRequest());
+        if (CollectionUtils.isNotEmpty(filters)) {
+            System.out.println(filters.get(0).getPropertyName());
+        }
         // 设置默认排序方式
         if (!page.isOrderBySetted()) {
             page.setOrderBy("id");
@@ -159,6 +163,14 @@ public class AgentAction extends SimpleJsonActionSupport<Agent> {
 
     @Override
     public void save() throws Exception {
+
+
+        Agent agent = agentManager.findByProperty("agentName",entity.getAgentName());
+        if(agent!= null && agent.getId() ==entity.getId()){
+            Struts2Utils.renderHtml(DwzUtil.getFailReturn("该代理商已经存在"));
+            return;
+        }
+
         agentManager.save(entity);
 //        Struts2Utils.renderHtml(DwzUtil
 //                .getFailReturn("操作失败，打开了异网，但是没有选择资源"));

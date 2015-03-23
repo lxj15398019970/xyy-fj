@@ -1,4 +1,7 @@
-package cn.ld.fj.entity;
+package cn.ld.fj.entity.account;
+
+import cn.ld.fj.entity.IdEntity;
+import cn.ld.fj.entity.Production;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -9,8 +12,8 @@ import java.util.Date;
  * Created by xjli on 15-2-3.
  */
 @Entity
-@Table(name = "ES_ORDER")
-public class Order extends IdEntity {
+@Table(name = "ES_ORDER_BACK_UP")
+public class OrderBackup extends IdEntity {
 
     /**
      * 产品id
@@ -68,24 +71,6 @@ public class Order extends IdEntity {
     private String phone;
 
 
-    private Production production;
-
-
-    /**
-     * 省
-     */
-    private String provinceName;
-
-    /**
-     * 城市
-     */
-    private String cityName;
-
-    /**
-     * 区域
-     */
-    private String areaName;
-
     /**
      * 0 未配送
      * 1	正在配送
@@ -105,41 +90,39 @@ public class Order extends IdEntity {
     private Date assignTime;
 
     /**
+     * 备份时间
+     */
+    private Date backupTime;
+
+
+    /**
+     * 省
+     */
+    private String provinceName;
+
+    /**
+     * 城市
+     */
+    private String cityName;
+
+    /**
+     * 区域
+     */
+    private String areaName;
+    /**
      * 代理商名称
      */
     private String agentName;
 
+    private Production production;
+
     @Transient
-    public String getAgentName() {
-        return agentName;
+    public Production getProduction() {
+        return production;
     }
 
-    public void setAgentName(String agentName) {
-        this.agentName = agentName;
-    }
-
-    public long getAgentId() {
-        return agentId;
-    }
-
-    public void setAgentId(long agentId) {
-        this.agentId = agentId;
-    }
-
-    public Date getAssignTime() {
-        return assignTime;
-    }
-
-    public void setAssignTime(Date assignTime) {
-        this.assignTime = assignTime;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
+    public void setProduction(Production production) {
+        this.production = production;
     }
 
     @Transient
@@ -170,12 +153,44 @@ public class Order extends IdEntity {
     }
 
     @Transient
-    public Production getProduction() {
-        return production;
+    public String getAgentName() {
+        return agentName;
     }
 
-    public void setProduction(Production production) {
-        this.production = production;
+    public void setAgentName(String agentName) {
+        this.agentName = agentName;
+    }
+
+    public Date getBackupTime() {
+        return backupTime;
+    }
+
+    public void setBackupTime(Date backupTime) {
+        this.backupTime = backupTime;
+    }
+
+    public long getAgentId() {
+        return agentId;
+    }
+
+    public void setAgentId(long agentId) {
+        this.agentId = agentId;
+    }
+
+    public Date getAssignTime() {
+        return assignTime;
+    }
+
+    public void setAssignTime(Date assignTime) {
+        this.assignTime = assignTime;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public long getProductionId() {

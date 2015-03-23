@@ -1,7 +1,6 @@
-package cn.ld.fj.service;
+package cn.ld.fj.service.agent;
 
-import cn.ld.fj.dao.AgentDao;
-import cn.ld.fj.dao.dict.AreaDao;
+import cn.ld.fj.dao.agent.AgentDao;
 import cn.ld.fj.entity.Agent;
 import cn.ld.fj.service.dict.CityManager;
 import net.esoar.modules.orm.Page;
@@ -16,7 +15,7 @@ import java.util.List;
 
 /**
  * 安全相关实体的管理类, 包括用户,角色,资源与授权类.
- * 
+ *
  * @author fly
  */
 //Spring Bean的标识.
@@ -50,4 +49,12 @@ public class AgentManager {
         agentDao.delete(id);
     }
 
+    public List<Agent> getAgents(List<PropertyFilter> filters) {
+
+        return agentDao.find(filters);
+    }
+
+    public Agent findByProperty(String property, String agentName) {
+        return agentDao.findUniqueBy(property, agentName);
+    }
 }

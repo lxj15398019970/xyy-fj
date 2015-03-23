@@ -3,54 +3,38 @@
 
 <div class="page">
     <div class="pageHeader">
-        <form id="pagerForm" onsubmit="return navTabSearch(this);" action="${ctx}/order/order.action" method="post">
+        <form id="pagerForm" onsubmit="return navTabSearch(this);" action="${ctx}/order/order-backup.action"
+              method="post">
             <input type="hidden" name="page.pageNo" id="pageNum" value="${page.pageNo}"/>
             <input type="hidden" name="page.orderBy" id="orderField" value="${page.orderBy}"/>
             <input type="hidden" name="page.order" id="order" value="${page.order}"/>
 
-            <div class="searchBar">
-                <ul class="searchContent">
-                    <li>
-                        <label>订单电话:</label><input type="phone" name="phone"
-                                                   value="${phone}" size="9"/>
-                    </li>
+            <%--<div class="searchBar">--%>
+                <%--<ul class="searchContent">--%>
+                    <%--&lt;%&ndash;<li>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;<label>区域名称:</label><input type="text" name="filter_EQS_areaName"&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;value="${param['filter_EQS_areaName']}" size="9"/>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;</li>&ndash;%&gt;--%>
 
-                    <li>
-                        <label>创建时间:</label><input type="text" name="createTime"
-                                                   value="${createTime}" class="date" />
-                    </li>
-
-                </ul>
-                <div class="subBar">
-                    <ul>
-                        <li>
-                            <div class="buttonActive">
-                                <div class="buttonContent">
-                                    <button type="submit">检索</button>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+                <%--</ul>--%>
+                <%--<div class="subBar">--%>
+                    <%--<ul>--%>
+                        <%--<li>--%>
+                            <%--<div class="buttonActive">--%>
+                                <%--<div class="buttonContent">--%>
+                                    <%--<button type="submit">检索</button>--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
+                        <%--</li>--%>
+                    <%--</ul>--%>
+                <%--</div>--%>
+            <%--</div>--%>
         </form>
     </div>
 
     <div class="pageContent">
         <div class="panelBar">
             <ul class="toolBar">
-                <li><a class="add" href="${ctx}/order/order!input.action" target="dialog"><span>录入订单</span></a></li>
-                <li><a class="delete" href="${ctx}/order/order!delete.action?id={sid_user}" target="ajaxTodo"
-                       title="确定要删除吗？" warn="请选择一条订单"><span>删除订单</span></a></li>
-                <li><a class="edit" href="${ctx}/order/order!input.action?id={sid_user}" target="dialog"
-                       warn="请选择一条订单"><span>查看/修改订单</span></a></li>
-
-                <li><a class="add" href="${ctx}/order/order!importOrderInput.action"
-                       target="dialog"><span>导入订单</span></a></li>
-
-                <li><a class="add" href="${ctx}/order/order!backup.action"
-                       target="ajaxTodo"><span>备份订单</span></a></li>
-
             </ul>
         </div>
         <div layouth="111">
@@ -71,6 +55,7 @@
                     <th width="80">电话</th>
                     <th width="80">创建时间</th>
                     <th width="80">配送时间</th>
+                    <th width="80">备份时间</th>
                     <th width="80">状态</th>
                 </tr>
                 </thead>
@@ -94,6 +79,10 @@
                         </td>
                         <td>
                             <s:date name="assignTime" format="yyyy-MM-dd HH:mm:ss"></s:date>
+                        </td>
+
+                        <td>
+                            <s:date name="backupTime" format="yyyy-MM-dd"></s:date>
                         </td>
 
                         <td>

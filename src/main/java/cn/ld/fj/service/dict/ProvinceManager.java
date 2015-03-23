@@ -64,4 +64,8 @@ public class ProvinceManager {
         }
         return map;
     }
+
+    public Province getProvinceByProperty(String provinceName) {
+        return provinceDao.findUniqueBy("provinceName", provinceName);
+    }
 }

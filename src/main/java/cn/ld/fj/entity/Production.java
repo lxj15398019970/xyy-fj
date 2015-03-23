@@ -50,6 +50,11 @@ public class Production extends IdEntity {
      */
     private String para;
 
+    /**
+     * 剩余数量
+     */
+    private int remain;
+
     public String getPara() {
         return para;
     }
