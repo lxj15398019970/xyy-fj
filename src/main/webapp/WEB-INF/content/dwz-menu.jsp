@@ -55,7 +55,7 @@
                     <a href="javascript:;">
                         <i class="icon-bar-chart"></i>
                         <span class="title">代理商管理</span>
-                        <span class="selected"></span>
+                        
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">

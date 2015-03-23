@@ -39,39 +39,39 @@
     <div class="pageContent">
         <div class="panelBar">
             <ul class="toolBar">
-                <li><a class="add" href="${ctx}/order/order!input.action" target="dialog"><span>录入订单</span></a></li>
-                <li><a class="delete" href="${ctx}/order/order!delete.action?id={sid_user}" target="ajaxTodo"
-                       title="确定要删除吗？" warn="请选择一条订单"><span>删除订单</span></a></li>
-                <li><a class="edit" href="${ctx}/order/order!input.action?id={sid_user}" target="dialog"
-                       warn="请选择一条订单"><span>查看/修改订单</span></a></li>
+                <li><a class="toolBar-btn" href="${ctx}/order/order!input.action" target="dialog">录入订单</a></li>
+                <li><a class="toolBar-btn2" href="${ctx}/order/order!delete.action?id={sid_user}" target="ajaxTodo"
+                       title="确定要删除吗？" warn="请选择一条订单">删除订单</a></li>
+                <li><a class="toolBar-btn" href="${ctx}/order/order!input.action?id={sid_user}" target="dialog"
+                       warn="请选择一条订单">查看/修改订单</a></li>
 
-                <li><a class="add" href="${ctx}/order/order!importOrderInput.action"
-                       target="dialog"><span>导入订单</span></a></li>
+                <li><a class="toolBar-btn" href="${ctx}/order/order!importOrderInput.action"
+                       target="dialog">导入订单</a></li>
 
-                <li><a class="add" href="${ctx}/order/order!backup.action"
-                       target="ajaxTodo"><span>备份订单</span></a></li>
+                <li><a class="toolBar-btn" href="${ctx}/order/order!backup.action"
+                       target="ajaxTodo">备份订单</a></li>
 
             </ul>
         </div>
         <div layouth="111">
-            <table class="list" width="98%">
+            <table class="list" width="100%">
                 <thead>
                 <tr>
-                    <th width="80">ID</th>
-                    <th width="80">产品名称</th>
-                    <th width="80">产品型号</th>
-                    <th width="80">产品颜色</th>
-                    <th width="80">单产品销售价格</th>
-                    <th width="80">购买数量</th>
-                    <th width="80">总价款</th>
-                    <th width="80">产品参数</th>
-                    <th width="80">详细的配送地址</th>
-                    <th width="80">姓名</th>
-                    <th width="80">代理商</th>
-                    <th width="80">电话</th>
-                    <th width="80">创建时间</th>
-                    <th width="80">配送时间</th>
-                    <th width="80">状态</th>
+                    <th width="5%">ID</th>
+                    <th width="10%">产品名称</th>
+                    <th width="5%">产品型号</th>
+                    <th width="5%">产品颜色</th>
+                    <th width="5%">单产品销售价格</th>
+                    <th width="5%">购买数量</th>
+                    <th width="5%">总价款</th>
+                    <th width="5%">产品参数</th>
+                    <th width="10%">详细的配送地址</th>
+                    <th width="10%">姓名</th>
+                    <th width="10%">代理商</th>
+                    <th width="5%">电话</th>
+                    <th width="5%">创建时间</th>
+                    <th width="5%">配送时间</th>
+                    <th width="10%">状态</th>
                 </tr>
                 </thead>
                 <tbody>

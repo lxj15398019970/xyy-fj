@@ -41,22 +41,22 @@
             <table class="list" width="98%">
                 <thead>
                 <tr>
-                    <th width="80">ID</th>
-                    <th width="80">产品名称</th>
-                    <th width="80">产品型号</th>
-                    <th width="80">产品颜色</th>
-                    <th width="80">单产品销售价格</th>
-                    <th width="80">购买数量</th>
-                    <th width="80">总价款</th>
-                    <th width="80">产品参数</th>
-                    <th width="80">详细的配送地址</th>
-                    <th width="80">姓名</th>
-                    <th width="80">代理商</th>
-                    <th width="80">电话</th>
-                    <th width="80">创建时间</th>
-                    <th width="80">配送时间</th>
-                    <th width="80">备份时间</th>
-                    <th width="80">状态</th>
+                    <th width="5%">ID</th>
+                    <th width="10%">产品名称</th>
+                    <th width="5%">产品型号</th>
+                    <th width="5%">产品颜色</th>
+                    <th width="5%">单产品销售价格</th>
+                    <th width="5%">购买数量</th>
+                    <th width="5%">总价款</th>
+                    <th width="5%">产品参数</th>
+                    <th width="10%">详细的配送地址</th>
+                    <th width="10%">姓名</th>
+                    <th width="10%">代理商</th>
+                    <th width="5%">电话</th>
+                    <th width="5%">创建时间</th>
+                    <th width="5%">配送时间</th>
+                    <th width="5%">备份时间</th>
+                    <th width="5%">状态</th>
                 </tr>
                 </thead>
                 <tbody>

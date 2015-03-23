@@ -3654,7 +3654,7 @@ ul.page-sidebar-menu li > ul.sub-menu > li > a {
 /* menu arrows */
 ul.page-sidebar-menu > li > a .arrow{
     position: relative;
-    top:4px;
+    top:0;
     float: right;
     width: 15px;
     height: 15px;

@@ -2,15 +2,14 @@
 <%@ include file="/common/taglibs.jsp" %>
 
 <div class="page">
-	<div class="pageHeader">
-	</div>
+
 	
 	<div class="pageContent">
 		<div class="panelBar">
 			<ul class="toolBar">
-				<li><a class="add" href="${ctx}/account/role!input.action" target="dialog"><span>添加</span></a></li>
-				<li><a class="delete" href="${ctx}/account/role!delete.action?id={sid_role}" target="ajaxTodo" title="确定要删除吗？" warn="请选择一个角色"><span>删除</span></a></li>
-				<li><a class="edit" href="${ctx}/account/role!input.action?id={sid_role}" target="dialog" warn="请选择一个角色"><span>查看/修改</span></a></li>
+				<li><a class="toolBar-btn" href="${ctx}/account/role!input.action" target="dialog">添加</a></li>
+				<li><a class="toolBar-btn2" href="${ctx}/account/role!delete.action?id={sid_role}" target="ajaxTodo" title="确定要删除吗？" warn="请选择一个角色">删除</a></li>
+				<li><a class="toolBar-btn" href="${ctx}/account/role!input.action?id={sid_role}" target="dialog" warn="请选择一个角色">查看/修改</a></li>
 			</ul>
 		</div>
 	
