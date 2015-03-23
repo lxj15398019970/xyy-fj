@@ -41,42 +41,38 @@
 
                         </select>
                     </li>
-
+                    <li>
+                        <div class="buttonActive">
+                            <div class="buttonContent">
+                                <button type="submit">检索</button>
+                            </div>
+                        </div>
+                    </li>
 
                 </ul>
-                <div class="subBar">
-                    <ul>
-                        <li>
-                            <div class="buttonActive">
-                                <div class="buttonContent">
-                                    <button type="submit">检索</button>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+
             </div>
         </form>
     </div>
-
+    <div class="dashed-line"></div>
     <div class="pageContent">
         <div class="panelBar">
             <ul class="toolBar">
-                <li><a class="add" href="${ctx}/area/area!input.action" target="dialog"><span>添加</span></a></li>
-                <li><a class="delete" href="${ctx}/area/area!delete.action?id={sid_user}" target="ajaxTodo"
-                       title="确定要删除吗？" warn="请选择一个区县"><span>删除</span></a></li>
-                <li><a class="edit" href="${ctx}/area/area!input.action?id={sid_user}" target="dialog"
-                       warn="请选择一个用户"><span>查看/修改</span></a></li>
+                <li><a class="toolBar-btn" href="${ctx}/area/area!input.action" target="dialog">添加</a></li>
+                <li><a class="toolBar-btn2" href="${ctx}/area/area!delete.action?id={sid_user}" target="ajaxTodo"
+                       title="确定要删除吗？" warn="请选择一个区县">删除</a></li>
+                <li><a class="toolBar-btn" href="${ctx}/area/area!input.action?id={sid_user}" target="dialog"
+                       warn="请选择一个用户">查看/修改</a></li>
             </ul>
         </div>
         <div layouth="111">
-            <table class="list" width="98%">
+            <table class="list" width="100%">
                 <thead>
                 <tr>
-                    <th width="80">区域ID</th>
-                    <th width="80">区域名称</th>
-                    <th width="80">所属城市</th>
-                    <th width="80">所属省份</th>
+                    <th width="25%">区域ID</th>
+                    <th width="25%">区域名称</th>
+                    <th width="25%">所属城市</th>
+                    <th width="25%">所属省份</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -104,46 +100,25 @@
 
     </div>
 </div>
-
-
 <script>
-    $(function(){
-
-
+    $(function () {
         //根据省份获取城市列表
-         $("#provinceId").change(function(){
-             var provinceId = $(this).val();
-             if(provinceId != '0'){
-                 $.post("city/city!getCities.action",{
-                     provinceId:provinceId
-                 },function(result){
-                     $("#cityId").empty();
-                     var option;
-                     for(var i = 0;i<result.length;i++){
-                         option = '<option value="'+result[i].id+'">'+result[i].cityName+'</option>'
-                         $("#cityId").append(option);
-                     }
-
-
-                 })
-
-
-             }
-
-
-
-         })
-
-
-
-
-
-
-
-
-
+        $("#provinceId").change(function () {
+            var provinceId = $(this).val();
+            if (provinceId != '0') {
+                $.post("city/city!getCities.action", {
+                    provinceId: provinceId
+                }, function (result) {
+                    $("#cityId").empty();
+                    var option;
+                    for (var i = 0; i < result.length; i++) {
+                        option = '<option value="' + result[i].id + '">' + result[i].cityName + '</option>'
+                        $("#cityId").append(option);
+                    }
+                })
+            }
+        })
     })
-
 
 
 </script>

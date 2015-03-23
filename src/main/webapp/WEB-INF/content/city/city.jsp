@@ -26,32 +26,26 @@
                             </s:iterator>
                         </select>
                     </li>
-
-
-                </ul>
-                <div class="subBar">
-                    <ul>
-                        <li>
-                            <div class="buttonActive">
-                                <div class="buttonContent">
-                                    <button type="submit">检索</button>
-                                </div>
+                    <li>
+                        <div class="buttonActive">
+                            <div class="buttonContent">
+                                <button type="submit">检索</button>
                             </div>
-                        </li>
-                    </ul>
-                </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </form>
     </div>
-
+    <div class="dashed-line"></div>
     <div class="pageContent">
         <div class="panelBar">
             <ul class="toolBar">
-                <li><a class="add" href="${ctx}/city/city!input.action" target="dialog"><span>添加</span></a></li>
-                <li><a class="delete" href="${ctx}/city/city!delete.action?id={sid_user}" target="ajaxTodo"
-                       title="确定要删除吗?删除市将会删除该市下的区县数据" warn="请选择一个市"><span>删除</span></a></li>
-                <li><a class="edit" href="${ctx}/city/city!input.action?id={sid_user}" target="dialog"
-                       warn="请选择一个用户"><span>查看/修改</span></a></li>
+                <li><a class="toolBar-btn" href="${ctx}/city/city!input.action" target="dialog">添加</a></li>
+                <li><a class="toolBar-btn2" href="${ctx}/city/city!delete.action?id={sid_user}" target="ajaxTodo"
+                       title="确定要删除吗?删除市将会删除该市下的区县数据" warn="请选择一个市">删除</a></li>
+                <li><a class="toolBar-btn" href="${ctx}/city/city!input.action?id={sid_user}" target="dialog"
+                       warn="请选择一个用户">查看/修改</a></li>
             </ul>
         </div>
         <div layouth="111">

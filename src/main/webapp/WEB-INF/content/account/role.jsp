@@ -14,11 +14,11 @@
 			</ul>
 		</div>
 	
-		<table class="list" width="98%" layoutH="66">
+		<table class="list" width="100%" layoutH="66">
 			<thead>
 				<tr>
-					<th width="80">名称</th>
-					<th width="80">授权</th>
+					<th width="50%">名称</th>
+					<th width="50%">授权</th>
 				</tr>
 			</thead>
 			<tbody>

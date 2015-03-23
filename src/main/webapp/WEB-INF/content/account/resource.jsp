@@ -8,16 +8,15 @@
 	<div class="pageContent">
 		<div class="panelBar">
 			<ul class="toolBar">
-				<li class="line">line</li>
-				<li class=""><a class="icon" href="#"><span>导出EXCEL</span></a></li>
+				<li class="toolBar-btn"><a class="icon" href="#"><span>导出EXCEL</span></a></li>
 			</ul>
 		</div>
 	
-		<table class="list" width="98%" layoutH="66">
+		<table class="list" width="100%" layoutH="66">
 			<thead>
 				<tr>
-					<th width="80">顺序</th>
-					<th width="80">URL</th>
+					<th width="50%">顺序</th>
+					<th width="50%">URL</th>
 				</tr>
 			</thead>
 			<tbody>

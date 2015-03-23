@@ -105,37 +105,15 @@
     </div>
 
     <div id="leftside">
-        <div id="sidebar_s">
-            <div class="collapse">
-                <div class="toggleCollapse">
-                    <div></div>
-                </div>
-            </div>
-        </div>
-        <div id="sidebar">
-            <div class="toggleCollapse">
 
-                <div>收缩</div>
-            </div>
+        <div id="sidebar">
+
             <%@include file="dwz-menu.jsp" %>
 
         </div>
     </div>
     <div id="container">
         <div id="navTab" class="tabsPage">
-            <div class="tabsPageHeader">
-                <div class="tabsPageHeaderContent">
-                    <!-- 显示左右控制时添加 class="tabsPageHeaderMargin" -->
-                    <ul class="navTab-tab">
-                        <li tabid="main" class="main"><a href="javascript:;"><span>我的主页</span></a></li>
-                    </ul>
-                </div>
-                <div class="tabsLeft">left</div>
-                <!-- 禁用只需要添加一个样式 class="tabsLeft tabsLeftDisabled" -->
-                <div class="tabsRight">right</div>
-                <!-- 禁用只需要添加一个样式 class="tabsRight tabsRightDisabled" -->
-                <div class="tabsMore">more</div>
-            </div>
             <ul class="tabsMoreList">
                 <li><a href="javascript:;">我的主页</a></li>
             </ul>

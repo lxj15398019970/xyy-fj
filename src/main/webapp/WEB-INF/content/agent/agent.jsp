@@ -11,34 +11,30 @@
             <div class="searchBar">
                 <ul class="searchContent">
                     <li>
-                        <label>代理商名称:</label><input type="text" name="filter_EQS_agentName"
-                                                   value="${param['filter_EQS_agentName']}" size="9"/>
+                        <label>代理商名称:</label>
+                        <input type="text" name="filter_EQS_agentName"
+                               value="${param['filter_EQS_agentName']}" size="9"/>
                     </li>
-
-                </ul>
-                <div class="subBar">
-                    <ul>
-                        <li>
-                            <div class="buttonActive">
-                                <div class="buttonContent">
-                                    <button type="submit">检索</button>
-                                </div>
+                    <li>
+                        <div class="buttonActive">
+                            <div class="buttonContent">
+                                <button type="submit">检索</button>
                             </div>
-                        </li>
-                    </ul>
-                </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </form>
     </div>
-
+    <div class="dashed-line"></div>
     <div class="pageContent">
         <div class="panelBar">
             <ul class="toolBar">
-                <li><a class="add" href="${ctx}/agent/agent!input.action" target="dialog"><span>添加</span></a></li>
-                <li><a class="delete" href="${ctx}/agent/agent!delete.action?id={sid_user}" target="ajaxTodo"
-                       title="确定要删除吗？" warn="请选择一个代理商"><span>删除</span></a></li>
-                <li><a class="edit" href="${ctx}/agent/agent!input.action?id={sid_user}" target="dialog"
-                       warn="请选择一个用户"><span>查看/修改</span></a></li>
+                <li><a class="toolBar-btn" href="${ctx}/agent/agent!input.action" target="dialog">添加</a></li>
+                <li><a class="toolBar-btn2" href="${ctx}/agent/agent!delete.action?id={sid_user}" target="ajaxTodo"
+                       title="确定要删除吗？" warn="请选择一个代理商">删除</a></li>
+                <li><a class="toolBar-btn" href="${ctx}/agent/agent!input.action?id={sid_user}" target="dialog"
+                       warn="请选择一个用户">查看/修改</a></li>
             </ul>
         </div>
         <div layouth="111">

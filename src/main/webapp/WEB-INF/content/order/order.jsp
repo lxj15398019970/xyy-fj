@@ -14,10 +14,6 @@
                         <%--<label>区域名称:</label><input type="text" name="filter_EQS_areaName"--%>
                                                    <%--value="${param['filter_EQS_areaName']}" size="9"/>--%>
                     <%--</li>--%>
-
-                </ul>
-                <div class="subBar">
-                    <ul>
                         <li>
                             <div class="buttonActive">
                                 <div class="buttonContent">
@@ -25,12 +21,12 @@
                                 </div>
                             </div>
                         </li>
-                    </ul>
-                </div>
+                </ul>
+
             </div>
         </form>
     </div>
-
+    <div class="dashed-line"></div>
     <div class="pageContent">
         <div class="panelBar">
             <ul class="toolBar">

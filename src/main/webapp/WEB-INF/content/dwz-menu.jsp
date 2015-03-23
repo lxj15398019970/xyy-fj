@@ -14,7 +14,7 @@
                     <a href="javascript:;">
                         <i class="icon-user"></i>
                         <span class="title">系统管理</span>
-                        <span class="selected"></span>
+                        
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
@@ -34,7 +34,7 @@
                     <a href="javascript:;">
                         <i class="icon-table"></i>
                         <span class="title">行政区管理</span>
-                        <span class="selected"></span>
+                        
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
