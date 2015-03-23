@@ -1,7 +1,7 @@
 package cn.ld.fj.dao.mybatis;
 
 import cn.ld.fj.entity.Order;
-import cn.ld.fj.entity.account.OrderBackup;
+import cn.ld.fj.entity.OrderBackup;
 
 import java.util.List;
 import java.util.Map;

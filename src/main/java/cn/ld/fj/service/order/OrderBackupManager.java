@@ -2,7 +2,7 @@ package cn.ld.fj.service.order;
 
 import cn.ld.fj.dao.mybatis.OrderMybatisDao;
 import cn.ld.fj.dao.order.OrderBackupDao;
-import cn.ld.fj.entity.account.OrderBackup;
+import cn.ld.fj.entity.OrderBackup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;

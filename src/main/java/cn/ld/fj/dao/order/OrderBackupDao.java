@@ -1,7 +1,6 @@
 package cn.ld.fj.dao.order;
 
-import cn.ld.fj.entity.Order;
-import cn.ld.fj.entity.account.OrderBackup;
+import cn.ld.fj.entity.OrderBackup;
 import net.esoar.modules.orm.hibernate.HibernateDao;
 import org.springframework.stereotype.Component;
 

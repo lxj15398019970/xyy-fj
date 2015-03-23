@@ -20,6 +20,7 @@
         <result property="status" column="status"/>
         <result property="assignTime" column="assignTime"/>
         <result property="orderTime" column="orderTime"/>
+        <result property="dealTime" column="dealTime"/>
         <association property="production" column="productionId=productionId" select="getProduction"/>
 
     </resultMap>
@@ -43,6 +44,7 @@
         <result property="backupTime" column="backupTime"/>
         <result property="assignTime" column="assignTime"/>
         <result property="orderTime" column="orderTime"/>
+        <result property="dealTime" column="dealTime"/>
         <association property="production" column="productionId=productionId" select="getProduction"/>
 
     </resultMap>
@@ -71,6 +73,7 @@
         o.order_time as orderTime,
         o.agent_id as agentId,
         o.assign_time as assignTime,
+        o.deal_time as dealTime,
         p.province_name as provinceName,
         c.city_name as cityName,
         a.area_name as areaName,
@@ -89,7 +92,7 @@
             and o.phone = #{phone}
         </if>
         <if test="createTime != null">
-            and o.order_time like  CONCAT(#{createTime},"%")
+            and o.order_time like CONCAT(#{createTime},"%")
         </if>
 
         order by o.order_time desc
@@ -130,6 +133,7 @@
           o.status as status,
           o.order_time as orderTime,
            o.assign_time as assignTime,
+             o.deal_time as dealTime,
           p.province_name as provinceName,
           c.city_name as cityName,
           a.area_name as areaName,

@@ -1,7 +1,6 @@
 package cn.ld.fj.web.order;
 
-import cn.ld.fj.entity.Order;
-import cn.ld.fj.entity.account.OrderBackup;
+import cn.ld.fj.entity.OrderBackup;
 import cn.ld.fj.service.order.OrderBackupManager;
 import cn.ld.fj.web.JsonActionSupport;
 import cn.ld.fj.web.SimpleJsonActionSupport;
