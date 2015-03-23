@@ -49,12 +49,12 @@
             </ul>
         </div>
         <div layouth="111">
-            <table class="list" width="98%">
+            <table class="list" width="100%">
                 <thead>
                 <tr>
-                    <th width="80">城市ID</th>
-                    <th width="80">城市名称</th>
-                    <th width="80">所属省份</th>
+                    <th width="10%">城市ID</th>
+                    <th width="45%">城市名称</th>
+                    <th width="45%">所属省份</th>
                 </tr>
                 </thead>
                 <tbody>

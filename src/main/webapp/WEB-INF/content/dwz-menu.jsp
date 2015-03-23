@@ -72,7 +72,7 @@
                     <a href="javascript:;">
                         <i class="icon-bar-chart"></i>
                         <span class="title">订单配送</span>
-                        <span class="selected"></span>
+                        
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
@@ -90,7 +90,7 @@
                 <a href="javascript:;">
                     <i class="icon-bar-chart"></i>
                     <span class="title">订单管理</span>
-                    <span class="selected"></span>
+                    
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
@@ -105,7 +105,7 @@
                     <a href="javascript:;">
                         <i class="icon-bar-chart"></i>
                         <span class="title">产品管理</span>
-                        <span class="selected"></span>
+                        
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
@@ -125,7 +125,7 @@
                     <a href="javascript:;">
                         <i class="icon-bar-chart"></i>
                         <span class="title">直销统计</span>
-                        <span class="selected"></span>
+                        
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">

@@ -8,7 +8,7 @@
 	<div class="pageContent">
 		<div class="panelBar">
 			<ul class="toolBar">
-				<li class="toolBar-btn"><a class="icon" href="#"><span>导出EXCEL</span></a></li>
+				<li class="toolBar-btn"><a class="icon" href="#">导出EXCEL</a></li>
 			</ul>
 		</div>
 	

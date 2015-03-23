@@ -2,7 +2,6 @@
 <%@ include file="/common/taglibs.jsp" %>
 
 <div class="page">
-    <div class="pageHeader">
         <form id="pagerForm" onsubmit="return navTabSearch(this);" action="${ctx}/order/order-backup.action"
               method="post">
             <input type="hidden" name="page.pageNo" id="pageNum" value="${page.pageNo}"/>
@@ -30,7 +29,6 @@
                 <%--</div>--%>
             <%--</div>--%>
         </form>
-    </div>
 
     <div class="pageContent">
         <div class="panelBar">

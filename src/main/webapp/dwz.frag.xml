@@ -176,7 +176,7 @@
 
 
     <_PAGE_ id="alertButFrag"><![CDATA[
-<li><a class="button " rel="#callback#" onclick="alertMsg.close()" href="javascript:"><span class="btn default blue">#butMsg#</span></a></li>
+<li><a class="button" rel="#callback#" onclick="alertMsg.close()" href="javascript:">#butMsg#</a></li>
 ]]></_PAGE_>
 
     <_PAGE_ id="calendarFrag"><![CDATA[

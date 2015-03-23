@@ -17,25 +17,20 @@
 
                     <li>
                         <label>创建时间:</label><input type="text" name="createTime"
-                                                   value="${createTime}" class="date" />
+                                                   value="${createTime}" class="date " />
                     </li>
-
-                </ul>
-                <div class="subBar">
-                    <ul>
-                        <li>
-                            <div class="buttonActive">
-                                <div class="buttonContent">
-                                    <button type="submit">检索</button>
-                                </div>
+                    <li>
+                        <div class="buttonActive">
+                            <div class="buttonContent">
+                                <button type="submit">检索</button>
                             </div>
-                        </li>
-                    </ul>
-                </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </form>
     </div>
-
+    <div class="dashed-line"></div>
     <div class="pageContent">
         <div class="panelBar">
             <ul class="toolBar">
