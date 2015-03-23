@@ -3,15 +3,22 @@
 <div class="page">
     <div class="pageContent">
 
-        <form method="post" action="${ctx}/order/order!save.action" class="pageForm required-validate"
-              onsubmit="return validateCallback(this, dialogAjaxDone)">
+        <form method="post" action="${ctx}/order/order!importOrder.action" class="pageForm required-validate"
+              onsubmit="return iframeCallback(this,dialogAjaxDone)" enctype="multipart/form-data">
             <input type="hidden" name="id" value="${id}"/>
 
             <div class="pageFormContent" layoutH="58">
 
                 <div class="unit">
-                    <label>联系电话:</label>
-                    <input type="text" name="phone" value="${phone}" size="40">
+                    <label>下载魔板:</label>
+                    <a href="${ctx}/excel/order.xls"><span style="color: red">模板下载</span></a>
+                    (注意:先下载模板，填写订单信息导入)
+
+                </div>
+
+                <div class="unit">
+                    <label>选择文件:</label>
+                    <input type="file" name="excel" class="required">
 
                 </div>
 

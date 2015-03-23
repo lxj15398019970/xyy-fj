@@ -69,4 +69,8 @@ public class AreaManager {
     public List<Area> findAll() {
         return areaDao.getAll();
     }
+
+    public Area getAreaByProperty(String areaName) {
+        return areaDao.findUniqueBy("areaName",areaName);
+    }
 }

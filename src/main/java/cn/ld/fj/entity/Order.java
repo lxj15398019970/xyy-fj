@@ -218,7 +218,6 @@ public class Order extends IdEntity {
         this.buyCount = buyCount;
     }
 
-    @Transient
     public float getTotalMoney() {
         return totalMoney;
     }

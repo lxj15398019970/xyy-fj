@@ -18,10 +18,11 @@
         <result property="cityName" column="cityName"/>
         <result property="areaName" column="areaName"/>
         <result property="status" column="status"/>
+        <result property="assignTime" column="assignTime"/>
+        <result property="orderTime" column="orderTime"/>
         <association property="production" column="productionId=productionId" select="getProduction"/>
 
     </resultMap>
-
 
 
     <resultMap id="OrderBackupMap" type="OrderBackup">
@@ -40,10 +41,11 @@
         <result property="areaName" column="areaName"/>
         <result property="status" column="status"/>
         <result property="backupTime" column="backupTime"/>
+        <result property="assignTime" column="assignTime"/>
+        <result property="orderTime" column="orderTime"/>
         <association property="production" column="productionId=productionId" select="getProduction"/>
 
     </resultMap>
-
 
 
     <select id="getProduction" resultType="Production">
@@ -55,40 +57,56 @@
 
 
     <select id="getOrders" parameterType="Map" resultMap="OrderMap">
-          select o.id as id,
-         o.province_id as provinceId,
-          o.production_id as productionId,
-          o.city_id as cityId,
-          o.area_id as areaId,
-          o.buy_count as buyCount,
-          o.total_money as totalMoney,
-          o.address as address,
-          o.custom_name as customName,
-          o.phone as phone,
-          o.status as status,
-          o.order_time as orderTime,
-          o.agent_id as agentId,
-          p.province_name as provinceName,
-          c.city_name as cityName,
-          a.area_name as areaName,
-          g.agent_name as agentName
-          from es_order o
-          left join es_province p
-          on o.province_id = p.id
-          left join es_city c
-          on o.city_id = c.id
-          left join es_area a
-          on o.area_id = a.id
-          left join es_agent g
-          on o.agent_id = g.id
-          order by o.order_time desc
-          limit #{start},#{end}
+        select o.id as id,
+        o.province_id as provinceId,
+        o.production_id as productionId,
+        o.city_id as cityId,
+        o.area_id as areaId,
+        o.buy_count as buyCount,
+        o.total_money as totalMoney,
+        o.address as address,
+        o.custom_name as customName,
+        o.phone as phone,
+        o.status as status,
+        o.order_time as orderTime,
+        o.agent_id as agentId,
+        o.assign_time as assignTime,
+        p.province_name as provinceName,
+        c.city_name as cityName,
+        a.area_name as areaName,
+        g.agent_name as agentName
+        from es_order o
+        left join es_province p
+        on o.province_id = p.id
+        left join es_city c
+        on o.city_id = c.id
+        left join es_area a
+        on o.area_id = a.id
+        left join es_agent g
+        on o.agent_id = g.id
+        where 0 =0
+        <if test="phone != null">
+            and o.phone = #{phone}
+        </if>
+        <if test="createTime != null">
+            and o.order_time like  CONCAT(#{createTime},"%")
+        </if>
+
+        order by o.order_time desc
+        limit #{start},#{end}
 
     </select>
 
     <select id="getTotalCount" parameterType="Map" resultType="Integer">
         select count(1)
-        from es_order
+        from es_order o
+        where 0 =0
+        <if test="phone != null">
+            and o.phone = #{phone}
+        </if>
+        <if test="createTime != null">
+            and o.order_time like CONCAT(#{createTime},"%")
+        </if>
     </select>
 
 
@@ -111,6 +129,7 @@
           o.phone as phone,
           o.status as status,
           o.order_time as orderTime,
+           o.assign_time as assignTime,
           p.province_name as provinceName,
           c.city_name as cityName,
           a.area_name as areaName,

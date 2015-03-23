@@ -9,26 +9,26 @@
             <input type="hidden" name="page.orderBy" id="orderField" value="${page.orderBy}"/>
             <input type="hidden" name="page.order" id="order" value="${page.order}"/>
 
-            <div class="searchBar">
-                <ul class="searchContent">
-                    <%--<li>--%>
-                    <%--<label>区域名称:</label><input type="text" name="filter_EQS_areaName"--%>
-                    <%--value="${param['filter_EQS_areaName']}" size="9"/>--%>
-                    <%--</li>--%>
+            <%--<div class="searchBar">--%>
+                <%--<ul class="searchContent">--%>
+                    <%--&lt;%&ndash;<li>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;<label>区域名称:</label><input type="text" name="filter_EQS_areaName"&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;value="${param['filter_EQS_areaName']}" size="9"/>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;</li>&ndash;%&gt;--%>
 
-                </ul>
-                <div class="subBar">
-                    <ul>
-                        <li>
-                            <div class="buttonActive">
-                                <div class="buttonContent">
-                                    <button type="submit">检索</button>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+                <%--</ul>--%>
+                <%--<div class="subBar">--%>
+                    <%--<ul>--%>
+                        <%--<li>--%>
+                            <%--<div class="buttonActive">--%>
+                                <%--<div class="buttonContent">--%>
+                                    <%--<button type="submit">检索</button>--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
+                        <%--</li>--%>
+                    <%--</ul>--%>
+                <%--</div>--%>
+            <%--</div>--%>
         </form>
     </div>
 

@@ -10,10 +10,15 @@
 
             <div class="searchBar">
                 <ul class="searchContent">
-                    <%--<li>--%>
-                    <%--<label>区域名称:</label><input type="text" name="filter_EQS_areaName"--%>
-                    <%--value="${param['filter_EQS_areaName']}" size="9"/>--%>
-                    <%--</li>--%>
+                    <li>
+                        <label>订单电话:</label><input type="phone" name="phone"
+                                                   value="${phone}" size="9"/>
+                    </li>
+
+                    <li>
+                        <label>创建时间:</label><input type="text" name="createTime"
+                                                   value="${createTime}" class="date" />
+                    </li>
 
                 </ul>
                 <div class="subBar">
