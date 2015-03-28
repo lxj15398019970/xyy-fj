@@ -114,6 +114,19 @@ public class Order extends IdEntity {
      */
     private Date dealTime;
 
+    /**
+     * 订单号
+     */
+    private String orderNo;
+
+    public String getOrderNo() {
+        return orderNo;
+    }
+
+    public void setOrderNo(String orderNo) {
+        this.orderNo = orderNo;
+    }
+
     public Date getDealTime() {
         return dealTime;
     }

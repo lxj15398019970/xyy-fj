@@ -140,11 +140,8 @@ public class DateUtil {
     }
 
     public static void main(String[] args) {
-        Calendar cal = Calendar.getInstance();
-        Date today = cal.getTime();
-        cal.setTime(str2date("2012-10-05", "yyyy-MM-dd"));//01=2,02=3,05=6,06=7,07=1
-        System.out.println(cal.get(Calendar.DAY_OF_WEEK));
-        System.out.println(getChinaWeek(str2date("2012-10-05", "yyyy-MM-dd")));
+
+        System.out.println(DateUtil.getTimeStamp());
     }
 
     private static final String[] chinaWeeks = new String[]{"星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"};
@@ -179,4 +176,7 @@ public class DateUtil {
         }
         return birthDate;
     }
+
+
+
 }

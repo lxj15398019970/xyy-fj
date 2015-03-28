@@ -8,8 +8,10 @@ import cn.ld.fj.service.dict.ProvinceManager;
 import cn.ld.fj.service.order.OrderBackupManager;
 import cn.ld.fj.service.order.OrderManager;
 import cn.ld.fj.service.production.ProductionManager;
+import cn.ld.fj.util.DateUtil;
 import cn.ld.fj.util.DwzUtil;
 import cn.ld.fj.util.ExcelUtil;
+import cn.ld.fj.util.RandomCodeUtil;
 import cn.ld.fj.web.JsonActionSupport;
 import cn.ld.fj.web.SimpleJsonActionSupport;
 import com.google.common.collect.Lists;
@@ -65,6 +67,24 @@ public class OrderAction extends SimpleJsonActionSupport<Order> {
 
     private String phone;
     private String createTime;
+    private int status = -1;
+    private String orderNo;
+
+    public String getOrderNo() {
+        return orderNo;
+    }
+
+    public void setOrderNo(String orderNo) {
+        this.orderNo = orderNo;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
     public String getPhone() {
         return phone;
@@ -165,7 +185,8 @@ public class OrderAction extends SimpleJsonActionSupport<Order> {
         map.put("end", page.getPageNo() * 10);
         map.put("phone", StringUtils.isEmpty(phone) ? null : phone);
         map.put("createTime", StringUtils.isEmpty(createTime) ? null : createTime);
-
+        map.put("orderNo", StringUtils.isEmpty(orderNo) ? null : orderNo);
+        map.put("status", status);
         List<Order> orderList = orderManager.getOrders(map);
         for (Order order : orderList) {
             order.setTotalMoney(order.getBuyCount() * order.getProduction().getPrice());
@@ -184,6 +205,14 @@ public class OrderAction extends SimpleJsonActionSupport<Order> {
 
     @Override
     public void save() throws Exception {
+
+        Production production = productionManager.getEntity(entity.getProductionId());
+        if (production.getInventory() < entity.getBuyCount()) {
+            Struts2Utils.renderHtml(DwzUtil.getFailReturn("库存不足,无法添加订单"));
+            return;
+        }
+
+
         entity.setStatus(0);
         entity.setOrderTime(new Date());
 
@@ -205,6 +234,7 @@ public class OrderAction extends SimpleJsonActionSupport<Order> {
         }
 
         entity.setAgentId(agents.get(0).getId());
+        entity.setOrderNo(DateUtil.getTimeStamp() + RandomCodeUtil.generateNumCode(5));
         orderManager.save(entity);
 
         Struts2Utils.renderHtml(DwzUtil.getCloseCurrentReturn("w_order",
@@ -230,8 +260,10 @@ public class OrderAction extends SimpleJsonActionSupport<Order> {
         Map<String, Object> map = new HashMap<String, Object>();
 
         map.put("start", 0);
+        map.put("status", -1);
         int totalCount = orderManager.getTotalCount(map);
         map.put("end", totalCount);
+
 
         List<Order> orderList = orderManager.getOrders(map);
         for (Order order : orderList) {
@@ -242,6 +274,7 @@ public class OrderAction extends SimpleJsonActionSupport<Order> {
         Date date = new Date();
         for (Order order : orderList) {
             OrderBackup backup = new OrderBackup();
+            backup.setOrderNo(order.getOrderNo());
             backup.setTotalMoney(order.getBuyCount() * order.getProduction().getPrice());
             backup.setAgentId(order.getAgentId());
             backup.setOrderTime(order.getOrderTime());
@@ -332,6 +365,7 @@ public class OrderAction extends SimpleJsonActionSupport<Order> {
             order.setPhone(phone);
             order.setAddress(address);
             order.setCustomName(customName);
+            order.setOrderNo(DateUtil.getTimeStamp() + RandomCodeUtil.generateNumCode(5));
             success++;
             orderManager.save(order);
 

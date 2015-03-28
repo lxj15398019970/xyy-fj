@@ -164,18 +164,10 @@ public class AgentAction extends SimpleJsonActionSupport<Agent> {
     @Override
     public void save() throws Exception {
 
-
-        Agent agent = agentManager.findByProperty("agentName",entity.getAgentName());
-        if(agent!= null && agent.getId() ==entity.getId()){
-            Struts2Utils.renderHtml(DwzUtil.getFailReturn("该代理商已经存在"));
-            return;
-        }
-
         agentManager.save(entity);
-//        Struts2Utils.renderHtml(DwzUtil
-//                .getFailReturn("操作失败，打开了异网，但是没有选择资源"));
         Struts2Utils.renderHtml(DwzUtil.getCloseCurrentReturn("w_agent",
                 "操作成功"));
+
 
     }
 

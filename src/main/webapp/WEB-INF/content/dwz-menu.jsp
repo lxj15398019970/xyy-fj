@@ -14,7 +14,7 @@
                     <a href="javascript:;">
                         <i class="icon-user"></i>
                         <span class="title">系统管理</span>
-                        
+
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
@@ -34,7 +34,7 @@
                     <a href="javascript:;">
                         <i class="icon-table"></i>
                         <span class="title">行政区管理</span>
-                        
+
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
@@ -55,7 +55,7 @@
                     <a href="javascript:;">
                         <i class="icon-bar-chart"></i>
                         <span class="title">代理商管理</span>
-                        
+
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
@@ -65,47 +65,73 @@
             </security:authorize>
 
 
-            <security:authorize ifAnyGranted="ROLE_订单配送">
-                <li  <c:if test="${type == 'orderps'}">
+            <security:authorize ifAnyGranted="ROLE_订单管理">
+                <li <c:if test="${type == 'order'}">
                     class = "active"
                 </c:if>>
                     <a href="javascript:;">
                         <i class="icon-bar-chart"></i>
-                        <span class="title">订单配送</span>
-                        
+                        <span class="title">订单管理</span>
+
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
-                        <li><a href="${ctx}/order/order.action" target="navTab" rel="w_role">未配送订单</a></li>
-                        <li><a href="${ctx}/order/order.action" target="navTab" rel="w_role">已配送订单统计</a></li>
+                        <li><a href="${ctx}/order/order.action" target="navTab" rel="w_order">订单管理</a></li>
+                        <li><a href="${ctx}/order/order-backup.action" target="navTab" rel="w_order">订单备份管理</a></li>
+                    </ul>
+                </li>
+            </security:authorize>
+
+
+
+            <security:authorize ifAnyGranted="ROLE_订单配送管理">
+                <li  <c:if test="${type == 'assign'}">
+                    class = "active"
+                </c:if>>
+                    <a href="javascript:;">
+                        <i class="icon-bar-chart"></i>
+                        <span class="title">订单配送管理</span>
+
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="${ctx}/order/assign.action?type=0" target="navTab" rel="w_assign">未配送</a></li>
+                        <li><a href="${ctx}/order/assign.action?type=1" target="navTab" rel="w_assign">正在配送</a></li>
+                        <li><a href="${ctx}/order/assign.action?type=2" target="navTab" rel="w_assign">已配送</a></li>
+                        <li><a href="${ctx}/order/assign.action?type=3" target="navTab" rel="w_assign">退货</a></li>
                     </ul>
                 </li>
 
             </security:authorize>
 
 
-            <li <c:if test="${type == 'orderps'}">
-                class = "active"
-            </c:if>>
-                <a href="javascript:;">
-                    <i class="icon-bar-chart"></i>
-                    <span class="title">订单管理</span>
-                    
-                    <span class="arrow"></span>
-                </a>
-                <ul class="sub-menu">
-                    <li><a href="${ctx}/order/order.action" target="navTab" rel="w_order">订单管理</a></li>
-                    <li><a href="${ctx}/order/order-backup.action" target="navTab" rel="w_order">订单备份管理</a></li>
-                </ul>
-            </li>
+            <security:authorize ifAnyGranted="ROLE_退货管理">
+                <li  <c:if test="${type == 'tui'}">
+                    class = "active"
+                </c:if>>
+                    <a href="javascript:;">
+                        <i class="icon-bar-chart"></i>
+                        <span class="title">退货管理</span>
+
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="${ctx}/order/assign.action?type=3" target="navTab" rel="w_assign">退货管理</a></li>
+                    </ul>
+                </li>
+
+            </security:authorize>
+
 
 
             <security:authorize ifAnyGranted="ROLE_产品管理">
-                <li>
+                <li <c:if test="${type == 'production'}">
+                    class = "active"
+                </c:if>>
                     <a href="javascript:;">
                         <i class="icon-bar-chart"></i>
                         <span class="title">产品管理</span>
-                        
+
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
@@ -125,7 +151,7 @@
                     <a href="javascript:;">
                         <i class="icon-bar-chart"></i>
                         <span class="title">直销统计</span>
-                        
+
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">

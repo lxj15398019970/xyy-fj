@@ -2,34 +2,47 @@
 <%@ include file="/common/taglibs.jsp" %>
 
 <div class="page">
+    <div class="pageHeader">
         <form id="pagerForm" onsubmit="return navTabSearch(this);" action="${ctx}/order/order-backup.action"
               method="post">
             <input type="hidden" name="page.pageNo" id="pageNum" value="${page.pageNo}"/>
             <input type="hidden" name="page.orderBy" id="orderField" value="${page.orderBy}"/>
             <input type="hidden" name="page.order" id="order" value="${page.order}"/>
 
-            <%--<div class="searchBar">--%>
-                <%--<ul class="searchContent">--%>
-                    <%--&lt;%&ndash;<li>&ndash;%&gt;--%>
-                    <%--&lt;%&ndash;<label>区域名称:</label><input type="text" name="filter_EQS_areaName"&ndash;%&gt;--%>
-                    <%--&lt;%&ndash;value="${param['filter_EQS_areaName']}" size="9"/>&ndash;%&gt;--%>
-                    <%--&lt;%&ndash;</li>&ndash;%&gt;--%>
+            <div class="searchBar">
+                <ul class="searchContent">
+                    <li>
+                        <label>订单号:</label><input type="orderNo" name="orderNo"
+                                                  value="${orderNo}" size="9"/>
+                    </li>
 
-                <%--</ul>--%>
-                <%--<div class="subBar">--%>
-                    <%--<ul>--%>
-                        <%--<li>--%>
-                            <%--<div class="buttonActive">--%>
-                                <%--<div class="buttonContent">--%>
-                                    <%--<button type="submit">检索</button>--%>
-                                <%--</div>--%>
-                            <%--</div>--%>
-                        <%--</li>--%>
-                    <%--</ul>--%>
-                <%--</div>--%>
-            <%--</div>--%>
+
+                    <li>
+                        <label>订单电话:</label><input type="phone" name="phone"
+                                                   value="${phone}" size="9"/>
+                    </li>
+
+                    <li>
+                        <label>创建时间:</label><input type="text" name="createTime"
+                                                   value="${createTime}" class="date "/>
+                    </li>
+
+                </ul>
+                <div class="subBar">
+                    <ul>
+                        <li>
+                            <div class="buttonActive">
+                                <div class="buttonContent">
+                                    <button type="submit">检索</button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </form>
-
+    </div>
+    <div class="dashed-line"></div>
     <div class="pageContent">
         <div class="panelBar">
             <ul class="toolBar">
@@ -40,6 +53,7 @@
                 <thead>
                 <tr>
                     <th width="5%">ID</th>
+                    <th width="5%">订单编号</th>
                     <th width="10%">产品名称</th>
                     <th width="5%">产品型号</th>
                     <th width="5%">产品颜色</th>
@@ -61,6 +75,7 @@
                 <s:iterator value="page.result">
                     <tr target="sid_user" rel="${id}">
                         <td>${id}</td>
+                        <td>${orderNo}</td>
                         <td>${production.productionName}</td>
                         <td>${production.version}</td>
                         <td>${production.color}</td>

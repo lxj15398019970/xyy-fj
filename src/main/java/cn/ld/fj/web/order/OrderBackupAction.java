@@ -5,6 +5,7 @@ import cn.ld.fj.service.order.OrderBackupManager;
 import cn.ld.fj.web.JsonActionSupport;
 import cn.ld.fj.web.SimpleJsonActionSupport;
 import net.esoar.modules.orm.Page;
+import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
@@ -32,6 +33,33 @@ public class OrderBackupAction extends SimpleJsonActionSupport<OrderBackup> {
     @Autowired
     private OrderBackupManager orderBackupManager;
 
+    private String phone;
+    private String createTime;
+    private String orderNo;
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getOrderNo() {
+        return orderNo;
+    }
+
+    public void setOrderNo(String orderNo) {
+        this.orderNo = orderNo;
+    }
 
     @Override
     protected void prepareModel() throws Exception {
@@ -46,6 +74,10 @@ public class OrderBackupAction extends SimpleJsonActionSupport<OrderBackup> {
         }
         map.put("start", (page.getPageNo() - 1) * 10);
         map.put("end", page.getPageNo() * 10);
+
+        map.put("phone", StringUtils.isEmpty(phone) ? null : phone);
+        map.put("createTime", StringUtils.isEmpty(createTime) ? null : createTime);
+        map.put("orderNo", StringUtils.isEmpty(orderNo) ? null : orderNo);
 
         List<OrderBackup> orderList = orderBackupManager.getBackupOrders(map);
         int totalCount = orderBackupManager.getBackupTotalCount(map);

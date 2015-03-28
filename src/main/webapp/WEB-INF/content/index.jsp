@@ -85,7 +85,7 @@
             <h1 id="logo">直销管家</h1>
             <ul>
                 <security:authorize ifAnyGranted="ROLE_系统管理">
-                    <li class="select"><a href="${ctx}/main.action?type=user"><span>用户管理</span></a></li>
+                    <li class="select"><a href="${ctx}/main.action?type=user"><span>系统管理</span></a></li>
                 </security:authorize>
 
                 <security:authorize ifAnyGranted="ROLE_代理商管理">
@@ -94,12 +94,29 @@
                 <security:authorize ifAnyGranted="ROLE_行政区管理">
                     <li><a href="${ctx}/main.action?type=dict"><span>行政区域管理</span></a></li>
                 </security:authorize>
-                <li><a href="${ctx}/main.action?type=orderps"><span>订单配送</span></a></li>
-                <li><a href="${ctx}/main.action?type=statistic"><span>直销统计</span></a></li>
+
+                <security:authorize ifAnyGranted="ROLE_产品管理">
+                    <li><a href="${ctx}/main.action?type=production"><span>产品管理</span></a></li>
+                </security:authorize>
+
+                <security:authorize ifAnyGranted="ROLE_订单管理">
+                    <li><a href="${ctx}/main.action?type=order"><span>订单管理</span></a></li>
+                </security:authorize>
+                <security:authorize ifAnyGranted="ROLE_订单配送管理">
+                    <li><a href="${ctx}/main.action?type=assign"><span>订单配送管理</span></a></li>
+                </security:authorize>
+
+                <security:authorize ifAnyGranted="ROLE_退货管理">
+                    <li><a href="${ctx}/main.action?type=tui"><span>退货管理</span></a></li>
+                </security:authorize>
+
+                <security:authorize ifAnyGranted="ROLE_直销统计">
+                    <li><a href="${ctx}/main.action?type=statistic"><span>直销统计</span></a></li>
+                </security:authorize>
             </ul>
             <p class="text-right">
-					<span class="user-name">
-					</span>欢迎您<%=SpringSecurityUtils.getCurrentUserName()%><a href="${ctx}/j_spring_security_logout">[退出登陆]</a>
+                欢迎您<%=SpringSecurityUtils.getCurrentUserName()%><a href="${ctx}/j_spring_security_logout"><span
+                    style="color: #000000">[退出登陆]</span></a>
             </p>
         </div>
     </div>
@@ -112,8 +129,42 @@
 
         </div>
     </div>
+    <%--<div id="container">--%>
+    <%--<div id="navTab" class="tabsPage">--%>
+    <%--<ul class="tabsMoreList">--%>
+    <%--<li><a href="javascript:;">我的主页</a></li>--%>
+    <%--</ul>--%>
+    <%--<div class="navTab-panel tabsPageContent layoutBox">--%>
+    <%--<div class="page unitBox">--%>
+    <%--<div class="accountInfo">--%>
+    <%--<p>--%>
+    <%--<span>欢迎使用分拣系统</span>--%>
+    <%--</p>--%>
+    <%--</div>--%>
+    <%--<div class="pageFormContent" layoutH="80"--%>
+    <%--style="margin-right: 230px"></div>--%>
+    <%--<div style="width: 230px; position: absolute; top: 60px; right: 0"--%>
+    <%--layoutH="80"></div>--%>
+    <%--</div>--%>
+    <%--</div>--%>
+    <%--</div>--%>
+
+    <%--</div>--%>
     <div id="container">
         <div id="navTab" class="tabsPage">
+            <div class="tabsPageHeader" style="display: none;">
+                <div class="tabsPageHeaderContent">
+                    <!-- 显示左右控制时添加 class="tabsPageHeaderMargin" -->
+                    <ul class="navTab-tab">
+                        <li tabid="main" class="main"><a href="javascript:;"><span>我的主页</span></a></li>
+                    </ul>
+                </div>
+                <div class="tabsLeft">left</div>
+                <!-- 禁用只需要添加一个样式 class="tabsLeft tabsLeftDisabled" -->
+                <div class="tabsRight">right</div>
+                <!-- 禁用只需要添加一个样式 class="tabsRight tabsRightDisabled" -->
+                <div class="tabsMore">more</div>
+            </div>
             <ul class="tabsMoreList">
                 <li><a href="javascript:;">我的主页</a></li>
             </ul>
@@ -133,6 +184,8 @@
         </div>
 
     </div>
+
+
 </div>
 
 

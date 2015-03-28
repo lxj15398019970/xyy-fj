@@ -33,6 +33,12 @@ public class User extends IdEntity {
     private String email;
     private List<Role> roleList = Lists.newArrayList();//有序的关联对象集合
 
+
+    /**
+     * 1 工厂管理员
+     * 2 代理商
+     * 3 产品管理员
+     */
     private int userType;
 
     /*用户类型*/

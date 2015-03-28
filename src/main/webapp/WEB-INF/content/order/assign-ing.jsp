@@ -3,7 +3,8 @@
 
 <div class="page">
     <div class="pageHeader">
-        <form id="pagerForm" onsubmit="return navTabSearch(this);" action="${ctx}/order/order.action" method="post">
+        <form id="pagerForm" onsubmit="return navTabSearch(this);" action="${ctx}/order/assign.action?type=1"
+              method="post">
             <input type="hidden" name="page.pageNo" id="pageNum" value="${page.pageNo}"/>
             <input type="hidden" name="page.orderBy" id="orderField" value="${page.orderBy}"/>
             <input type="hidden" name="page.order" id="order" value="${page.order}"/>
@@ -13,7 +14,7 @@
 
                     <li>
                         <label>订单号:</label><input type="orderNo" name="orderNo"
-                                                   value="${orderNo}" size="9"/>
+                                                  value="${orderNo}" size="9"/>
                     </li>
 
 
@@ -24,34 +25,8 @@
 
                     <li>
                         <label>创建时间:</label><input type="text" name="createTime"
-                                                   value="${createTime}" class="date " />
+                                                   value="${createTime}" class="date "/>
                     </li>
-
-                    <%--/**--%>
-                    <%--* 0 未配送--%>
-                    <%--* 1	正在配送--%>
-                    <%--* 2	已配送--%>
-                    <%--* 3	退货--%>
-                    <%--*/--%>
-
-
-
-                    <li>
-                        <label>订单状态</label>
-                       <select name="status">
-                           <option value="-1">请选择</option>
-                           <option value="0" <c:if test="${status == 0}">selected</c:if> >未配送</option>
-                           <option value="1" <c:if test="${status == 1}">selected</c:if>>正在配送</option>
-                           <option value="2" <c:if test="${status == 2}">selected</c:if>>已配送</option>
-                           <option value="3" <c:if test="${status == 3}">selected</c:if>>退货</option>
-
-
-
-                       </select>
-
-
-                    </li>
-
 
                     <li>
                         <div class="buttonActive">
@@ -68,17 +43,17 @@
     <div class="pageContent">
         <div class="panelBar">
             <ul class="toolBar">
-                <li><a class="toolBar-btn" href="${ctx}/order/order!input.action" target="dialog" height="600">录入订单</a></li>
-                <li><a class="toolBar-btn2" href="${ctx}/order/order!delete.action?id={sid_user}" target="ajaxTodo"
-                       title="确定要删除吗？" warn="请选择一条订单">删除订单</a></li>
-                <li><a class="toolBar-btn" href="${ctx}/order/order!input.action?id={sid_user}" target="dialog"
-                       warn="请选择一条订单" height="600">查看/修改订单</a></li>
+                <security:authorize ifAnyGranted="ROLE_完成配送操作">
 
-                <li><a class="toolBar-btn" href="${ctx}/order/order!importOrderInput.action"
-                       target="dialog">导入订单</a></li>
+                    <li><a class="toolBar-btn" href="${ctx}/order/assign!finish.action?id={sid_user}" target="ajaxTodo"
+                           title="确定要配送完成配送吗" warn="请选择一条订单">配送完成</a></li>
+                </security:authorize>
 
-                <li><a class="toolBar-btn" href="${ctx}/order/order!backup.action"
-                       target="ajaxTodo">备份订单</a></li>
+                <security:authorize ifAnyGranted="ROLE_退单操作">
+                    <li><a class="toolBar-btn" href="${ctx}/order/assign!cancel.action?id={sid_user}" target="ajaxTodo"
+                           title="确定要配送吗?" warn="请选择一条订单">退单</a></li>
+                </security:authorize>
+
 
             </ul>
         </div>
@@ -86,6 +61,7 @@
             <table class="list" width="100%">
                 <thead>
                 <tr>
+                    <th><input type="checkbox"></th>
                     <th width="5%">ID</th>
                     <th width="5%">订单号</th>
                     <th width="10%">产品名称</th>
@@ -107,6 +83,7 @@
                 <tbody>
                 <s:iterator value="page.result">
                     <tr target="sid_user" rel="${id}">
+                        <td><input type="checkbox"></td>
                         <td>${id}</td>
                         <td>${orderNo}</td>
                         <td>${production.productionName}</td>
