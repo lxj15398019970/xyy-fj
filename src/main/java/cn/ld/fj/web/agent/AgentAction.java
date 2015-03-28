@@ -164,6 +164,24 @@ public class AgentAction extends SimpleJsonActionSupport<Agent> {
     @Override
     public void save() throws Exception {
 
+
+        List<PropertyFilter> filters = Lists.newArrayList();
+        filters.add(new PropertyFilter("EQL_provinceId", entity.getProvinceId() + ""));
+        filters.add(new PropertyFilter("EQL_cityId", entity.getCityId() + ""));
+        filters.add(new PropertyFilter("EQL_areaId", entity.getAreaId() + ""));
+        filters.add(new PropertyFilter("EQL_productionId", entity.getProductionId() + ""));
+
+
+        List<Agent> agents = agentManager.getAgents(filters);
+        if (CollectionUtils.isNotEmpty(agents)) {
+            Agent agent = agents.get(0);
+            if (agent.getId() != entity.getId()) {
+                Struts2Utils.renderHtml(DwzUtil.getFailReturn("该代理商已经有该区域的代理产品,不能重复添加"));
+                return;
+            }
+        }
+
+
         agentManager.save(entity);
         Struts2Utils.renderHtml(DwzUtil.getCloseCurrentReturn("w_agent",
                 "操作成功"));

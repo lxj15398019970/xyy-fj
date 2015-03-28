@@ -23,7 +23,7 @@
 
                 <div class="unit">
                     <label>所属省份:</label>
-                    <select name="provinceId" id="province">
+                    <select name="provinceId" id="province" required="required">
                         <option value="">--请选择--</option>
                         <c:forEach items="${provinces}" var="item">
                             <option value="${item.id}" <c:if test="${provinceId ==item.id}">
@@ -36,7 +36,7 @@
 
                 <div class="unit">
                     <label>所属城市:</label>
-                    <select name="cityId" id="city">
+                    <select name="cityId" id="city" required="required">
                         <option value="">--请选择--</option>
                         <c:forEach items="${cities}" var="item">
                             <option value="${item.id}" <c:if test="${cityId ==item.id}">
@@ -48,7 +48,7 @@
 
                 <div class="unit">
                     <label>所属区域:</label>
-                    <select name="areaId" id="area">
+                    <select name="areaId" id="area" required="required">
                         <option value="">--请选择--</option>
                         <c:forEach items="${areas}" var="item">
                             <option value="${item.id}" <c:if test="${areaId ==item.id}">
@@ -60,7 +60,7 @@
 
                 <div class="unit">
                     <label>代理产品:</label>
-                    <select name="productionId" id="productionId">
+                    <select name="productionId" id="productionId" required="required">
                         <option value="">--请选择--</option>
                         <c:forEach items="${productions}" var="item">
                             <option value="${item.id}" <c:if test="${productionId ==item.id}">
