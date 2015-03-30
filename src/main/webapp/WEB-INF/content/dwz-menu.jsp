@@ -155,7 +155,7 @@
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
-                        <li><a href="${ctx}/agent/agent.action" target="navTab" rel="w_role">直销统计</a></li>
+                        <li><a href="${ctx}/statistic/sale-statistic.action" target="navTab" rel="w_role">直销统计</a></li>
                     </ul>
                 </li>
 

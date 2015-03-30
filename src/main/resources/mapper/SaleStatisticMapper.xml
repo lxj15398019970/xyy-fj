@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.ld.fj.dao.sale.SaleStatisticMybatisDAO">
+
+
+    <select id="searchList" parameterType="Map" resultType="SaleStatistic">
+        SELECT
+        SUBSTR(o.deal_time FROM 1 FOR 10) as date,
+        sum(o.buy_count) as totalBuy,
+        sum(o.total_money) as totalMoney
+        from es_order o
+        where o.`status` = 2
+        <if test="date != null">
+            and o.deal_time like CONCAT(#{date},"%")
+        </if>
+
+        GROUP BY SUBSTR(o.deal_time FROM 1 FOR 10)
+
+    </select>
+
+
+    <select id="getTotalCount" parameterType="Map" resultType="Integer">
+        SELECT
+        count(1)
+        from es_order o
+        where o.`status` = 2
+        <if test="date != null">
+            and o.deal_time like CONCAT(#{date},"%")
+        </if>
+        GROUP BY SUBSTR(o.deal_time FROM 1 FOR 10)
+
+
+    </select>
+
+
+</mapper>
+

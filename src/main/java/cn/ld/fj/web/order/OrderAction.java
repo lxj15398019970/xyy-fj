@@ -235,6 +235,7 @@ public class OrderAction extends SimpleJsonActionSupport<Order> {
 
         entity.setAgentId(agents.get(0).getId());
         entity.setOrderNo(DateUtil.getTimeStamp() + RandomCodeUtil.generateNumCode(5));
+        entity.setTotalMoney(entity.getBuyCount() * production.getPrice());
         orderManager.save(entity);
 
         Struts2Utils.renderHtml(DwzUtil.getCloseCurrentReturn("w_order",
