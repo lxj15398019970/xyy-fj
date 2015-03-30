@@ -11,9 +11,11 @@ import cn.ld.fj.service.production.ProductionManager;
 import cn.ld.fj.util.DwzUtil;
 import cn.ld.fj.web.JsonActionSupport;
 import cn.ld.fj.web.SimpleJsonActionSupport;
+import com.google.common.collect.Lists;
 import net.esoar.modules.orm.Page;
 import net.esoar.modules.security.springsecurity.SpringSecurityUtils;
 import net.esoar.modules.utils.web.struts2.Struts2Utils;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -133,12 +135,18 @@ public class AssignAction extends SimpleJsonActionSupport<Order> {
         map.put("status", status);
         String loginName = SpringSecurityUtils.getCurrentUserName();
         User user = accountManager.findUserByLoginName(loginName);
-        Agent agent = agentManager.findByProperty("agentName", loginName);
+        List<Agent> agents = agentManager.findByProperty("agentName", loginName);
         /**
          * 如果是代理商，就获取自己的订单
          */
+        List<Long> agentIds = Lists.newArrayList();
         if (user.getUserType() == 2) {
-            map.put("agentId", agent.getId());
+            if (CollectionUtils.isNotEmpty(agents)) {
+                for (Agent agent : agents) {
+                    agentIds.add(agent.getId());
+                }
+            }
+            map.put("agentIds", agentIds);
         }
 
         List<Order> orderList = orderManager.getOrders(map);
@@ -194,7 +202,7 @@ public class AssignAction extends SimpleJsonActionSupport<Order> {
              */
 
             Production production = productionManager.getEntity(entity.getProductionId());
-            production.setInventory(production.getInventory()-entity.getBuyCount());
+            production.setInventory(production.getInventory() - entity.getBuyCount());
             productionManager.save(production);
             Struts2Utils.renderHtml(DwzUtil.getNavtabReturn("w_assign",
                     "订单完成配送"));

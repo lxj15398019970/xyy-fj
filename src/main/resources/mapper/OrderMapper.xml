@@ -105,8 +105,11 @@
             and o.order_no = #{orderNo}
         </if>
 
-        <if test="agentId > 0">
-            and o.agent_id = #{agentId}
+        <if test="agentIds != null">
+            and o.agent_id in
+            <foreach collection="agentIds" item="item" separator="," open="(" close=")">
+                #{item}
+            </foreach>
         </if>
 
         order by o.order_time desc
@@ -133,8 +136,11 @@
             and o.order_no = #{orderNo}
         </if>
 
-        <if test="agentId > 0">
-            and o.agent_id = #{agentId}
+        <if test="agentIds != null">
+            and o.agent_id in
+            <foreach collection="agentIds" item="item" separator="," open="(" close=")">
+                #{item}
+            </foreach>
         </if>
 
     </select>
