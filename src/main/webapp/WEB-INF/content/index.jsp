@@ -80,43 +80,46 @@
 <body scroll="no">
 <div id="layout">
 
+
+
+
     <div id="header">
         <div id="navMenu">
             <h1 id="logo">直销管家</h1>
             <ul>
                 <security:authorize ifAnyGranted="ROLE_系统管理">
-                    <li class="select"><a href="${ctx}/main.action?type=user"><span>系统管理</span></a></li>
+                    <li class="top-menu"><a href="${ctx}/main.action?type=user"><span>系统管理</span></a></li>
                 </security:authorize>
 
                 <security:authorize ifAnyGranted="ROLE_代理商管理">
-                    <li><a href="${ctx}/main.action?type=agent"><span>代理商管理</span></a></li>
+                    <li class="top-menu"><a href="${ctx}/main.action?type=agent"><span>代理商管理</span></a></li>
                 </security:authorize>
                 <security:authorize ifAnyGranted="ROLE_行政区管理">
-                    <li><a href="${ctx}/main.action?type=dict"><span>行政区域管理</span></a></li>
+                    <li class="top-menu"><a href="${ctx}/main.action?type=dict"><span>行政区域管理</span></a></li>
                 </security:authorize>
 
                 <security:authorize ifAnyGranted="ROLE_产品管理">
-                    <li><a href="${ctx}/main.action?type=production"><span>产品管理</span></a></li>
+                    <li class="top-menu"><a href="${ctx}/main.action?type=production"><span>产品管理</span></a></li>
                 </security:authorize>
 
                 <security:authorize ifAnyGranted="ROLE_订单管理">
-                    <li><a href="${ctx}/main.action?type=order"><span>订单管理</span></a></li>
+                    <li class="top-menu"><a href="${ctx}/main.action?type=order"><span>订单管理</span></a></li>
                 </security:authorize>
                 <security:authorize ifAnyGranted="ROLE_订单配送管理">
-                    <li><a href="${ctx}/main.action?type=assign"><span>订单配送管理</span></a></li>
+                    <li class="top-menu"><a href="${ctx}/main.action?type=assign"><span>订单配送管理</span></a></li>
                 </security:authorize>
 
                 <security:authorize ifAnyGranted="ROLE_退货管理">
-                    <li><a href="${ctx}/main.action?type=tui"><span>退货管理</span></a></li>
+                    <li class="top-menu"><a href="${ctx}/main.action?type=tui"><span>退货管理</span></a></li>
                 </security:authorize>
 
                 <security:authorize ifAnyGranted="ROLE_直销统计">
-                    <li><a href="${ctx}/main.action?type=statistic"><span>直销统计</span></a></li>
+                    <li class="top-menu"><a href="${ctx}/main.action?type=statistic"><span>直销统计</span></a></li>
                 </security:authorize>
             </ul>
             <p class="text-right">
                 欢迎您<%=SpringSecurityUtils.getCurrentUserName()%><a href="${ctx}/j_spring_security_logout"><span
-                    style="color: #000000">[退出登陆]</span></a>
+                    style="color:#fff">[退出登陆]</span></a>
             </p>
         </div>
     </div>

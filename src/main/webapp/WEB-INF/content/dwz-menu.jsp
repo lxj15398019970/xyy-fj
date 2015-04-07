@@ -11,9 +11,9 @@
                     class = "active"
                 </c:if>
                         >
-                    <a href="javascript:;">
-                        <i class="icon-user"></i>
-                        <span class="title">系统管理</span>
+                    <a href="javascript:;" class="sider-menu">
+                        <i class="icon-dashboard"></i>
+                        <span class="title ">系统管理</span>
 
                         <span class="arrow"></span>
                     </a>
@@ -26,14 +26,34 @@
             </security:authorize>
 
 
+
+
+            <security:authorize ifAnyGranted="ROLE_代理商管理">
+                <li    <c:if test="${type == 'agent'}">
+                    class = "active"
+                </c:if>
+                        >
+                    <a href="javascript:;" class="sider-menu">
+                        <i class="icon-cogs"></i>
+                        <span class="title ">代理商管理</span>
+
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="${ctx}/agent/agent.action" target="navTab" rel="w_agent">代理商管理</a></li>
+                    </ul>
+                </li>
+            </security:authorize>
+
+
             <security:authorize ifAnyGranted="ROLE_行政区管理">
                 <li    <c:if test="${type == 'dict'}">
                     class = "active"
                 </c:if>
                         >
-                    <a href="javascript:;">
-                        <i class="icon-table"></i>
-                        <span class="title">行政区管理</span>
+                    <a href="javascript:;" class="sider-menu">
+                        <i class="icon-th"></i>
+                        <span class="title ">行政区管理</span>
 
                         <span class="arrow"></span>
                     </a>
@@ -46,32 +66,35 @@
 
             </security:authorize>
 
-
-            <security:authorize ifAnyGranted="ROLE_代理商管理">
-                <li    <c:if test="${type == 'agent'}">
+            <security:authorize ifAnyGranted="ROLE_产品管理">
+                <li <c:if test="${type == 'production'}">
                     class = "active"
-                </c:if>
-                        >
-                    <a href="javascript:;">
-                        <i class="icon-bar-chart"></i>
-                        <span class="title">代理商管理</span>
+                </c:if>>
+                    <a href="javascript:;" class="sider-menu">
+                        <i class="icon-tasks"></i>
+                        <span class="title">产品管理</span>
 
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
-                        <li><a href="${ctx}/agent/agent.action" target="navTab" rel="w_agent">代理商管理</a></li>
+                        <li><a href="${ctx}/production/production.action" target="navTab" rel="w_production">产品管理</a>
+                        </li>
                     </ul>
                 </li>
+
+
             </security:authorize>
+
+
 
 
             <security:authorize ifAnyGranted="ROLE_订单管理">
                 <li <c:if test="${type == 'order'}">
                     class = "active"
                 </c:if>>
-                    <a href="javascript:;">
-                        <i class="icon-bar-chart"></i>
-                        <span class="title">订单管理</span>
+                    <a href="javascript:;" class="sider-menu">
+                        <i class="icon-file-alt"></i>
+                        <span class="title ">订单管理</span>
 
                         <span class="arrow"></span>
                     </a>
@@ -88,9 +111,9 @@
                 <li  <c:if test="${type == 'assign'}">
                     class = "active"
                 </c:if>>
-                    <a href="javascript:;">
-                        <i class="icon-bar-chart"></i>
-                        <span class="title">订单配送管理</span>
+                    <a href="javascript:;" class="sider-menu">
+                        <i class="icon-th-large"></i>
+                        <span class="title ">订单配送管理</span>
 
                         <span class="arrow"></span>
                     </a>
@@ -109,9 +132,9 @@
                 <li  <c:if test="${type == 'tui'}">
                     class = "active"
                 </c:if>>
-                    <a href="javascript:;">
-                        <i class="icon-bar-chart"></i>
-                        <span class="title">退货管理</span>
+                    <a href="javascript:;" class="sider-menu">
+                        <i class="icon-glass"></i>
+                        <span class="title ">退货管理</span>
 
                         <span class="arrow"></span>
                     </a>
@@ -124,31 +147,14 @@
 
 
 
-            <security:authorize ifAnyGranted="ROLE_产品管理">
-                <li <c:if test="${type == 'production'}">
-                    class = "active"
-                </c:if>>
-                    <a href="javascript:;">
-                        <i class="icon-bar-chart"></i>
-                        <span class="title">产品管理</span>
 
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li><a href="${ctx}/production/production.action" target="navTab" rel="w_production">产品管理</a>
-                        </li>
-                    </ul>
-                </li>
-
-
-            </security:authorize>
 
 
             <security:authorize ifAnyGranted="ROLE_直销统计">
                 <li  <c:if test="${type == 'statistic'}">
                     class = "active"
                 </c:if>>
-                    <a href="javascript:;">
+                    <a href="javascript:;" class="sider-menu">
                         <i class="icon-bar-chart"></i>
                         <span class="title">直销统计</span>
 

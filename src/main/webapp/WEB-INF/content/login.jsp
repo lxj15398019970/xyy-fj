@@ -9,7 +9,69 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>分拣系统平台DEMO显示</title>
-<link href="themes/css/login.css" rel="stylesheet" type="text/css" />
+
+	<link href="${ctx}/static/bootstrap/2.3.2/css/bootstrap.css" rel="stylesheet">
+	<style type="text/css">
+		body {
+			background:url(${ctx}/static/dwz/themes/default/images/html-bg-x.jpg) repeat-x center top;
+		}
+
+		.form-signin {
+			position: absolute;
+			left:50%;
+			top:40%;
+			margin-left: -180px;
+			margin-top: -160px;
+			width: 300px;
+			padding: 19px 30px 29px;
+			background-color: #fff;
+			border: 1px solid #e5e5e5;
+			-webkit-border-radius: 5px;
+			-moz-border-radius: 5px;
+			border-radius: 5px;
+			-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+			-moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+			box-shadow: 0 1px 2px rgba(0,0,0,.05);
+		}
+		.form-signin .form-signin-heading,
+		.form-signin .checkbox {
+			margin-bottom: 10px;
+		}
+		.form-signin input[type="text"],
+		.form-signin input[type="password"] {
+			font-size: 16px;
+			height: auto;
+			margin-bottom: 15px;
+			padding: 7px 9px;
+		}
+		.sub-btn{
+			border-radius: 0;
+			background: #e8e8e8;
+			outline: none;
+			border: none;
+			box-shadow: none;
+			text-shadow: none;
+			padding: 11px 19px;
+			font-size: 17.5px;
+			background: #2fade7;
+			color: #fff;
+			width: 100%;
+		}
+		.form-signin-heading{
+			text-align: center;
+		}
+
+	</style>
+	<link href="${ctx}/static/bootstrap/2.3.2/css/bootstrap-responsive.css" rel="stylesheet">
+
+	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+	<script src="${ctx}/static/bootstrap/2.3.2/js/html5shiv.js"></script>
+	<![endif]-->
+
+
+
+<%--<link href="themes/css/login.css" rel="stylesheet" type="text/css" />--%>
 <script src="${ctx}/static/jquery/jquery-1.7.1.min.js" type="text/javascript"></script>
 <script>
 		$(document).ready(function() {
@@ -20,45 +82,23 @@
 </head>
 
 <body>
-	<div id="login">
-		<div id="login_header">
-			<h1 class="login_logo">
-				<!-- <a href="#"><img src="themes/default/images/login_logo.gif" /></a> -->
-			</h1>
-			<div class="login_headerContent">
-				<h2 class="login_title"><img src="themes/default/images/login_title.png" /></h2>
-			</div>
-		</div>
-		<div id="login_content">
-			<div class="loginForm">
-				<form id="loginForm" name="loginForm" action="${ctx}/j_spring_security_check" method="post">
-					<p>
-						<label>用户名:</label>
-						<input type='text' id='j_username' name='j_username' size="20" class="login_input"
-					<s:if test="not empty param.error">
-						value='<%=session.getAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_LAST_USERNAME_KEY)%>'</s:if> />
-					</p>
-					<p>
-						<label>密码:</label>
-						<input type='password' id='j_password' name='j_password' size="20" class="login_input"/>
-					</p>
-					<p>
-						<label>&nbsp;</label>
-						<span><input type="checkbox" name="_spring_security_remember_me"/></span>
-						两周内记住我
-					</p>
-					<div class="login_bar">
-						<input value=" " type="submit" class="sub" alt="登陆" />
-					</div>
-				</form>
-			</div>
-			<div class="login_banner"><img src="themes/default/images/login_banner.jpg" /></div>
-			<div class="login_main">
-			</div>
-		</div>
-		<div id="login_footer">
-			Copyright &copy; 2010 <a href="#">ld</a> Inc. All Rights Reserved.
-		</div>
-	</div>
+
+<div class="container">
+	<form class="form-signin"  id="loginForm" name="loginForm" action="${ctx}/j_spring_security_check" method="post">
+		<h2 class="form-signin-heading">分拣系统平台登录</h2>
+		<input type='text' id='j_username' name='j_username' size="20" class="input-block-level"
+				<s:if test="not empty param.error">
+					value='<%=session.getAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_LAST_USERNAME_KEY)%>'</s:if> />
+
+
+		<input type='password' id='j_password' name='j_password' size="20" class="input-block-level"/>
+		<label class="checkbox">
+			<input type="checkbox" value="remember-me" name="_spring_security_remember_me"/> 两周内记住我
+		</label>
+		<button class="sub-btn" type="submit">登录</button>
+	</form>
+
+</div>
+
 </body>
 </html>

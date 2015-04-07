@@ -27,10 +27,23 @@ $(function() {
 		menuContainer.children('li.active').removeClass('active');
 		menuContainer.children('arrow.open').removeClass('open');
 
+
+
 		$(this).parents('li').each(function() {
 			$(this).addClass('active');
 			$(this).children('a > span.arrow').addClass('open');
 		});
 		$(this).parents('li').addClass('active');
 	});
+
+
+	$('.page-sidebar-menu .sider-menu').each(function(i){
+		$(this).on('click',function(){
+			$('li.top-menu:eq('+ i +')').addClass('selected').siblings().removeClass('selected');
+		})
+	})
+
+
 });
+
+
