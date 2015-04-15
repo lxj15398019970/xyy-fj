@@ -4,8 +4,11 @@ import cn.ld.fj.dao.agent.AgentAreaDao;
 import cn.ld.fj.dao.dict.AreaDao;
 import cn.ld.fj.entity.AgentArea;
 import cn.ld.fj.entity.Area;
+import cn.ld.fj.entity.City;
 import cn.ld.fj.service.dict.CityManager;
+import com.google.common.collect.Lists;
 import net.esoar.modules.orm.PropertyFilter;
+import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,10 +69,22 @@ public class AgentAreaManager {
             if (!map.containsKey(agentArea.getAgentId())) {
                 map.put(agentArea.getAgentId(), area.getAreaName() + ",");
             } else {
-                map.put(agentArea.getAgentId(), map.get(agentArea.getAgentId()) + area.getAreaName());
+                map.put(agentArea.getAgentId(), map.get(agentArea.getAgentId()) + area.getAreaName() + ",");
             }
         }
         return map;
 
+    }
+
+    public List<Long> findExitIds(Long id) {
+        List<Long> ids = Lists.newArrayList();
+
+        List<AgentArea> agentAreas = agentAreaDao.findBy("agentId", id);
+        if(CollectionUtils.isNotEmpty(agentAreas)){
+            for(AgentArea agentArea : agentAreas){
+                ids.add(agentArea.getAreaId());
+            }
+        }
+        return ids;
     }
 }

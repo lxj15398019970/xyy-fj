@@ -56,6 +56,16 @@ public class AgentAction extends SimpleJsonActionSupport<Agent> {
 
     private List<Long> areaIds = Lists.newArrayList();
 
+    private Agent agent;
+
+    public Agent getAgent() {
+        return agent;
+    }
+
+    public void setAgent(Agent agent) {
+        this.agent = agent;
+    }
+
     public List<Long> getAreaIds() {
         return areaIds;
     }
@@ -222,11 +232,36 @@ public class AgentAction extends SimpleJsonActionSupport<Agent> {
             agentAreaManager.save(agentArea);
         }
 
-        Struts2Utils.renderHtml(DwzUtil.getNavtabReturn("w_agent",
+        Struts2Utils.renderHtml(DwzUtil.getCloseCurrentReturn("w_agent",
                 "操作成功"));
 
 
     }
+
+    public String addArea() {
+        agent = agentManager.getEntity(id);
+        provinces = provinceManager.findAll();
+        return "add-area";
+    }
+
+    public void add() {
+
+        List<Long> exitIds = agentAreaManager.findExitIds(id);
+        for (Long areaId : areaIds) {
+            if (exitIds.contains(areaId)) {
+                continue;
+            }
+            AgentArea agentArea = new AgentArea();
+            agentArea.setAgentId(id);
+            agentArea.setAreaId(areaId);
+            agentAreaManager.save(agentArea);
+        }
+
+        Struts2Utils.renderHtml(DwzUtil.getCloseCurrentReturn("w_agent",
+                "操作成功"));
+
+    }
+
 
     @Override
     public void delete() throws Exception {
