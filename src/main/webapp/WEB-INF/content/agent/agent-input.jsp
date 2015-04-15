@@ -11,14 +11,20 @@
 
                 <div class="unit">
                     <label>代理商称:</label>
-                    <select name="agentName" required="required">
-                        <option value="">--请选择--</option>
-                        <c:forEach items="${users}" var="item">
-                            <option value="${item.loginName}"
-                                    <c:if test="${item.loginName == agentName}">selected</c:if>>${item.loginName}</option>
-                        </c:forEach>
+                    <c:if test="${id > 0}">
+                        <input type="text" name="agentName" value="${agentName}" readonly>
+                    </c:if>
 
-                    </select>
+                    <c:if test="${id == null}">
+                        <select name="agentName" required="required">
+                            <option value="">--请选择--</option>
+                            <c:forEach items="${users}" var="item">
+                                <option value="${item.loginName}"
+                                        <c:if test="${item.loginName == agentName}">selected</c:if>>${item.loginName}</option>
+                            </c:forEach>
+
+                        </select>
+                    </c:if>
                 </div>
 
                 <div class="unit">
@@ -47,18 +53,6 @@
                 </div>
 
                 <div class="unit">
-                    <label>所属区域:</label>
-                    <select name="areaId" id="area" required="required">
-                        <option value="">--请选择--</option>
-                        <c:forEach items="${areas}" var="item">
-                            <option value="${item.id}" <c:if test="${areaId ==item.id}">
-                                selected
-                            </c:if>>${item.areaName}</option>
-                        </c:forEach>
-                    </select>
-                </div>
-
-                <div class="unit">
                     <label>代理产品:</label>
                     <select name="productionId" id="productionId" required="required">
                         <option value="">--请选择--</option>
@@ -72,8 +66,13 @@
 
                 <div class="unit">
                     <label>配送范围:</label>
-                    <input type="text" name="areaScope" value="${areaScope}" required size="40">
 
+                    <div id="area">
+                        <c:forEach items="${areas}" var="item">
+                            ${item.areaName}<input type="checkbox" name="areaIds" value="${item.id}" id="${item.id}"
+                                                   checked>
+                        </c:forEach>
+                    </div>
                 </div>
 
 
@@ -106,6 +105,8 @@
 <script>
     $(function () {
         //根据省份获取城市列表
+        var id = "${id}";
+
         $("#province").change(function () {
             var provinceId = $(this).val();
             if (provinceId != '') {
@@ -125,21 +126,22 @@
 
         });
 
+
         $("#city").change(function () {
             var cityId = $(this).val();
-            if (cityId != '') {
-                $.post("area/area!getAreas.action", {
-                    cityId: cityId
-                }, function (result) {
-                    $("#area").empty();
-                    var option = "<option value=''>--请选择--</option>";
-                    $("#area").append(option);
-                    for (var i = 0; i < result.length; i++) {
-                        option = '<option value="' + result[i].id + '">' + result[i].areaName + '</option>'
-                        $("#area").append(option);
-                    }
+            if (id == "") {
+                if (cityId != '') {
+                    $.post("area/area!getAreas.action", {
+                        cityId: cityId
+                    }, function (result) {
+                        $("#area").empty();
+                        for (var i = 0; i < result.length; i++) {
+                            var inputCheckbox = result[i].areaName + '<input type="checkbox" checked name="areaIds" value="' + result[i].id + '" id="' + result[i].id + '">'
+                            $("#area").append(inputCheckbox);
+                        }
 
-                })
+                    })
+                }
             }
 
         })
