@@ -21,10 +21,18 @@
     </s:http>
 
     <!-- 认证配置, 使用userDetailsService提供的用户信息 -->
+    <!--<s:authentication-manager alias="authenticationManager">-->
+    <!--<s:authentication-provider user-service-ref="userDetailsService">-->
+    <!--<s:password-encoder hash="plaintext"/>-->
+    <!--</s:authentication-provider>-->
+    <!--</s:authentication-manager>-->
+
+    <!-- 认证配置, 使用userDetailsService提供的用户信息 -->
     <s:authentication-manager alias="authenticationManager">
-        <s:authentication-provider user-service-ref="userDetailsService">
+        <s:authentication-provider ref="signedUsernamePasswordAuthenticationProvider">
             <s:password-encoder hash="plaintext"/>
         </s:authentication-provider>
+
     </s:authentication-manager>
 
     <!-- 项目实现的用户查询服务 -->
