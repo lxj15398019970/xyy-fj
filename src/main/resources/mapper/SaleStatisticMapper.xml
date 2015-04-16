@@ -59,10 +59,6 @@
             and o.production_id = #{productionId}
         </if>
 
-        GROUP BY
-        SUBSTR(o.deal_time FROM 1 FOR 10),
-        g.agent_name,
-        o.production_id
     </select>
 
 

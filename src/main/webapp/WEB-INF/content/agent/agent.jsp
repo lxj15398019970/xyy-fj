@@ -49,15 +49,15 @@
             <table class="list" width="98%">
                 <thead>
                 <tr>
-                    <th width="80">ID</th>
-                    <th width="80">代理商名称</th>
-                    <th width="80">代理产品名称</th>
-                    <th width="80">代理产品型号</th>
-                    <th width="80">代理产品颜色</th>
-                    <th width="80">所在省</th>
-                    <th width="80">所在市</th>
+                    <th width="5%">ID</th>
+                    <th width="5%">代理商名称</th>
+                    <th width="5%">代理产品名称</th>
+                    <th width="5%">代理产品型号</th>
+                    <th width="5%">代理产品颜色</th>
+                    <th width="5%">所在省</th>
+                    <th width="5%">所在市</th>
                     <%--<th width="80">所在区</th>--%>
-                    <th width="80">配送范围</th>
+                    <th width="65%">配送范围</th>
                 </tr>
                 </thead>
                 <tbody>
