@@ -3253,6 +3253,7 @@ ul.page-sidebar-menu > li {
     border: 0;
     margin: 1px 0 0;
     background: #505050;
+    overflow: hidden;
 
 }
 
@@ -3479,6 +3480,11 @@ ul.page-sidebar-menu > li > ul.sub-menu {
     display: none;
     list-style: none;
     clear: both;
+    width: 160px;
+    margin: 5px auto 8px;
+    background: rgba(0,0,0,0.2) !important;
+    border-radius: 5px;
+    overflow: hidden;
 }
 
 ul.page-sidebar-menu > li.active > ul.sub-menu {
@@ -3642,7 +3648,7 @@ ul.page-sidebar-menu li > ul.sub-menu > li > a {
 
 
 ul.page-sidebar-menu li > ul.sub-menu > li > a:hover {
-    background: #575757;
+    background: #333;
 }
 
 /* menu arrows */
