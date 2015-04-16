@@ -49,12 +49,6 @@
                            title="确定要配送完成配送吗" warn="请选择一条订单">配送完成</a></li>
                 </security:authorize>
 
-                <security:authorize ifAnyGranted="ROLE_退单操作">
-                    <li><a class="toolBar-btn" href="${ctx}/order/assign!cancel.action?id={sid_user}" target="ajaxTodo"
-                           title="确定要配送吗?" warn="请选择一条订单">退单</a></li>
-                </security:authorize>
-
-
             </ul>
         </div>
         <div layouth="111">

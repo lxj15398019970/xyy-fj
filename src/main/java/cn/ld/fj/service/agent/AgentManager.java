@@ -57,4 +57,8 @@ public class AgentManager {
     public List<Agent> findByProperty(String property, String agentName) {
         return agentDao.findBy(property, agentName);
     }
+
+    public List<Agent> getAllAgents() {
+        return agentDao.getAll();
+    }
 }

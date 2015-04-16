@@ -76,10 +76,6 @@
 
                 <li><a class="toolBar-btn" href="${ctx}/order/order!importOrderInput.action"
                        target="dialog">导入订单</a></li>
-
-                <li><a class="toolBar-btn" href="${ctx}/order/order!backup.action"
-                       target="ajaxTodo">备份订单</a></li>
-
             </ul>
         </div>
         <div layouth="111">

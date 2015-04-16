@@ -128,8 +128,11 @@ public class AssignAction extends SimpleJsonActionSupport<Order> {
             backJsp = "has";
             status = 2;
         } else {
+
+            //退单页取的是完成配送和退单的订单
             backJsp = "tui";
-            status = 3;
+            status = -1;
+            map.put("tui", 1);
         }
 
         map.put("status", status);
@@ -215,6 +218,11 @@ public class AssignAction extends SimpleJsonActionSupport<Order> {
     public void cancel() {
         entity = orderManager.getEntity(id);
         if (entity != null) {
+            if (entity.getStatus() == 3) {
+                Struts2Utils.renderHtml(DwzUtil.getFailReturn("操作失败,不能重复退单"));
+                return;
+            }
+
             entity.setStatus(3);
             entity.setDealTime(new Date());
             orderManager.save(entity);

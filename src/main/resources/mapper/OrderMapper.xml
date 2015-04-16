@@ -97,6 +97,11 @@
         <if test="createTime != null">
             and o.order_time like CONCAT(#{createTime},"%")
         </if>
+
+        <if test="tui == 1">
+            and (o.status = 2 or o.status = 3)
+        </if>
+
         <if test="status >= 0">
             and o.status = #{status}
         </if>

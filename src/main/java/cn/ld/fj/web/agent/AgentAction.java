@@ -215,7 +215,6 @@ public class AgentAction extends SimpleJsonActionSupport<Agent> {
             return;
         }
 
-
         agentManager.save(entity);
 
         List<AgentArea> agentAreas = agentAreaManager.findByProperty("agentId", entity.getId());

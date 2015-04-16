@@ -40,10 +40,13 @@
             </div>
         </form>
     </div>
-    <div class="dashed-line"></div>
     <div class="pageContent">
         <div class="panelBar">
             <ul class="toolBar">
+                <security:authorize ifAnyGranted="ROLE_退单操作">
+                    <li><a class="toolBar-btn" href="${ctx}/order/assign!cancel.action?id={sid_user}" target="ajaxTodo"
+                           title="确定要配送吗?" warn="请选择一条订单">退单</a></li>
+                </security:authorize>
             </ul>
         </div>
         <div layouth="111">
@@ -117,37 +120,3 @@
 
     </div>
 </div>
-
-
-<script>
-    $(function () {
-
-
-        //根据省份获取城市列表
-        $("#provinceId").change(function () {
-            var provinceId = $(this).val();
-            if (provinceId != '0') {
-                $.post("city/city!getCities.action", {
-                    provinceId: provinceId
-                }, function (result) {
-                    $("#cityId").empty();
-                    var option;
-                    for (var i = 0; i < result.length; i++) {
-                        option = '<option value="' + result[i].id + '">' + result[i].cityName + '</option>'
-                        $("#cityId").append(option);
-                    }
-
-
-                })
-
-
-            }
-
-
-        })
-
-
-    })
-
-
-</script>

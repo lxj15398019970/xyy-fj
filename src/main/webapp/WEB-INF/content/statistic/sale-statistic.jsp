@@ -17,6 +17,32 @@
                     </li>
 
                     <li>
+                        <label>代理商:</label>
+                        <select name="agentName">
+                            <option value="">请选择</option>
+                            <c:forEach items="${agents}" var="item">
+                                <option value="${item}"
+                                        <c:if test="${item == agentName}">selected</c:if>>${item}</option>
+
+
+                            </c:forEach>
+
+                        </select>
+
+                    </li>
+
+                    <li>
+                        <label>产品:</label>
+                        <select name="productionId">
+                            <option value="0">请选择</option>
+                            <c:forEach items="${productions}" var="item">
+                                <option value="${item.id}"
+                                        <c:if test="${item.id == productionId}">selected</c:if>>${item.productionName}</option>
+                            </c:forEach>
+                        </select>
+                    </li>
+
+                    <li>
                         <div class="buttonActive">
                             <div class="buttonContent">
                                 <button type="submit">检索</button>
@@ -40,6 +66,8 @@
                     <th width="10%">日期</th>
                     <th width="15%">销售总数量</th>
                     <th width="10%">销售总额</th>
+                    <th width="10%">代理商</th>
+                    <th width="10%">产品</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -48,6 +76,8 @@
                         <td>${date}&nbsp;</td>
                         <td>${totalBuy}&nbsp;</td>
                         <td>${totalMoney}&nbsp;</td>
+                        <td>${agentName}&nbsp;</td>
+                        <td>${productionName}&nbsp;</td>
 
                     </tr>
                 </s:iterator>

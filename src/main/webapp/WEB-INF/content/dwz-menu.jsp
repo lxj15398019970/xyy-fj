@@ -26,8 +26,6 @@
             </security:authorize>
 
 
-
-
             <security:authorize ifAnyGranted="ROLE_代理商管理">
                 <li    <c:if test="${type == 'agent'}">
                     class = "active"
@@ -86,8 +84,6 @@
             </security:authorize>
 
 
-
-
             <security:authorize ifAnyGranted="ROLE_订单管理">
                 <li <c:if test="${type == 'order'}">
                     class = "active"
@@ -106,7 +102,6 @@
             </security:authorize>
 
 
-
             <security:authorize ifAnyGranted="ROLE_订单配送管理">
                 <li  <c:if test="${type == 'assign'}">
                     class = "active"
@@ -121,7 +116,7 @@
                         <li><a href="${ctx}/order/assign.action?type=0" target="navTab" rel="w_assign">未配送</a></li>
                         <li><a href="${ctx}/order/assign.action?type=1" target="navTab" rel="w_assign">正在配送</a></li>
                         <li><a href="${ctx}/order/assign.action?type=2" target="navTab" rel="w_assign">已配送</a></li>
-                        <li><a href="${ctx}/order/assign.action?type=3" target="navTab" rel="w_assign">退货</a></li>
+                            <%--<li><a href="${ctx}/order/assign.action?type=3" target="navTab" rel="w_assign">退货</a></li>--%>
                     </ul>
                 </li>
 
@@ -144,10 +139,6 @@
                 </li>
 
             </security:authorize>
-
-
-
-
 
 
             <security:authorize ifAnyGranted="ROLE_直销统计">
