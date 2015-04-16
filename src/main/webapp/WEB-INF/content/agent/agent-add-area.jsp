@@ -3,32 +3,19 @@
 <div class="page">
     <div class="pageContent">
 
-        <form method="post" action="${ctx}/agent/agent!save.action" class="pageForm required-validate"
+        <form method="post" action="${ctx}/agent/agent!add.action" class="pageForm required-validate"
               onsubmit="return validateCallback(this,navTabAjaxDone)">
-            <input type="hidden" name="id" value="${id}"/>
+            <input type="hidden" name="id" value="${agent.id}"/>
 
             <div class="pageFormContent" layoutH="70">
 
                 <div class="unit">
                     <label>代理商称:</label>
-                    <c:if test="${id > 0}">
-                        <input type="text" name="agentName" value="${agentName}" readonly>
-                    </c:if>
-
-                    <c:if test="${id == null}">
-                        <select name="agentName" required="required">
-                            <option value="">--请选择--</option>
-                            <c:forEach items="${users}" var="item">
-                                <option value="${item.loginName}"
-                                        <c:if test="${item.loginName == agentName}">selected</c:if>>${item.loginName}</option>
-                            </c:forEach>
-
-                        </select>
-                    </c:if>
+                    <input type="text" name="agentName" value="${agent.agentName}" readonly>
                 </div>
 
                 <div class="unit">
-                    <label>所属省份:</label>
+                    <label>省份:</label>
                     <select name="provinceId" id="province" required="required">
                         <option value="">--请选择--</option>
                         <c:forEach items="${provinces}" var="item">
@@ -41,7 +28,7 @@
 
 
                 <div class="unit">
-                    <label>所属城市:</label>
+                    <label>城市:</label>
                     <select name="cityId" id="city" required="required">
                         <option value="">--请选择--</option>
                         <c:forEach items="${cities}" var="item">
@@ -53,25 +40,10 @@
                 </div>
 
                 <div class="unit">
-                    <label>代理产品:</label>
-                    <select name="productionId" id="productionId" required="required">
-                        <option value="">--请选择--</option>
-                        <c:forEach items="${productions}" var="item">
-                            <option value="${item.id}" <c:if test="${productionId ==item.id}">
-                                selected
-                            </c:if>>${item.productionName}</option>
-                        </c:forEach>
-                    </select>
-                </div>
-
-                <div class="unit">
                     <label>配送范围:</label>
 
                     <div id="area">
-                        <c:forEach items="${areas}" var="item">
-                            ${item.areaName}<input type="checkbox" name="areaIds" value="${item.id}" id="${item.id}"
-                                                   checked>
-                        </c:forEach>
+
                     </div>
                 </div>
 
@@ -105,7 +77,6 @@
 <script>
     $(function () {
         //根据省份获取城市列表
-        var id = "${id}";
 
         $("#province").change(function () {
             var provinceId = $(this).val();
@@ -129,19 +100,17 @@
 
         $("#city").change(function () {
             var cityId = $(this).val();
-            if (id == "") {
-                if (cityId != '') {
-                    $.post("area/area!getAreas.action", {
-                        cityId: cityId
-                    }, function (result) {
-                        $("#area").empty();
-                        for (var i = 0; i < result.length; i++) {
-                            var inputCheckbox = result[i].areaName + '<input type="checkbox" checked name="areaIds" value="' + result[i].id + '" id="' + result[i].id + '">'
-                            $("#area").append(inputCheckbox);
-                        }
+            if (cityId != '') {
+                $.post("area/area!getAreas.action", {
+                    cityId: cityId
+                }, function (result) {
+                    $("#area").empty();
+                    for (var i = 0; i < result.length; i++) {
+                        var inputCheckbox = result[i].areaName + '<input type="checkbox" checked name="areaIds" value="' + result[i].id + '" id="' + result[i].id + '">'
+                        $("#area").append(inputCheckbox);
+                    }
 
-                    })
-                }
+                })
             }
 
         })

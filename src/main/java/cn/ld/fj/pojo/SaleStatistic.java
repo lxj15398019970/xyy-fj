@@ -13,6 +13,26 @@ public class SaleStatistic {
 
     private String date;
 
+    private String agentName;
+
+    private String productionName;
+
+    public String getAgentName() {
+        return agentName;
+    }
+
+    public void setAgentName(String agentName) {
+        this.agentName = agentName;
+    }
+
+    public String getProductionName() {
+        return productionName;
+    }
+
+    public void setProductionName(String productionName) {
+        this.productionName = productionName;
+    }
+
     public String getDate() {
         return date;
     }

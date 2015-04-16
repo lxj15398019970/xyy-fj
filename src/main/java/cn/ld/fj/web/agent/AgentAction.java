@@ -3,6 +3,7 @@ package cn.ld.fj.web.agent;
 import cn.ld.fj.entity.*;
 import cn.ld.fj.entity.account.User;
 import cn.ld.fj.service.account.AccountManager;
+import cn.ld.fj.service.agent.AgentAreaManager;
 import cn.ld.fj.service.agent.AgentManager;
 import cn.ld.fj.service.dict.AreaManager;
 import cn.ld.fj.service.dict.CityManager;
@@ -50,7 +51,28 @@ public class AgentAction extends SimpleJsonActionSupport<Agent> {
     private CityManager cityManager;
     @Autowired
     private AreaManager areaManager;
+    @Autowired
+    private AgentAreaManager agentAreaManager;
 
+    private List<Long> areaIds = Lists.newArrayList();
+
+    private Agent agent;
+
+    public Agent getAgent() {
+        return agent;
+    }
+
+    public void setAgent(Agent agent) {
+        this.agent = agent;
+    }
+
+    public List<Long> getAreaIds() {
+        return areaIds;
+    }
+
+    public void setAreaIds(List<Long> areaIds) {
+        this.areaIds = areaIds;
+    }
 
     private List<User> users = Lists.newArrayList();
 
@@ -106,16 +128,24 @@ public class AgentAction extends SimpleJsonActionSupport<Agent> {
     protected void prepareModel() throws Exception {
         if (id != null) {
             entity = agentManager.getEntity(id);
+            List<AgentArea> agentAreas = agentAreaManager.findByProperty("agentId", id);
+            if (CollectionUtils.isNotEmpty(agentAreas)) {
+                for (AgentArea agentArea : agentAreas) {
+                    Area area = areaManager.getEntity(agentArea.getAreaId());
+                    if (area != null) {
+                        areas.add(area);
+                    }
+                }
+            }
 
         } else {
             entity = new Agent();
         }
 
-        users = accountManager.findAll();
+        users = accountManager.findByProperty(2);
         productions = productionManager.findAll();
         provinces = provinceManager.findAll();
         cities = cityManager.findAll();
-        areas = areaManager.findAll();
     }
 
     // -- CRUD Action 函数 --//
@@ -137,12 +167,12 @@ public class AgentAction extends SimpleJsonActionSupport<Agent> {
         Map<Long, Object> productionMap = productionManager.getProductionMap();
         Map<Long, String> provinceMap = provinceManager.getProvinceMap();
         Map<Long, String> cityMap = cityManager.getCityMap();
-        Map<Long, String> areaMap = areaManager.getAreaMap();
+        Map<Long, String> areaMap = agentAreaManager.getAgentAreaMap();
 
         for (Agent agent : page.getResult()) {
             agent.setProvinceName(provinceMap.get(agent.getProvinceId()));
             agent.setCityName(cityMap.get(agent.getCityId()));
-            agent.setAreaName(areaMap.get(agent.getAreaId()));
+            agent.setAreaScope(areaMap.get(agent.getId()));
             Production production = (Production) productionMap.get(agent.getProductionId());
             if (production != null) {
                 agent.setProductionName(production.getProductionName());
@@ -165,29 +195,72 @@ public class AgentAction extends SimpleJsonActionSupport<Agent> {
     public void save() throws Exception {
 
 
-        List<PropertyFilter> filters = Lists.newArrayList();
-        filters.add(new PropertyFilter("EQL_provinceId", entity.getProvinceId() + ""));
-        filters.add(new PropertyFilter("EQL_cityId", entity.getCityId() + ""));
-        filters.add(new PropertyFilter("EQL_areaId", entity.getAreaId() + ""));
-        filters.add(new PropertyFilter("EQL_productionId", entity.getProductionId() + ""));
+//        List<PropertyFilter> filters = Lists.newArrayList();
+//        filters.add(new PropertyFilter("EQL_provinceId", entity.getProvinceId() + ""));
+//        filters.add(new PropertyFilter("EQL_cityId", entity.getCityId() + ""));
+//        filters.add(new PropertyFilter("EQL_areaId", entity.getAreaId() + ""));
+//        filters.add(new PropertyFilter("EQL_productionId", entity.getProductionId() + ""));
+//
+//
+//        List<Agent> agents = agentManager.getAgents(filters);
+//        if (CollectionUtils.isNotEmpty(agents)) {
+//            Agent agent = agents.get(0);
+//            if (agent.getId() != entity.getId()) {
+//                Struts2Utils.renderHtml(DwzUtil.getFailReturn("该代理商已经有该区域的代理产品,不能重复添加"));
+//                return;
+//            }
+//        }
+        if (CollectionUtils.isEmpty(areaIds)) {
+            Struts2Utils.renderHtml(DwzUtil.getFailReturn("请选择代理区域"));
+            return;
+        }
 
+        agentManager.save(entity);
 
-        List<Agent> agents = agentManager.getAgents(filters);
-        if (CollectionUtils.isNotEmpty(agents)) {
-            Agent agent = agents.get(0);
-            if (agent.getId() != entity.getId()) {
-                Struts2Utils.renderHtml(DwzUtil.getFailReturn("该代理商已经有该区域的代理产品,不能重复添加"));
-                return;
+        List<AgentArea> agentAreas = agentAreaManager.findByProperty("agentId", entity.getId());
+        if (CollectionUtils.isNotEmpty(agentAreas)) {
+            for (AgentArea agentArea : agentAreas) {
+                agentAreaManager.delete(agentArea.getId());
             }
         }
 
+        for (Long id : areaIds) {
+            AgentArea agentArea = new AgentArea();
+            agentArea.setAgentId(entity.getId());
+            agentArea.setAreaId(id);
+            agentAreaManager.save(agentArea);
+        }
 
-        agentManager.save(entity);
         Struts2Utils.renderHtml(DwzUtil.getCloseCurrentReturn("w_agent",
                 "操作成功"));
 
 
     }
+
+    public String addArea() {
+        agent = agentManager.getEntity(id);
+        provinces = provinceManager.findAll();
+        return "add-area";
+    }
+
+    public void add() {
+
+        List<Long> exitIds = agentAreaManager.findExitIds(id);
+        for (Long areaId : areaIds) {
+            if (exitIds.contains(areaId)) {
+                continue;
+            }
+            AgentArea agentArea = new AgentArea();
+            agentArea.setAgentId(id);
+            agentArea.setAreaId(areaId);
+            agentAreaManager.save(agentArea);
+        }
+
+        Struts2Utils.renderHtml(DwzUtil.getCloseCurrentReturn("w_agent",
+                "操作成功"));
+
+    }
+
 
     @Override
     public void delete() throws Exception {

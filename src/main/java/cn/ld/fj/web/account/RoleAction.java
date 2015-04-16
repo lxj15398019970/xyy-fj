@@ -6,8 +6,6 @@ import cn.ld.fj.entity.account.Role;
 import cn.ld.fj.service.account.AccountManager;
 import cn.ld.fj.util.DwzUtil;
 import cn.ld.fj.web.JsonActionSupport;
-import cn.ld.fj.web.pojo.JsonMessagePojo;
-import net.esoar.modules.utils.encode.JsonBinder;
 import net.esoar.modules.utils.web.struts2.Struts2Utils;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -80,6 +78,11 @@ public class RoleAction extends JsonActionSupport<Role> {
 
     @Override
     public void delete() throws Exception {
+
+        if (id == 1) {
+            Struts2Utils.renderHtml(DwzUtil.getFailReturn("超级管理员角色不能被删除"));
+            return;
+        }
 
         accountManager.deleteRole(id);
 

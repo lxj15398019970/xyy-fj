@@ -1,22 +1,30 @@
 package cn.ld.fj.web.account;
 
 import cn.ld.fj.dao.HibernateUtils;
+import cn.ld.fj.entity.account.Authority;
 import cn.ld.fj.entity.account.Role;
 import cn.ld.fj.entity.account.User;
 import cn.ld.fj.service.account.AccountManager;
 import cn.ld.fj.util.DwzUtil;
 import cn.ld.fj.web.JsonActionSupport;
+import com.google.common.collect.Sets;
 import net.esoar.modules.orm.Page;
 import net.esoar.modules.orm.PropertyFilter;
+import net.esoar.modules.security.springsecurity.SpringSecurityUtils;
 import net.esoar.modules.utils.web.struts2.Struts2Utils;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.GrantedAuthorityImpl;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 用户管理Action.
@@ -83,17 +91,54 @@ public class UserAction extends JsonActionSupport<User> {
     @Override
     public void save() throws Exception {
         // 根据页面上的checkbox选择 整合User的Roles Set
+        List<Long> ids = checkedRoleIds;
+        if (CollectionUtils.isEmpty(ids)) {
+            Struts2Utils.renderHtml(DwzUtil.getFailReturn("请选择角色"));
+            return;
+        }
+
         HibernateUtils.mergeByCheckedIds(entity.getRoleList(), checkedRoleIds,
                 Role.class);
-
         accountManager.saveUser(entity);
+
+//
+//        Set<GrantedAuthority> authSet = Sets.newHashSet();
+//        for (Role role : entity.getRoleList()) {
+//            for (Authority authority : role.getAuthorityList()) {
+//                authSet.add(new GrantedAuthorityImpl(authority
+//                        .getPrefixedName()));
+//            }
+//        }
+//
+//
+//        boolean enabled = true;
+//        boolean accountNonExpired = true;
+//        boolean credentialsNonExpired = true;
+//        boolean accountNonLocked = true;
+//
+//        String currentUserName = SpringSecurityUtils.getCurrentUserName();
+//        User currentUser = accountManager.findUserByLoginName(currentUserName);
+//
+//        UserDetails userdetails = new org.springframework.security.core.userdetails.User(currentUser.getLoginName(), currentUser
+//                .getPassword(), enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authSet);
+//
+//
+//        SpringSecurityUtils.saveUserDetailsToContext(userdetails, ServletActionContext.getRequest());
+
         Struts2Utils.renderHtml(DwzUtil.getCloseCurrentReturn("w_user",
                 "操作成功"));
     }
 
     @Override
     public void delete() throws Exception {
-        accountManager.deleteUser(id);
+
+        try {
+            accountManager.deleteUser(id);
+        } catch (Exception e) {
+            Struts2Utils.renderHtml(DwzUtil.getFailReturn("超级管理员不能删除"));
+            return;
+        }
+
         Struts2Utils.renderHtml(DwzUtil.getNavtabReturn("w_user",
                 "操作成功"));
     }

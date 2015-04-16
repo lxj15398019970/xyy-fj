@@ -1,6 +1,7 @@
 package cn.ld.fj.web.order;
 
 import cn.ld.fj.entity.*;
+import cn.ld.fj.service.agent.AgentAreaManager;
 import cn.ld.fj.service.agent.AgentManager;
 import cn.ld.fj.service.dict.AreaManager;
 import cn.ld.fj.service.dict.CityManager;
@@ -61,6 +62,8 @@ public class OrderAction extends SimpleJsonActionSupport<Order> {
     private AreaManager areaManager;
     @Autowired
     private OrderBackupManager orderBackupManager;
+    @Autowired
+    private AgentAreaManager agentAreaManager;
 
     private File excel;
     private String excelFileName;
@@ -219,21 +222,13 @@ public class OrderAction extends SimpleJsonActionSupport<Order> {
         /**
          * 给该地区的代理商配送
          */
-
-        List<PropertyFilter> filters = Lists.newArrayList();
-        filters.add(new PropertyFilter("EQL_provinceId", entity.getProvinceId() + ""));
-        filters.add(new PropertyFilter("EQL_cityId", entity.getCityId() + ""));
-        filters.add(new PropertyFilter("EQL_areaId", entity.getAreaId() + ""));
-        filters.add(new PropertyFilter("EQL_productionId", entity.getProductionId() + ""));
-
-
-        List<Agent> agents = agentManager.getAgents(filters);
+        List<AgentArea> agents = agentAreaManager.findByProperty("areaId", entity.getAreaId());
         if (CollectionUtils.isEmpty(agents)) {
             Struts2Utils.renderHtml(DwzUtil.getFailReturn("还没有该地区的代理商，请先添加该地区的代理商"));
             return;
         }
 
-        entity.setAgentId(agents.get(0).getId());
+        entity.setAgentId(agents.get(0).getAgentId());
         entity.setOrderNo(DateUtil.getTimeStamp() + RandomCodeUtil.generateNumCode(5));
         entity.setTotalMoney(entity.getBuyCount() * production.getPrice());
         orderManager.save(entity);

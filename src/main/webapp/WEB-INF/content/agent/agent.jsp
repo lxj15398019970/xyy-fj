@@ -30,26 +30,34 @@
     <div class="pageContent">
         <div class="panelBar">
             <ul class="toolBar">
-                <li><a class="toolBar-btn" href="${ctx}/agent/agent!input.action" target="dialog" height ="500">添加</a></li>
+                <li><a class="toolBar-btn" href="${ctx}/agent/agent!input.action" target="navTab" rel="w_agent1">添加</a>
+                </li>
                 <li><a class="toolBar-btn2" href="${ctx}/agent/agent!delete.action?id={sid_user}" target="ajaxTodo"
                        title="确定要删除吗？" warn="请选择一个代理商">删除</a></li>
-                <li><a class="toolBar-btn" href="${ctx}/agent/agent!input.action?id={sid_user}" target="dialog"
-                       warn="请选择一个用户" height ="500">查看/修改</a></li>
+                <li><a class="toolBar-btn" href="${ctx}/agent/agent!input.action?id={sid_user}" target="navTab"
+                       rel="w_agent1"
+                       warn="请选择一个代理商">查看/修改</a></li>
+
+                <li><a class="toolBar-btn" href="${ctx}/agent/agent!addArea.action?id={sid_user}" target="navTab"
+                       rel="w_agent1"
+                       warn="请选择一个代理商">增加更多配送范围</a>
+                </li>
+
             </ul>
         </div>
         <div layouth="111">
             <table class="list" width="98%">
                 <thead>
                 <tr>
-                    <th width="80">ID</th>
-                    <th width="80">代理商名称</th>
-                    <th width="80">代理产品名称</th>
-                    <th width="80">代理产品型号</th>
-                    <th width="80">代理产品颜色</th>
-                    <th width="80">所在省</th>
-                    <th width="80">所在市</th>
-                    <th width="80">所在区</th>
-                    <th width="80">配送范围</th>
+                    <th width="5%">ID</th>
+                    <th width="5%">代理商名称</th>
+                    <th width="5%">代理产品名称</th>
+                    <th width="5%">代理产品型号</th>
+                    <th width="5%">代理产品颜色</th>
+                    <th width="5%">所在省</th>
+                    <th width="5%">所在市</th>
+                    <%--<th width="80">所在区</th>--%>
+                    <th width="65%">配送范围</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -62,7 +70,7 @@
                         <td>${color}&nbsp;</td>
                         <td>${provinceName}&nbsp;</td>
                         <td>${cityName}&nbsp;</td>
-                        <td>${areaName}&nbsp;</td>
+                            <%--<td>${areaName}&nbsp;</td>--%>
                         <td>${areaScope}&nbsp;</td>
                     </tr>
                 </s:iterator>

@@ -34,10 +34,10 @@
     <div class="pageContent">
         <div class="panelBar">
             <ul class="toolBar">
-                <li><a class="toolBar-btn" href="${ctx}/account/user!input.action" target="dialog">添加</a></li>
+                <li><a class="toolBar-btn" href="${ctx}/account/user!input.action" target="dialog" width="600" height="600">添加</a></li>
                 <li><a class="toolBar-btn2" href="${ctx}/account/user!delete.action?id={sid_user}" target="ajaxTodo"
                        title="确定要删除吗？" warn="请选择一个用户">删除</a></li>
-                <li><a class="toolBar-btn" href="${ctx}/account/user!input.action?id={sid_user}" target="dialog"
+                <li><a class="toolBar-btn" href="${ctx}/account/user!input.action?id={sid_user}" target="dialog" width="600" height="600"
                        warn="请选择一个用户">查看/修改</a></li>
             </ul>
         </div>

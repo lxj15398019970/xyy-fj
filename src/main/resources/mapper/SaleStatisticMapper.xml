@@ -6,30 +6,58 @@
 
     <select id="searchList" parameterType="Map" resultType="SaleStatistic">
         SELECT
-        SUBSTR(o.deal_time FROM 1 FOR 10) as date,
-        sum(o.buy_count) as totalBuy,
-        sum(o.total_money) as totalMoney
-        from es_order o
-        where o.`status` = 2
+        SUBSTR(o.deal_time FROM 1 FOR 10) AS date,
+        sum(o.buy_count) AS totalBuy,
+        sum(o.total_money) AS totalMoney,
+        g.agent_name AS agentName,
+        p.production_name AS productionName
+        FROM
+        es_order o
+        LEFT JOIN es_agent g ON g.id = o.agent_id
+        LEFT JOIN es_production p ON p.id = o.production_id
+        WHERE o.status = 2
+
         <if test="date != null">
             and o.deal_time like CONCAT(#{date},"%")
         </if>
 
-        GROUP BY SUBSTR(o.deal_time FROM 1 FOR 10)
+        <if test="agentName != null">
+            and g.agent_name = #{agentName}
+        </if>
+
+        <if test="productionId > 0">
+            and o.production_id = #{productionId}
+        </if>
+
+        GROUP BY
+        SUBSTR(o.deal_time FROM 1 FOR 10),
+        g.agent_name,
+        o.production_id
+        limit #{start},#{end}
 
     </select>
 
 
     <select id="getTotalCount" parameterType="Map" resultType="Integer">
         SELECT
-        count(1)
-        from es_order o
-        where o.`status` = 2
+        count(o.id)
+        FROM
+        es_order o
+        LEFT JOIN es_agent g ON g.id = o.agent_id
+        LEFT JOIN es_production p ON p.id = o.production_id
+        WHERE o.status = 2
+
         <if test="date != null">
             and o.deal_time like CONCAT(#{date},"%")
         </if>
-        GROUP BY SUBSTR(o.deal_time FROM 1 FOR 10)
 
+        <if test="agentName != null">
+            and g.agent_name = #{agentName}
+        </if>
+
+        <if test="productionId > 0">
+            and o.production_id = #{productionId}
+        </if>
 
     </select>
 

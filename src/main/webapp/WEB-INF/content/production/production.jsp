@@ -35,12 +35,15 @@
     <div class="pageContent">
         <div class="panelBar">
             <ul class="toolBar">
-                <li><a class="toolBar-btn" href="${ctx}/production/production!input.action" target="dialog">添加</a>
+                <li><a class="toolBar-btn" href="${ctx}/production/production!input.action" target="dialog"
+                       height="600">添加</a>
                 </li>
-                <li><a class="toolBar-btn2" href="${ctx}/production/production!delete.action?id={sid_user}" target="ajaxTodo"
+                <li><a class="toolBar-btn2" href="${ctx}/production/production!delete.action?id={sid_user}"
+                       target="ajaxTodo"
                        title="确定要删除吗？" warn="请选择一个产品">删除</a></li>
-                <li><a class="toolBar-btn" href="${ctx}/production/production!input.action?id={sid_user}" target="dialog"
-                       warn="请选择一个用户">查看/修改</a></li>
+                <li><a class="toolBar-btn" href="${ctx}/production/production!input.action?id={sid_user}"
+                       target="dialog"
+                       warn="请选择一个产品" height="600">查看/修改</a></li>
             </ul>
         </div>
         <div layouth="111">
