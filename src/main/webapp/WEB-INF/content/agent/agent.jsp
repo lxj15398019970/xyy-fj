@@ -40,7 +40,7 @@
 
                 <li><a class="toolBar-btn" href="${ctx}/agent/agent!addArea.action?id={sid_user}" target="navTab"
                        rel="w_agent1"
-                       warn="请选择一个代理商">增加配送范围</a>
+                       warn="请选择一个代理商">增加更多配送范围</a>
                 </li>
 
             </ul>
