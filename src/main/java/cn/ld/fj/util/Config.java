@@ -5,7 +5,7 @@ package cn.ld.fj.util;
  */
 public class Config {
     // public static String back_url = "/var/lib/tomcat7/backup/";
-    public static String back_url = "/Users/xjli/backup/";
+    public static String back_url = "/var/lib/tomcat7/webapps/backup/";
     public static String access_url = "http://120.24.161.74:8080/backup/";
 
 }

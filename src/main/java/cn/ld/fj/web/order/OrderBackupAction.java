@@ -142,7 +142,14 @@ public class OrderBackupAction extends SimpleJsonActionSupport<OrderBackup> {
                 orderStatus = "已配送";
             } else if (3 == item.getStatus()) {
                 orderStatus = "退单";
+            } else if (4 == item.getStatus()) {
+                orderStatus = "退货申请";
+            } else if (5 == item.getStatus()) {
+                orderStatus = "校准完成";
+            } else if (6 == item.getStatus()) {
+                orderStatus = "完成退货";
             }
+
 
             String orderTime = null;
             String assignTime = null;
