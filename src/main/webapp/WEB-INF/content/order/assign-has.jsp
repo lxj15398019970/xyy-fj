@@ -44,8 +44,10 @@
     <div class="pageContent">
         <div class="panelBar">
             <ul class="toolBar">
-                <%--<li><a class="toolBar-btn" href="${ctx}/order/order!input.action?id={sid_user}" target="dialog"--%>
-                <%--warn="请选择一条订单" height="600">配送</a></li>--%>
+                <security:authorize ifAnyGranted="ROLE_退货操作">
+                    <li><a class="toolBar-btn" href="${ctx}/order/assign!tui.action?id={sid_user}" target="dialog"
+                           warn="请选择一条订单">退货</a></li>
+                </security:authorize>
 
             </ul>
         </div>
@@ -97,11 +99,7 @@
                         </td>
 
                         <td>
-                            <c:if test="${status ==0}">未配送</c:if>
-                            <c:if test="${status ==1}">正在配送</c:if>
-                            <c:if test="${status ==2}">已配送</c:if>
-                            <c:if test="${status ==3}">退单</c:if>
-
+                            已配送
                         </td>
 
                     </tr>

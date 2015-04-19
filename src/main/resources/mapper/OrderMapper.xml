@@ -22,6 +22,7 @@
         <result property="orderTime" column="orderTime"/>
         <result property="dealTime" column="dealTime"/>
         <result property="orderNo" column="orderNo"/>
+        <result property="tuiReason" column="tuiReason"/>
         <association property="production" column="productionId=productionId" select="getProduction"/>
 
     </resultMap>
@@ -80,7 +81,8 @@
         p.province_name as provinceName,
         c.city_name as cityName,
         a.area_name as areaName,
-        g.agent_name as agentName
+        g.agent_name as agentName,
+        o.tui_reason as tuiReason
         from es_order o
         left join es_province p
         on o.province_id = p.id
@@ -98,12 +100,16 @@
             and o.order_time like CONCAT(#{createTime},"%")
         </if>
 
-        <if test="tui == 1">
-            and (o.status = 2 or o.status = 3)
-        </if>
 
         <if test="status >= 0">
-            and o.status = #{status}
+            <if test="status > 3">
+                and o.status &gt;3
+            </if>
+
+            <if test="status &lt; 4">
+                and o.status = #{status}
+            </if>
+
         </if>
 
         <if test="orderNo != null">
@@ -134,8 +140,16 @@
         </if>
 
         <if test="status >= 0">
-            and o.status = #{status}
+            <if test="status > 3">
+                and o.status &lt;3
+            </if>
+
+            <if test="status &lt; 4">
+                and o.status = #{status}
+            </if>
+
         </if>
+
 
         <if test="orderNo != null">
             and o.order_no = #{orderNo}
