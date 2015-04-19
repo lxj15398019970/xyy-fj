@@ -1,7 +1,11 @@
 package cn.ld.fj.web.order;
 
+import cn.ld.fj.entity.Agent;
 import cn.ld.fj.entity.Order;
 import cn.ld.fj.entity.OrderBackup;
+import cn.ld.fj.entity.account.User;
+import cn.ld.fj.service.account.AccountManager;
+import cn.ld.fj.service.agent.AgentManager;
 import cn.ld.fj.service.order.OrderBackupManager;
 import cn.ld.fj.service.order.OrderManager;
 import cn.ld.fj.util.Config;
@@ -15,6 +19,7 @@ import net.esoar.modules.orm.Page;
 import net.esoar.modules.orm.PropertyFilter;
 import net.esoar.modules.security.springsecurity.SpringSecurityUtils;
 import net.esoar.modules.utils.web.struts2.Struts2Utils;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
@@ -48,6 +53,10 @@ public class OrderBackupAction extends SimpleJsonActionSupport<OrderBackup> {
     private OrderBackupManager orderBackupManager;
     @Autowired
     private OrderManager orderManager;
+    @Autowired
+    private AccountManager accountManager;
+    @Autowired
+    private AgentManager agentManager;
 
     private String phone;
     private String createTime;
@@ -115,6 +124,21 @@ public class OrderBackupAction extends SimpleJsonActionSupport<OrderBackup> {
         int totalCount = orderManager.getTotalCount(map);
         map.put("end", totalCount);
 
+        String loginName = SpringSecurityUtils.getCurrentUserName();
+        User user = accountManager.findUserByLoginName(loginName);
+        List<Agent> agents = agentManager.findByProperty("agentName", loginName);
+        /**
+         * 如果是代理商，就获取自己的订单
+         */
+        List<Long> agentIds = Lists.newArrayList();
+        if (user.getUserType() == 2) {
+            if (CollectionUtils.isNotEmpty(agents)) {
+                for (Agent agent : agents) {
+                    agentIds.add(agent.getId());
+                }
+            }
+            map.put("agentIds", agentIds);
+        }
 
         List<Order> orderList = orderManager.getOrders(map);
         for (Order order : orderList) {
