@@ -13,7 +13,7 @@
 
                     <li>
                         <label>订单号:</label><input type="orderNo" name="orderNo"
-                                                   value="${orderNo}" size="9"/>
+                                                  value="${orderNo}" size="9"/>
                     </li>
 
 
@@ -24,7 +24,7 @@
 
                     <li>
                         <label>创建时间:</label><input type="text" name="createTime"
-                                                   value="${createTime}" class="date " />
+                                                   value="${createTime}" class="date "/>
                     </li>
 
                     <%--/**--%>
@@ -35,19 +35,19 @@
                     <%--*/--%>
 
 
-
                     <li>
                         <label>订单状态</label>
-                       <select name="status">
-                           <option value="-1">请选择</option>
-                           <option value="0" <c:if test="${status == 0}">selected</c:if> >未配送</option>
-                           <option value="1" <c:if test="${status == 1}">selected</c:if>>正在配送</option>
-                           <option value="2" <c:if test="${status == 2}">selected</c:if>>已配送</option>
-                           <option value="3" <c:if test="${status == 3}">selected</c:if>>退货</option>
+                        <select name="status">
+                            <option value="-1">请选择</option>
+                            <option value="0"
+                                    <c:if test="${status == 0}">selected</c:if> >未配送
+                            </option>
+                            <option value="1" <c:if test="${status == 1}">selected</c:if>>正在配送</option>
+                            <option value="2" <c:if test="${status == 2}">selected</c:if>>已配送</option>
+                            <option value="3" <c:if test="${status == 3}">selected</c:if>>退货</option>
 
 
-
-                       </select>
+                        </select>
 
 
                     </li>
@@ -68,7 +68,8 @@
     <div class="pageContent">
         <div class="panelBar">
             <ul class="toolBar">
-                <li><a class="toolBar-btn" href="${ctx}/order/order!input.action" target="dialog" height="600">录入订单</a></li>
+                <li><a class="toolBar-btn" href="${ctx}/order/order!input.action" target="dialog" height="600">录入订单</a>
+                </li>
                 <li><a class="toolBar-btn2" href="${ctx}/order/order!delete.action?id={sid_user}" target="ajaxTodo"
                        title="确定要删除吗？" warn="请选择一条订单">删除订单</a></li>
                 <li><a class="toolBar-btn" href="${ctx}/order/order!input.action?id={sid_user}" target="dialog"
@@ -127,7 +128,7 @@
                             <c:if test="${status ==0}">未配送</c:if>
                             <c:if test="${status ==1}">正在配送</c:if>
                             <c:if test="${status ==2}">已配送</c:if>
-                            <c:if test="${status ==3}">退货</c:if>
+                            <c:if test="${status ==3}">退单</c:if>
 
                         </td>
 

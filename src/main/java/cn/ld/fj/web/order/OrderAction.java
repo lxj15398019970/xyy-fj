@@ -247,56 +247,6 @@ public class OrderAction extends SimpleJsonActionSupport<Order> {
 
 
     /**
-     * 备份订单
-     *
-     * @throws Exception
-     */
-    public void backup() throws Exception {
-
-        Map<String, Object> map = new HashMap<String, Object>();
-
-        map.put("start", 0);
-        map.put("status", -1);
-        int totalCount = orderManager.getTotalCount(map);
-        map.put("end", totalCount);
-
-
-        List<Order> orderList = orderManager.getOrders(map);
-        for (Order order : orderList) {
-            order.setTotalMoney(order.getBuyCount() * order.getProduction().getPrice());
-        }
-
-
-        Date date = new Date();
-        for (Order order : orderList) {
-            OrderBackup backup = new OrderBackup();
-            backup.setOrderNo(order.getOrderNo());
-            backup.setTotalMoney(order.getBuyCount() * order.getProduction().getPrice());
-            backup.setAgentId(order.getAgentId());
-            backup.setOrderTime(order.getOrderTime());
-            backup.setStatus(order.getStatus());
-            backup.setAddress(order.getAddress());
-            backup.setAssignTime(order.getAssignTime());
-            backup.setBuyCount(order.getBuyCount());
-            backup.setProvinceId(order.getProvinceId());
-            backup.setCityId(order.getCityId());
-            backup.setAreaId(order.getAreaId());
-            backup.setProductionId(order.getProductionId());
-            backup.setPhone(order.getPhone());
-            backup.setAddress(order.getAddress());
-            backup.setCustomName(order.getCustomName());
-            backup.setBackupTime(date);
-            backup.setDealTime(order.getDealTime());
-            orderBackupManager.save(backup);
-
-        }
-        Struts2Utils.renderHtml(DwzUtil.getNavtabReturn("w_order",
-                "备份成功"));
-
-    }
-
-
-    /**
      * 导入订单
      *
      * @throws Exception

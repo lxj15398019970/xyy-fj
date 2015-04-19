@@ -90,7 +90,7 @@ public class Order extends IdEntity {
      * 0 未配送
      * 1	正在配送
      * 2	已配送
-     * 3	退货
+     * 3	退单
      */
     private int status;
 

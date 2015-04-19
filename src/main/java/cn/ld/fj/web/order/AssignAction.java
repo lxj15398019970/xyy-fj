@@ -131,8 +131,7 @@ public class AssignAction extends SimpleJsonActionSupport<Order> {
 
             //退单页取的是完成配送和退单的订单
             backJsp = "tui";
-            status = -1;
-            map.put("tui", 1);
+            status = 3;
         }
 
         map.put("status", status);
