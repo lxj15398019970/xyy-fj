@@ -59,6 +59,16 @@ public class AssignAction extends SimpleJsonActionSupport<Order> {
     private String type;
     private int status;
 
+    private long orderId;
+
+    public long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(long orderId) {
+        this.orderId = orderId;
+    }
+
     public int getStatus() {
         return status;
     }
@@ -99,8 +109,23 @@ public class AssignAction extends SimpleJsonActionSupport<Order> {
         this.createTime = createTime;
     }
 
+    private String tuiReason;
+
+    public String getTuiReason() {
+        return tuiReason;
+    }
+
+    public void setTuiReason(String tuiReason) {
+        this.tuiReason = tuiReason;
+    }
+
     @Override
     protected void prepareModel() throws Exception {
+        if (id != null) {
+            entity = orderManager.getEntity(id);
+        } else {
+            entity = new Order();
+        }
     }
 
     // -- CRUD Action 函数 --//
@@ -127,12 +152,12 @@ public class AssignAction extends SimpleJsonActionSupport<Order> {
         } else if ("2".equals(type)) {
             backJsp = "has";
             status = 2;
-        } else {
-
-            //退单页取的是完成配送和退单的订单
+        } else if ("3".equals(type)) {
             backJsp = "tui";
-            status = -1;
-            map.put("tui", 1);
+            status = 3;
+        } else {
+            backJsp = "tui-huo";
+            status = 4;
         }
 
         map.put("status", status);
@@ -232,6 +257,61 @@ public class AssignAction extends SimpleJsonActionSupport<Order> {
         }
         Struts2Utils.renderHtml(DwzUtil.getFailReturn("操作失败"));
         return;
+    }
+
+    public String tui() {
+        orderId = id;
+        return "tui-input";
+    }
+
+
+    public void tuiConfirm() {
+
+        entity = orderManager.getEntity(orderId);
+        if (entity == null) {
+            Struts2Utils.renderHtml(DwzUtil.getFailReturn("操作失败"));
+            return;
+        }
+        entity.setTuiReason(tuiReason);
+        entity.setStatus(4);
+        orderManager.save(entity);
+
+        Struts2Utils.renderHtml(DwzUtil.getCloseCurrentReturn("w_assign",
+                "提交申请成功"));
+
+    }
+
+
+    public void checkTui() {
+
+        entity = orderManager.getEntity(id);
+        if (entity == null || entity.getStatus() != 4) {
+            Struts2Utils.renderHtml(DwzUtil.getFailReturn("操作失败"));
+            return;
+        }
+
+        entity.setStatus(5);
+        orderManager.save(entity);
+
+        Struts2Utils.renderHtml(DwzUtil.getNavtabReturn("w_assign",
+                "校准成功"));
+
+    }
+
+
+    public void finishTui() {
+
+        entity = orderManager.getEntity(id);
+        if (entity == null || entity.getStatus() != 5) {
+            Struts2Utils.renderHtml(DwzUtil.getFailReturn("操作失败"));
+            return;
+        }
+        entity.setStatus(6);
+        orderManager.save(entity);
+
+        Struts2Utils.renderHtml(DwzUtil.getNavtabReturn("w_assign",
+                "完成退货"));
+
     }
 
 

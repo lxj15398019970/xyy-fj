@@ -95,12 +95,13 @@
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
-                        <li><a href="${ctx}/order/order.action" target="navTab" rel="w_order">订单管理</a></li>
-                        <li><a href="${ctx}/order/order-backup.action" target="navTab" rel="w_order">订单备份管理</a></li>
+
+                        <security:authorize ifAnyGranted="ROLE_订单管理">
+                            <li><a href="${ctx}/order/order.action" target="navTab" rel="w_order">订单管理</a></li>
+                        </security:authorize>
                     </ul>
                 </li>
             </security:authorize>
-
 
             <security:authorize ifAnyGranted="ROLE_订单配送管理">
                 <li  <c:if test="${type == 'assign'}">
@@ -116,7 +117,7 @@
                         <li><a href="${ctx}/order/assign.action?type=0" target="navTab" rel="w_assign">未配送</a></li>
                         <li><a href="${ctx}/order/assign.action?type=1" target="navTab" rel="w_assign">正在配送</a></li>
                         <li><a href="${ctx}/order/assign.action?type=2" target="navTab" rel="w_assign">已配送</a></li>
-                            <%--<li><a href="${ctx}/order/assign.action?type=3" target="navTab" rel="w_assign">退货</a></li>--%>
+                        <li><a href="${ctx}/order/assign.action?type=3" target="navTab" rel="w_assign">退单</a></li>
                     </ul>
                 </li>
 
@@ -134,10 +135,26 @@
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
-                        <li><a href="${ctx}/order/assign.action?type=3" target="navTab" rel="w_assign">退货管理</a></li>
+                        <li><a href="${ctx}/order/assign.action?type=4" target="navTab" rel="w_assign">退货管理</a></li>
                     </ul>
                 </li>
 
+            </security:authorize>
+
+            <security:authorize ifAnyGranted="ROLE_订单备份管理">
+                <li <c:if test="${type == 'backup'}">
+                    class = "active"
+                </c:if>>
+                    <a href="javascript:;" class="sider-menu">
+                        <i class="icon-file-alt"></i>
+                        <span class="title ">订单备份管理</span>
+
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="${ctx}/order/order-backup.action" target="navTab" rel="w_order">订单备份管理</a></li>
+                    </ul>
+                </li>
             </security:authorize>
 
 

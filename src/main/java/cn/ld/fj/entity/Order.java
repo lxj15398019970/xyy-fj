@@ -90,7 +90,10 @@ public class Order extends IdEntity {
      * 0 未配送
      * 1	正在配送
      * 2	已配送
-     * 3	退货
+     * 3	退单
+     * 4  退货申请
+     * 5 校准
+     * 6 退货完成
      */
     private int status;
 
@@ -118,6 +121,20 @@ public class Order extends IdEntity {
      * 订单号
      */
     private String orderNo;
+
+
+    /**
+     * 退货原因
+     */
+    private String tuiReason;
+
+    public String getTuiReason() {
+        return tuiReason;
+    }
+
+    public void setTuiReason(String tuiReason) {
+        this.tuiReason = tuiReason;
+    }
 
     public String getOrderNo() {
         return orderNo;

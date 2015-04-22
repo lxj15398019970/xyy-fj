@@ -3,7 +3,8 @@
 
 <div class="page">
     <div class="pageHeader">
-        <form id="pagerForm" onsubmit="return navTabSearch(this);" action="${ctx}/order/order.action" method="post">
+        <form id="pagerForm" onsubmit="return navTabSearch(this);" action="${ctx}/order/assign.action?type=4"
+              method="post">
             <input type="hidden" name="page.pageNo" id="pageNum" value="${page.pageNo}"/>
             <input type="hidden" name="page.orderBy" id="orderField" value="${page.orderBy}"/>
             <input type="hidden" name="page.order" id="order" value="${page.order}"/>
@@ -27,31 +28,6 @@
                                                    value="${createTime}" class="date "/>
                     </li>
 
-                    <%--/**--%>
-                    <%--* 0 未配送--%>
-                    <%--* 1	正在配送--%>
-                    <%--* 2	已配送--%>
-                    <%--* 3	退货--%>
-                    <%--*/--%>
-
-
-                    <li>
-                        <label>订单状态</label>
-                        <select name="status">
-                            <option value="-1">请选择</option>
-                            <option value="0"
-                                    <c:if test="${status == 0}">selected</c:if> >未配送
-                            </option>
-                            <option value="1" <c:if test="${status == 1}">selected</c:if>>正在配送</option>
-                            <option value="2" <c:if test="${status == 2}">selected</c:if>>已配送</option>
-                            <option value="3" <c:if test="${status == 3}">selected</c:if>>退货</option>
-
-
-                        </select>
-
-
-                    </li>
-
 
                     <li>
                         <div class="buttonActive">
@@ -64,19 +40,21 @@
             </div>
         </form>
     </div>
-    <div class="dashed-line"></div>
     <div class="pageContent">
         <div class="panelBar">
             <ul class="toolBar">
-                <li><a class="toolBar-btn" href="${ctx}/order/order!input.action" target="dialog" height="600">录入订单</a>
-                </li>
-                <li><a class="toolBar-btn2" href="${ctx}/order/order!delete.action?id={sid_user}" target="ajaxTodo"
-                       title="确定要删除吗？" warn="请选择一条订单">删除订单</a></li>
-                <li><a class="toolBar-btn" href="${ctx}/order/order!input.action?id={sid_user}" target="dialog"
-                       warn="请选择一条订单" height="600">查看/修改订单</a></li>
+                <security:authorize ifAnyGranted="ROLE_校准退货单">
+                    <li><a class="toolBar-btn" href="${ctx}/order/assign!checkTui.action?id={sid_user}"
+                           target="ajaxTodo"
+                           title="确定要校准吗?" warn="请选择一条订单">校准</a></li>
+                </security:authorize>
 
-                <li><a class="toolBar-btn" href="${ctx}/order/order!importOrderInput.action"
-                       target="dialog">导入订单</a></li>
+                <security:authorize ifAnyGranted="ROLE_完成退货">
+                    <li><a class="toolBar-btn" href="${ctx}/order/assign!finishTui.action?id={sid_user}"
+                           target="ajaxTodo"
+                           title="确定要完成退货吗?" warn="请选择一条订单">完成退货</a></li>
+                </security:authorize>
+
             </ul>
         </div>
         <div layouth="111">
@@ -85,7 +63,7 @@
                 <tr>
                     <th width="5%">ID</th>
                     <th width="5%">订单号</th>
-                    <th width="10%">产品名称</th>
+                    <th width="5%">产品名称</th>
                     <th width="5%">产品型号</th>
                     <th width="5%">产品颜色</th>
                     <th width="5%">单产品销售价格</th>
@@ -93,12 +71,13 @@
                     <th width="5%">总价款</th>
                     <th width="5%">产品参数</th>
                     <th width="10%">详细的配送地址</th>
-                    <th width="10%">姓名</th>
-                    <th width="10%">代理商</th>
+                    <th width="5%">姓名</th>
+                    <th width="5%">代理商</th>
                     <th width="5%">电话</th>
                     <th width="5%">创建时间</th>
                     <th width="5%">配送时间</th>
-                    <th width="10%">状态</th>
+                    <th width="5%">状态</th>
+                    <th width="25%">退货原因</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -125,15 +104,19 @@
                         </td>
 
                         <td>
-                            <c:if test="${status ==0}">未配送</c:if>
-                            <c:if test="${status ==1}">正在配送</c:if>
-                            <c:if test="${status ==2}">已配送</c:if>
-                            <c:if test="${status ==3}">退单</c:if>
-                            <c:if test="${status ==4}">退货申请</c:if>
-                            <c:if test="${status ==5}">校准</c:if>
-                            <c:if test="${status ==6}">退货完成</c:if>
+                            <c:if test="${status == 4}">
+                                退货申请
+                            </c:if>
+                            <c:if test="${status == 5}">
+                                校准完成
+                            </c:if>
+
+                            <c:if test="${status == 6}">
+                                退货完成
+                            </c:if>
 
                         </td>
+                        <td>${tuiReason}</td>
 
                     </tr>
                 </s:iterator>
@@ -153,37 +136,3 @@
 
     </div>
 </div>
-
-
-<script>
-    $(function () {
-
-
-        //根据省份获取城市列表
-        $("#provinceId").change(function () {
-            var provinceId = $(this).val();
-            if (provinceId != '0') {
-                $.post("city/city!getCities.action", {
-                    provinceId: provinceId
-                }, function (result) {
-                    $("#cityId").empty();
-                    var option;
-                    for (var i = 0; i < result.length; i++) {
-                        option = '<option value="' + result[i].id + '">' + result[i].cityName + '</option>'
-                        $("#cityId").append(option);
-                    }
-
-
-                })
-
-
-            }
-
-
-        })
-
-
-    })
-
-
-</script>

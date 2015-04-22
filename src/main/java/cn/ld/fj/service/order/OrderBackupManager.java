@@ -1,14 +1,14 @@
 package cn.ld.fj.service.order;
 
-import cn.ld.fj.dao.mybatis.OrderMybatisDao;
 import cn.ld.fj.dao.order.OrderBackupDao;
 import cn.ld.fj.entity.OrderBackup;
+import net.esoar.modules.orm.Page;
+import net.esoar.modules.orm.PropertyFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * 安全相关实体的管理类, 包括用户,角色,资源与授权类.
@@ -22,19 +22,14 @@ import java.util.Map;
 public class OrderBackupManager {
     @Autowired
     private OrderBackupDao orderBackupDao;
-    @Autowired
-    private OrderMybatisDao orderMybatisDao;
 
-    public void save(OrderBackup backup) {
-        orderBackupDao.save(backup);
+    @Transactional(readOnly = true)
+    public Page<OrderBackup> search(Page<OrderBackup> page, List<PropertyFilter> filters) {
+        return orderBackupDao.findPage(page, filters);
+
     }
 
-
-    public List<OrderBackup> getBackupOrders(Map<String,Object> map) {
-        return  orderMybatisDao.getBackupOrders(map);
-    }
-
-    public int getBackupTotalCount(Map<String,Object> map) {
-        return  orderMybatisDao.getBackupTotalCount(map);
+    public void save(OrderBackup orderBackup) {
+        orderBackupDao.save(orderBackup);
     }
 }

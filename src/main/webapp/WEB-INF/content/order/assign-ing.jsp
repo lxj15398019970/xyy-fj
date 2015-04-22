@@ -99,11 +99,7 @@
                         </td>
 
                         <td>
-                            <c:if test="${status ==0}">未配送</c:if>
-                            <c:if test="${status ==1}">正在配送</c:if>
-                            <c:if test="${status ==2}">已配送</c:if>
-                            <c:if test="${status ==3}">退货</c:if>
-
+                           正在配送
                         </td>
 
                     </tr>

@@ -43,10 +43,10 @@
     <div class="pageContent">
         <div class="panelBar">
             <ul class="toolBar">
-                <security:authorize ifAnyGranted="ROLE_退单操作">
-                    <li><a class="toolBar-btn" href="${ctx}/order/assign!cancel.action?id={sid_user}" target="ajaxTodo"
-                           title="确定要配送吗?" warn="请选择一条订单">退单</a></li>
-                </security:authorize>
+                <%--<security:authorize ifAnyGranted="ROLE_退单操作">--%>
+                <%--<li><a class="toolBar-btn" href="${ctx}/order/assign!cancel.action?id={sid_user}" target="ajaxTodo"--%>
+                <%--title="确定要配送吗?" warn="请选择一条订单">退单</a></li>--%>
+                <%--</security:authorize>--%>
             </ul>
         </div>
         <div layouth="111">
@@ -95,11 +95,7 @@
                         </td>
 
                         <td>
-                            <c:if test="${status ==0}">未配送</c:if>
-                            <c:if test="${status ==1}">正在配送</c:if>
-                            <c:if test="${status ==2}">已配送</c:if>
-                            <c:if test="${status ==3}">退货</c:if>
-
+                            退单
                         </td>
 
                     </tr>

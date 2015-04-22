@@ -84,8 +84,6 @@
 <div id="layout">
 
 
-
-
     <div id="header">
         <div id="navMenu">
             <h1 id="logo">直销管家</h1>
@@ -108,12 +106,18 @@
                 <security:authorize ifAnyGranted="ROLE_订单管理">
                     <li class="top-menu"><a href="${ctx}/main.action?type=order"><span>订单管理</span></a></li>
                 </security:authorize>
+
                 <security:authorize ifAnyGranted="ROLE_订单配送管理">
                     <li class="top-menu"><a href="${ctx}/main.action?type=assign"><span>订单配送管理</span></a></li>
                 </security:authorize>
 
                 <security:authorize ifAnyGranted="ROLE_退货管理">
                     <li class="top-menu"><a href="${ctx}/main.action?type=tui"><span>退货管理</span></a></li>
+                </security:authorize>
+
+
+                <security:authorize ifAnyGranted="ROLE_订单备份管理">
+                    <li class="top-menu"><a href="${ctx}/main.action?type=backup"><span>订单备份管理</span></a></li>
                 </security:authorize>
 
                 <security:authorize ifAnyGranted="ROLE_直销统计">
