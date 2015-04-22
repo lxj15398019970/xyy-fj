@@ -4,13 +4,11 @@ import cn.ld.fj.entity.account.Authority;
 import cn.ld.fj.entity.account.Role;
 import cn.ld.fj.entity.account.User;
 import com.google.common.collect.Sets;
-import org.apache.commons.lang.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider;
-import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
@@ -18,7 +16,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
 import java.util.Set;
 
 /**
@@ -40,13 +37,24 @@ public class SignedUsernamePasswordAuthenticationProvider extends
     protected UserDetails retrieveUser(String username,
                                        UsernamePasswordAuthenticationToken authentication)
             throws AuthenticationException {
+
+
+        if (username == null || username == "") {
+            throw new AuthenticationServiceException("用户名不能为空");
+        }
+
         User user = accountManager.findUserByLoginName(username);
-        if (null == authentication.getCredentials()) {
+        if (null == authentication.getCredentials() || authentication.getCredentials() == "") {
             throw new AuthenticationServiceException("用户" + username + " 登录密码不能为空");
         }
         if (user == null) {
             throw new AuthenticationServiceException("用户名或密码错误");
         }
+
+        if (!user.getPassword().equals(authentication.getCredentials().toString())) {
+            throw new AuthenticationServiceException("用户名或密码错误");
+        }
+
         return loadUser(user);
     }
 
