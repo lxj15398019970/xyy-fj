@@ -30,6 +30,7 @@
             -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
             box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
         }
+
         .login-tips-txt {
             position: absolute;
             left: 50%;
@@ -41,6 +42,7 @@
             color: #fff;
             font-size: 16px;
         }
+
         .login-tips-txt a,
         .login-tips-txt a:hover {
             color: #000;
@@ -114,16 +116,17 @@
             </s:if>
         </p>
 
-       用户名 <input type='text' id='j_username' name='j_username' size="20" class="input-block-level"/>
-        密码
-        <input type='password' id='j_password' name='j_password' size="20" class="input-block-level"/>
+        用户名 <input type='text' id='j_username' name='j_username' size="20" class="input-block-level"/>
+        密码<input type='password' id='j_password' name='j_password' size="20" class="input-block-level"/>
         <label class="checkbox">
             <input type="checkbox" value="remember-me" name="_spring_security_remember_me"/> 两周内记住我
         </label>
         <button class="sub-btn" type="submit">登录</button>
     </form>
 
-    <p class="login-tips-txt">推荐浏览器：Chrome <a class="download" href="http://dlsw.baidu.com/sw-search-sp/2014_12_15_22/bind1/14744/rj_tf0429.exe" target="_blank">点击下载</a> 或IE8以上</p>
+    <p class="login-tips-txt">推荐浏览器：Chrome <a class="download"
+                                              href="http://dlsw.baidu.com/sw-search-sp/2014_12_15_22/bind1/14744/rj_tf0429.exe"
+                                              target="_blank">点击下载</a> 或IE8以上</p>
 </div>
 
 </body>
