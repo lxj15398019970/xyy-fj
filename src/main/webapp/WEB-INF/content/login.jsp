@@ -33,7 +33,7 @@
         .login-tips-txt {
             position: absolute;
             left: 50%;
-            top: 65%;
+            top: 70%;
             margin-left: -400px;
             /*margin-top: -160px;*/
             width: 800px;
