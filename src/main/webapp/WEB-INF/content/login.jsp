@@ -30,6 +30,21 @@
             -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
             box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
         }
+        .login-tips-txt {
+            position: absolute;
+            left: 50%;
+            top: 65%;
+            margin-left: -400px;
+            /*margin-top: -160px;*/
+            width: 800px;
+            text-align: center;
+            color: #fff;
+            font-size: 16px;
+        }
+        .login-tips-txt a,
+        .login-tips-txt a:hover {
+            color: #000;
+        }
 
         .form-signin .form-signin-heading,
         .form-signin .checkbox {
@@ -108,6 +123,7 @@
         <button class="sub-btn" type="submit">登录</button>
     </form>
 
+    <p class="login-tips-txt">推荐浏览器：Chrome <a class="download" href="http://dlsw.baidu.com/sw-search-sp/2014_12_15_22/bind1/14744/rj_tf0429.exe" target="_blank">点击下载</a> 或IE8以上</p>
 </div>
 
 </body>
