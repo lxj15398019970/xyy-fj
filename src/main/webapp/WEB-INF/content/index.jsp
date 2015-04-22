@@ -6,7 +6,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no"/>
 
     <meta charset="UTF-8">
 
@@ -127,6 +128,7 @@
             <p class="text-right">
                 欢迎您<%=SpringSecurityUtils.getCurrentUserName()%><a href="${ctx}/j_spring_security_logout"><span
                     style="color:#fff">[退出登陆]</span></a>
+                <a width="600" target="dialog" href="${ctx}/main!passwordInput.action">修改密码</a>
             </p>
         </div>
     </div>

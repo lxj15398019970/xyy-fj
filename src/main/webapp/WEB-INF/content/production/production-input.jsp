@@ -38,7 +38,7 @@
 
                 <div class="unit">
                     <label>确认条形码:</label>
-                    <input type="text" name="codeConfirm" size="40" id="codeConfirm" class="required" value="${code}"/>
+                    <input type="text" name="codeConfirm" size="40" id="codeConfirm" class="required" value="${code}" equalto="#code"/>
                 </div>
 
                 <div class="unit">
