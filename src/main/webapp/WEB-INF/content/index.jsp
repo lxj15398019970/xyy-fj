@@ -199,7 +199,7 @@
 </div>
 
 
-<div id="footer">Copyright &copy; 2010 <a href="http://www.jlusoft.com" target="dialog">lxj</a></div>
+<div id="footer">Copyright &copy; 2010 <a href="#" target="dialog">lxj</a></div>
 
 
 </body>
