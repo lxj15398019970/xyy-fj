@@ -1,13 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ include file="/common/taglibs.jsp" %>
+
 <div class="page">
     <div class="pageContent">
+
 
         <form method="post" action="${ctx}/account/user!save.action" class="pageForm required-validate"
               onsubmit="return validateCallback(this, dialogAjaxDone)">
             <input type="hidden" name="id" value="${id}"/>
 
-            <div class="pageFormContent" layoutH="70">
+            <div class="pageFormContent" layoutH="70" id="user-accource">
 
                 <div class="unit">
                     <label>登录名:</label>
