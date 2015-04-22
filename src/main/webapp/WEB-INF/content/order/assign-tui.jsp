@@ -13,19 +13,19 @@
                 <ul class="searchContent">
 
                     <li>
-                        <label>订单号:</label><input type="orderNo" name="orderNo"
+                        <label>订单号:</label><input type="orderNo" class="textInput" name="orderNo"
                                                   value="${orderNo}" size="9"/>
                     </li>
 
 
                     <li>
-                        <label>订单电话:</label><input type="phone" name="phone"
+                        <label>订单电话:</label><input type="phone" class="textInput" name="phone"
                                                    value="${phone}" size="9"/>
                     </li>
 
                     <li>
                         <label>创建时间:</label><input type="text" name="createTime"
-                                                   value="${createTime}" class="date "/>
+                                                   value="${createTime}" class="date textInput"/>
                     </li>
 
 

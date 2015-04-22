@@ -12,19 +12,19 @@
                 <ul class="searchContent">
 
                     <li>
-                        <label>订单号:</label><input type="orderNo" name="orderNo"
+                        <label>订单号:</label><input type="orderNo" class="textInput" name="orderNo"
                                                   value="${orderNo}" size="9"/>
                     </li>
 
 
                     <li>
-                        <label>订单电话:</label><input type="phone" name="phone"
+                        <label>订单电话:</label><input type="phone" class="textInput" name="phone"
                                                    value="${phone}" size="9"/>
                     </li>
 
                     <li>
                         <label>创建时间:</label><input type="text" name="createTime"
-                                                   value="${createTime}" class="date "/>
+                                                   value="${createTime}" class="date textInput"/>
                     </li>
 
                     <%--/**--%>
@@ -68,12 +68,12 @@
     <div class="pageContent">
         <div class="panelBar">
             <ul class="toolBar">
-                <li><a class="toolBar-btn" href="${ctx}/order/order!input.action" target="dialog" height="600">录入订单</a>
+                <li><a class="toolBar-btn" href="${ctx}/order/order!input.action" target="dialog" height="450">录入订单</a>
                 </li>
                 <li><a class="toolBar-btn2" href="${ctx}/order/order!delete.action?id={sid_user}" target="ajaxTodo"
                        title="确定要删除吗？" warn="请选择一条订单">删除订单</a></li>
                 <li><a class="toolBar-btn" href="${ctx}/order/order!input.action?id={sid_user}" target="dialog"
-                       warn="请选择一条订单" height="600">查看/修改订单</a></li>
+                       warn="请选择一条订单" height="450">查看/修改订单</a></li>
 
                 <li><a class="toolBar-btn" href="${ctx}/order/order!importOrderInput.action"
                        target="dialog">导入订单</a></li>

@@ -12,12 +12,12 @@
             <div class="searchBar">
                 <ul class="searchContent">
                     <li>
-                        <label>产品名称:</label><input type="text" name="filter_EQS_productionName"
+                        <label>产品名称:</label><input type="text" class="textInput" name="filter_EQS_productionName"
                                                    value="${param['filter_EQS_productionName']}" size="9"/>
                     </li>
 
                     <li>
-                        <label>规格:</label><input type="text" name="filter_EQS_version"
+                        <label>规格:</label><input type="text" class="textInput" name="filter_EQS_version"
                                                  value="${param['filter_EQS_version']}" size="9"/>
                     </li>
                     <li>
@@ -36,14 +36,14 @@
         <div class="panelBar">
             <ul class="toolBar">
                 <li><a class="toolBar-btn" href="${ctx}/production/production!input.action" target="dialog"
-                       height="600">添加</a>
+                       height="500">添加</a>
                 </li>
                 <li><a class="toolBar-btn2" href="${ctx}/production/production!delete.action?id={sid_user}"
                        target="ajaxTodo"
                        title="确定要删除吗？" warn="请选择一个产品">删除</a></li>
                 <li><a class="toolBar-btn" href="${ctx}/production/production!input.action?id={sid_user}"
                        target="dialog"
-                       warn="请选择一个产品" height="600">查看/修改</a></li>
+                       warn="请选择一个产品" height="500">查看/修改</a></li>
             </ul>
         </div>
         <div layouth="111">

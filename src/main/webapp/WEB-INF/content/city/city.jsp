@@ -11,7 +11,7 @@
             <div class="searchBar">
                 <ul class="searchContent">
                     <li>
-                        <label>名称:</label><input type="text" name="filter_EQS_cityName"
+                        <label>名称:</label><input type="text" class="textInput" name="filter_EQS_cityName"
                                                  value="${param['filter_EQS_cityName']}" size="9"/>
                     </li>
 

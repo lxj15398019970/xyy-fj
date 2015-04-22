@@ -1190,6 +1190,7 @@ a:hover {
 .accordion .accordionContent {
     display: block;
     overflow: auto;
+    *overflow: hidden;
 }
 
 .accordion .accordionHeader.hover {
@@ -1419,6 +1420,8 @@ a:hover {
 .pagination li.jumpto .textInput {
     float: left;
     width: 30px;
+    height: 20px;
+    line-height: 20px;
     padding: 1px;
     border-color: #acaeaf;
     text-align: center;
@@ -1879,6 +1882,7 @@ select {
     -webkit-appearance: none !important;
     background: #fff url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+) no-repeat 100% center;
     padding-right: 20px;
+    padding-right: 0 \0;
 
 }
 
@@ -2390,6 +2394,7 @@ body {
     overflow: hidden;
     margin: 0 10px 10px 0;
 }
+
 
 .searchBar label {
     width: 60px;
@@ -3530,6 +3535,7 @@ ul.page-sidebar-menu > li > ul.sub-menu li > ul.sub-menu > li > a > i {
 ul.page-sidebar-menu > li > a {
     color: #fff !important;
     font-size: 14px;
+    *display: block;
 }
 
 ul.page-sidebar-menu > li > a span {
@@ -3559,6 +3565,7 @@ ul.page-sidebar-menu > li.active > a {
     /*background: #0188cc !important;*/
     border-top-color: transparent !important;
     color: #ffffff;
+
 }
 
 ul.page-sidebar-menu > li.active > a i {
@@ -3608,6 +3615,9 @@ ul.page-sidebar-menu > li > a .arrow{
     border-left: 4px solid #fff;
     border-top: 4px solid transparent;
     border-bottom: 4px solid transparent;
+    *position: absolute;
+    *right:4px;
+    *top:2px;
 }
 
 

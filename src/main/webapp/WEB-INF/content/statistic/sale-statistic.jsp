@@ -13,7 +13,7 @@
                 <ul class="searchContent">
                     <li>
                         <label>日期:</label><input type="text" name="date"
-                                                 value="${date}" class="date"/>
+                                                 value="${date}" class="date textInput"/>
                     </li>
 
                     <li>

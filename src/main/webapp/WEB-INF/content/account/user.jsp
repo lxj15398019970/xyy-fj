@@ -11,11 +11,11 @@
             <div class="searchBar">
                 <ul class="searchContent">
                     <li>
-                        <label>登录名:</label><input type="text" name="filter_EQS_loginName"
+                        <label>登录名:</label><input type="text" class="textInput" name="filter_EQS_loginName"
                                                   value="${param['filter_EQS_loginName']}" size="9"/>
                     </li>
                     <li>
-                        <label>姓名或Email:</label><input type="text" name="filter_LIKES_name_OR_email"
+                        <label>姓名或Email:</label><input type="text" class="textInput" name="filter_LIKES_name_OR_email"
                                                        value="${param['filter_LIKES_name_OR_email']}"/>
                     </li>
                     <li>

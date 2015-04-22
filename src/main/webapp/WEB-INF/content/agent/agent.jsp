@@ -12,7 +12,7 @@
                 <ul class="searchContent">
                     <li>
                         <label>代理商名称:</label>
-                        <input type="text" name="filter_EQS_agentName"
+                        <input type="text" class="textInput" name="filter_EQS_agentName"
                                value="${param['filter_EQS_agentName']}" size="9"/>
                     </li>
                     <li>

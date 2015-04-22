@@ -10,7 +10,7 @@
 		<div class="searchBar">
 			<ul class="searchContent">
                 <li>
-                    <label>省份名称:</label><input type="text" name="filter_EQS_provinceName" value="${param['filter_EQS_provinceName']}" size="9"/>
+                    <label>省份名称:</label><input type="text" class="textInput" name="filter_EQS_provinceName" value="${param['filter_EQS_provinceName']}" size="9"/>
                 </li>
 				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">检索</button></div></div></li>
 			</ul>
