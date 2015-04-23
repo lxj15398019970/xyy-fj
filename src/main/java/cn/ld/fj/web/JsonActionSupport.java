@@ -66,6 +66,8 @@ public abstract class JsonActionSupport<T> extends ActionSupport implements Mode
 	public void prepare() throws Exception {
 	}
 
+
+
 	/**
 	 * 定义在input()前执行二次绑定.
 	 */
