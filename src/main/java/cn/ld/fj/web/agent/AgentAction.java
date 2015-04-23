@@ -199,6 +199,7 @@ public class AgentAction extends SimpleJsonActionSupport<Agent> {
         filters.add(new PropertyFilter("EQL_provinceId", entity.getProvinceId() + ""));
         filters.add(new PropertyFilter("EQL_cityId", entity.getCityId() + ""));
         filters.add(new PropertyFilter("EQL_productionId", entity.getProductionId() + ""));
+        filters.add(new PropertyFilter("EQS_agentName", entity.getAgentName()));
 
 
         List<Agent> agents = agentManager.getAgents(filters);
@@ -206,17 +207,14 @@ public class AgentAction extends SimpleJsonActionSupport<Agent> {
             for (Agent agent1 : agents) {
 
                 List<AgentArea> agentAreas = agentAreaManager.findByProperty("agentId", agent1.getId());
-                String ids = "";
+                List<Long> ids = Lists.newArrayList();
                 if (CollectionUtils.isNotEmpty(agentAreas)) {
                     for (AgentArea agentArea : agentAreas) {
-                        ids = ids + agentArea.getId() + ",";
+                        ids.add(agentArea.getAreaId());
                     }
-                    if (ids.lastIndexOf(",") > 0) {
-                        ids = ids.substring(0, ids.lastIndexOf(","));
-                        if (ids.equals(areaIds) && agent1.getId() != entity.getId()) {
-                            Struts2Utils.renderHtml(DwzUtil.getFailReturn("不能重复添加"));
-                            return;
-                        }
+                    if (ids.equals(areaIds) && agent1.getId() != entity.getId()) {
+                        Struts2Utils.renderHtml(DwzUtil.getFailReturn("不能重复添加"));
+                        return;
                     }
 
                 }
