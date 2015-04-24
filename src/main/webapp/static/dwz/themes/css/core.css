@@ -3700,13 +3700,13 @@ div#sidebar li.open a span.title {
     }
 }
 
-@media screen and (max-width: 1200px){
+@media screen and (max-width: 1342px){
     #navMenu li span {
         padding: 0 5px;
     }
 }
 
-@media screen and (max-width: 1124px) {
+@media screen and (max-width: 1170px) {
     #navMenu li span{
         padding: 0 8px;
     }
