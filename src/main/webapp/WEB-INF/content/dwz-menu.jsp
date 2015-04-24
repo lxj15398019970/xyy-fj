@@ -117,7 +117,7 @@
                         <li><a href="${ctx}/order/assign.action?type=0" target="navTab" rel="w_assign">未配送</a></li>
                         <li><a href="${ctx}/order/assign.action?type=1" target="navTab" rel="w_assign">正在配送</a></li>
                         <li><a href="${ctx}/order/assign.action?type=2" target="navTab" rel="w_assign">已配送</a></li>
-                        <li><a href="${ctx}/order/assign.action?type=3" target="navTab" rel="w_assign">退单</a></li>
+                        <li><a href="${ctx}/order/assign.action?type=3" target="navTab" rel="w_assign">退单信息</a></li>
                     </ul>
                 </li>
 

@@ -195,21 +195,32 @@ public class AgentAction extends SimpleJsonActionSupport<Agent> {
     public void save() throws Exception {
 
 
-//        List<PropertyFilter> filters = Lists.newArrayList();
-//        filters.add(new PropertyFilter("EQL_provinceId", entity.getProvinceId() + ""));
-//        filters.add(new PropertyFilter("EQL_cityId", entity.getCityId() + ""));
-//        filters.add(new PropertyFilter("EQL_areaId", entity.getAreaId() + ""));
-//        filters.add(new PropertyFilter("EQL_productionId", entity.getProductionId() + ""));
-//
-//
-//        List<Agent> agents = agentManager.getAgents(filters);
-//        if (CollectionUtils.isNotEmpty(agents)) {
-//            Agent agent = agents.get(0);
-//            if (agent.getId() != entity.getId()) {
-//                Struts2Utils.renderHtml(DwzUtil.getFailReturn("该代理商已经有该区域的代理产品,不能重复添加"));
-//                return;
-//            }
-//        }
+        List<PropertyFilter> filters = Lists.newArrayList();
+        filters.add(new PropertyFilter("EQL_provinceId", entity.getProvinceId() + ""));
+        filters.add(new PropertyFilter("EQL_cityId", entity.getCityId() + ""));
+        filters.add(new PropertyFilter("EQL_productionId", entity.getProductionId() + ""));
+        filters.add(new PropertyFilter("EQS_agentName", entity.getAgentName()));
+
+
+        List<Agent> agents = agentManager.getAgents(filters);
+        if (CollectionUtils.isNotEmpty(agents)) {
+            for (Agent agent1 : agents) {
+
+                List<AgentArea> agentAreas = agentAreaManager.findByProperty("agentId", agent1.getId());
+                List<Long> ids = Lists.newArrayList();
+                if (CollectionUtils.isNotEmpty(agentAreas)) {
+                    for (AgentArea agentArea : agentAreas) {
+                        ids.add(agentArea.getAreaId());
+                    }
+                    if (ids.equals(areaIds) && agent1.getId() != entity.getId()) {
+                        Struts2Utils.renderHtml(DwzUtil.getFailReturn("不能重复添加"));
+                        return;
+                    }
+
+                }
+            }
+
+        }
         if (CollectionUtils.isEmpty(areaIds)) {
             Struts2Utils.renderHtml(DwzUtil.getFailReturn("请选择代理区域"));
             return;

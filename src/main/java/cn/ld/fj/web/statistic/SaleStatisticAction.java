@@ -72,14 +72,23 @@ public class SaleStatisticAction extends SimpleJsonActionSupport<SaleStatistic> 
         this.productionId = productionId;
     }
 
-    private String date;
+    private String startDate;
+    private String endDate;
 
-    public String getDate() {
-        return date;
+    public String getStartDate() {
+        return startDate;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
 
     public List<String> getAgents() {
@@ -122,7 +131,8 @@ public class SaleStatisticAction extends SimpleJsonActionSupport<SaleStatistic> 
 
         map.put("start", (page.getPageNo() - 1) * 10);
         map.put("end", page.getPageNo() * 10);
-        map.put("date", StringUtils.isEmpty(date) ? null : date);
+        map.put("startDate", StringUtils.isEmpty(startDate) ? null : startDate);
+        map.put("endDate", StringUtils.isEmpty(endDate) ? null : endDate);
         map.put("agentName", StringUtils.isEmpty(agentName) ? null : agentName);
         map.put("productionId", productionId);
 
@@ -134,7 +144,7 @@ public class SaleStatisticAction extends SimpleJsonActionSupport<SaleStatistic> 
         page.setResult(saleStatistics);
         page.setTotalCount(totalCount);
 
-      //如果是代理商
+        //如果是代理商
         if (user != null && user.getUserType() == 2) {
             agents.add(agentName);
         } else {

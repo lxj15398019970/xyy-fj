@@ -69,6 +69,13 @@ public class RoleAction extends JsonActionSupport<Role> {
     @Override
     public void save() throws Exception {
         //根据页面上的checkbox 整合Role的Authorities Set.
+
+        Role role = accountManager.getRoleByName(entity.getName());
+        if (role != null && role.getId() != entity.getId()) {
+            Struts2Utils.renderHtml(DwzUtil.getFailReturn("该角色已经存在"));
+            return;
+        }
+
         HibernateUtils.mergeByCheckedIds(entity.getAuthorityList(), checkedAuthIds, Authority.class);
         //保存用户并放入成功信息.
         accountManager.saveRole(entity);

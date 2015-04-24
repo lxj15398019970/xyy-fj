@@ -12,8 +12,13 @@
             <div class="searchBar">
                 <ul class="searchContent">
                     <li>
-                        <label>日期:</label><input type="text" name="date"
-                                                 value="${date}" class="date textInput"/>
+                        <label>开始日期:</label><input type="text" name="startDate"
+                                                 value="${startDate}" class="date textInput"/>
+                    </li>
+
+                    <li>
+                        <label>结束日期:</label><input type="text" name="endDate"
+                                                   value="${endDate}" class="date textInput"/>
                     </li>
 
                     <li>

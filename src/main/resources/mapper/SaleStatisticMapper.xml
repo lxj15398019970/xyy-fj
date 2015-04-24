@@ -17,9 +17,14 @@
         LEFT JOIN es_production p ON p.id = o.production_id
         WHERE o.status = 2
 
-        <if test="date != null">
-            and o.deal_time like CONCAT(#{date},"%")
+        <if test="startDate != null">
+            and o.deal_time &gt;#{startDate}
         </if>
+
+        <if test="endDate != null">
+            and o.deal_time &lt;#{endDate}
+        </if>
+
 
         <if test="agentName != null">
             and g.agent_name = #{agentName}
@@ -47,8 +52,12 @@
         LEFT JOIN es_production p ON p.id = o.production_id
         WHERE o.status = 2
 
-        <if test="date != null">
-            and o.deal_time like CONCAT(#{date},"%")
+        <if test="startDate != null">
+            and o.deal_time &gt;#{startDate}
+        </if>
+
+        <if test="endDate != null">
+            and o.deal_time &lt;#{endDate}
         </if>
 
         <if test="agentName != null">

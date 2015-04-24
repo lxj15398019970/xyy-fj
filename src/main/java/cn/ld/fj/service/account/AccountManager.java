@@ -134,4 +134,8 @@ public class AccountManager {
     public List<User> findByProperty(int type) {
         return userDao.findBy("userType", type);
     }
+
+    public Role getRoleByName(String name) {
+        return roleDao.findUniqueBy("name",name);
+    }
 }
