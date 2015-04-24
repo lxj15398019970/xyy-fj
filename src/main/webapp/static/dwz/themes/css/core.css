@@ -3116,7 +3116,9 @@ body {
 }
 
 #navMenu .text-right {
-    float: right;
+    position: absolute;
+    right:0;
+    top:0;
     color: #fff;
     font-size: 14px;
     line-height: 50px;
@@ -3692,15 +3694,22 @@ div#sidebar li.open a span.title {
 .red {
     color: red;
 }
+@media screen and (max-width: 1300px){
+    #navMenu li span{
+        padding: 0 8px;
+    }
+}
 
-
-@media screen and (min-width: 940px) and (max-width: 1020px) {
+@media screen and (max-width: 1200px){
     #navMenu li span {
         padding: 0 5px;
     }
 }
 
-@media screen and (max-width: 940px) {
+@media screen and (max-width: 1124px) {
+    #navMenu li span{
+        padding: 0 8px;
+    }
     #header,
     #navMenu {
         height: 100px;
