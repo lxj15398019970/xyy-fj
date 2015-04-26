@@ -43,7 +43,7 @@
             <ul class="toolBar">
                 <li><a class="toolBar-btn" href="${ctx}/city/city!input.action" target="dialog">添加</a></li>
                 <li><a class="toolBar-btn2" href="${ctx}/city/city!delete.action?id={sid_user}" target="ajaxTodo"
-                       title="确定要删除吗?删除市将会删除该市下的区县数据" warn="请选择一个市">删除</a></li>
+                       title="确定要删除吗?删除市将会删除该市下的区县数据以及有关的代理商和订单，确定要删除吗?" warn="请选择一个市">删除</a></li>
                 <li><a class="toolBar-btn" href="${ctx}/city/city!input.action?id={sid_user}" target="dialog"
                        warn="请选择一个用户">查看/修改</a></li>
             </ul>

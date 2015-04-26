@@ -8,6 +8,7 @@ import cn.ld.fj.service.agent.AgentManager;
 import cn.ld.fj.service.dict.AreaManager;
 import cn.ld.fj.service.dict.CityManager;
 import cn.ld.fj.service.dict.ProvinceManager;
+import cn.ld.fj.service.order.OrderManager;
 import cn.ld.fj.service.production.ProductionManager;
 import cn.ld.fj.util.DwzUtil;
 import cn.ld.fj.web.JsonActionSupport;
@@ -53,6 +54,8 @@ public class AgentAction extends SimpleJsonActionSupport<Agent> {
     private AreaManager areaManager;
     @Autowired
     private AgentAreaManager agentAreaManager;
+    @Autowired
+    private OrderManager orderManager;
 
     private List<Long> areaIds = Lists.newArrayList();
 
@@ -276,6 +279,15 @@ public class AgentAction extends SimpleJsonActionSupport<Agent> {
     @Override
     public void delete() throws Exception {
         agentManager.delete(id);
+
+        List<Order> orders = orderManager.findByProperty("agentId", id);
+        if (CollectionUtils.isNotEmpty(orders)) {
+            for (Order order : orders) {
+                orderManager.delete(order.getId());
+            }
+        }
+
+
         Struts2Utils.renderHtml(DwzUtil.getNavtabReturn("w_agent",
                 "操作成功"));
 

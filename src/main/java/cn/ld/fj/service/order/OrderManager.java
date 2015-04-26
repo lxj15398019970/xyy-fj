@@ -65,4 +65,8 @@ public class OrderManager {
     public List<Order> getAllOrders() {
         return orderDao.getAll();
     }
+
+    public List<Order> findByProperty(String property, Long id) {
+        return orderDao.findBy(property,id);
+    }
 }

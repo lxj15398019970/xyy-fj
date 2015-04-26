@@ -1,19 +1,19 @@
 package cn.ld.fj.web.dict;
 
-import cn.ld.fj.entity.Area;
-import cn.ld.fj.entity.City;
-import cn.ld.fj.entity.Province;
-import cn.ld.fj.service.account.AccountManager;
+import cn.ld.fj.entity.*;
+import cn.ld.fj.service.agent.AgentAreaManager;
+import cn.ld.fj.service.agent.AgentManager;
 import cn.ld.fj.service.dict.AreaManager;
 import cn.ld.fj.service.dict.CityManager;
 import cn.ld.fj.service.dict.ProvinceManager;
+import cn.ld.fj.service.order.OrderManager;
 import cn.ld.fj.util.DwzUtil;
 import cn.ld.fj.web.JsonActionSupport;
 import cn.ld.fj.web.SimpleJsonActionSupport;
-import com.sun.jndi.url.corbaname.corbanameURLContextFactory;
 import net.esoar.modules.orm.Page;
 import net.esoar.modules.orm.PropertyFilter;
 import net.esoar.modules.utils.web.struts2.Struts2Utils;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
@@ -42,11 +42,18 @@ public class ProvinceAction extends SimpleJsonActionSupport<Province> {
     @Autowired
     private AreaManager areaManager;
 
+    @Autowired
+    private AgentManager agentManager;
+    @Autowired
+    private OrderManager orderManager;
+    @Autowired
+    private AgentAreaManager agentAreaManager;
+
 
     @Override
     protected void prepareModel() throws Exception {
         if (id != null) {
-              entity = provinceManager.getProvince(id);
+            entity = provinceManager.getProvince(id);
         } else {
             entity = new Province();
         }
@@ -62,7 +69,7 @@ public class ProvinceAction extends SimpleJsonActionSupport<Province> {
             page.setOrderBy("id");
             page.setOrder(Page.ASC);
         }
-         page = provinceManager.searchProvince(page, filters);
+        page = provinceManager.searchProvince(page, filters);
         return SUCCESS;
     }
 
@@ -88,13 +95,41 @@ public class ProvinceAction extends SimpleJsonActionSupport<Province> {
         //同时删除该省下的市、区
 
         List<City> cities = cityManager.getCites(id);
-         for(City city : cities){
-             List<Area> areas = areaManager.getAreaByCityId(city.getId());
-             for(Area area : areas){
-                 areaManager.delete(area.getId());
-             }
-             cityManager.delete(city.getId());
-         }
+        for (City city : cities) {
+            List<Area> areas = areaManager.getAreaByCityId(city.getId());
+            for (Area area : areas) {
+                areaManager.delete(area.getId());
+            }
+            cityManager.delete(city.getId());
+        }
+
+
+        //同时删除代理商以及订单
+
+        List<Agent> agents = agentManager.findByProperty("provinceId", id);
+        if (CollectionUtils.isNotEmpty(agents)) {
+            for (Agent agent : agents) {
+                //删除该代理商代理的订单
+                List<Order> orderList = orderManager.findByProperty("agentId", agent.getId());
+                if (CollectionUtils.isNotEmpty(orderList)) {
+                    for (Order order : orderList) {
+                        orderManager.delete(order.getId());
+                    }
+                }
+
+                //删除代理商的区域
+                List<AgentArea> agentAreas = agentAreaManager.findByProperty("agentId", agent.getId());
+                if (CollectionUtils.isNotEmpty(agentAreas)) {
+                    for (AgentArea agentArea : agentAreas) {
+                        agentAreaManager.delete(agentArea.getId());
+                    }
+                }
+
+                //删除代理商
+                agentManager.delete(agent.getId());
+            }
+        }
+
 
         Struts2Utils.renderHtml(DwzUtil.getNavtabReturn("w_province",
                 "操作成功"));

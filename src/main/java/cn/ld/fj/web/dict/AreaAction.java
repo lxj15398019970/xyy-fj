@@ -1,11 +1,15 @@
 package cn.ld.fj.web.dict;
 
+import cn.ld.fj.entity.AgentArea;
 import cn.ld.fj.entity.Area;
 import cn.ld.fj.entity.City;
 import cn.ld.fj.entity.Province;
+import cn.ld.fj.service.agent.AgentAreaManager;
+import cn.ld.fj.service.agent.AgentManager;
 import cn.ld.fj.service.dict.AreaManager;
 import cn.ld.fj.service.dict.CityManager;
 import cn.ld.fj.service.dict.ProvinceManager;
+import cn.ld.fj.service.order.OrderManager;
 import cn.ld.fj.util.DwzUtil;
 import cn.ld.fj.web.JsonActionSupport;
 import cn.ld.fj.web.SimpleJsonActionSupport;
@@ -42,6 +46,14 @@ public class AreaAction extends SimpleJsonActionSupport<Area> {
     private CityManager cityManager;
     @Autowired
     private AreaManager areaManager;
+
+    @Autowired
+    private AgentManager agentManager;
+    @Autowired
+    private OrderManager orderManager;
+    @Autowired
+    private AgentAreaManager agentAreaManager;
+
 
     private List<Province> provinces = Lists.newArrayList();
 
@@ -154,6 +166,13 @@ public class AreaAction extends SimpleJsonActionSupport<Area> {
     @Override
     public void delete() throws Exception {
         areaManager.delete(id);
+
+        List<AgentArea> agentAreas = agentAreaManager.findByProperty("areaId", id);
+        if (CollectionUtils.isNotEmpty(agentAreas)) {
+            for (AgentArea agentArea : agentAreas) {
+                agentAreaManager.delete(agentArea.getId());
+            }
+        }
         Struts2Utils.renderHtml(DwzUtil.getNavtabReturn("w_area",
                 "操作成功"));
 

@@ -60,7 +60,7 @@
             <ul class="toolBar">
                 <li><a class="toolBar-btn" href="${ctx}/area/area!input.action" target="dialog">添加</a></li>
                 <li><a class="toolBar-btn2" href="${ctx}/area/area!delete.action?id={sid_user}" target="ajaxTodo"
-                       title="确定要删除吗？" warn="请选择一个区县">删除</a></li>
+                       title="删除将会删除有关代理商的配送区域，确定要删除吗?" warn="请选择一个区县">删除</a></li>
                 <li><a class="toolBar-btn" href="${ctx}/area/area!input.action?id={sid_user}" target="dialog"
                        warn="请选择一个用户">查看/修改</a></li>
             </ul>

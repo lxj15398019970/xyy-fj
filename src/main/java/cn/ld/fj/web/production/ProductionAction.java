@@ -1,6 +1,12 @@
 package cn.ld.fj.web.production;
 
+import cn.ld.fj.entity.Agent;
+import cn.ld.fj.entity.AgentArea;
+import cn.ld.fj.entity.Order;
 import cn.ld.fj.entity.Production;
+import cn.ld.fj.service.agent.AgentAreaManager;
+import cn.ld.fj.service.agent.AgentManager;
+import cn.ld.fj.service.order.OrderManager;
 import cn.ld.fj.service.production.ProductionManager;
 import cn.ld.fj.util.DwzUtil;
 import cn.ld.fj.web.JsonActionSupport;
@@ -8,6 +14,7 @@ import cn.ld.fj.web.SimpleJsonActionSupport;
 import net.esoar.modules.orm.Page;
 import net.esoar.modules.orm.PropertyFilter;
 import net.esoar.modules.utils.web.struts2.Struts2Utils;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
@@ -31,6 +38,13 @@ public class ProductionAction extends SimpleJsonActionSupport<Production> {
     private Page<Production> page = new Page<Production>(10);
     @Autowired
     private ProductionManager productionManager;
+    @Autowired
+    private OrderManager orderManager;
+
+    @Autowired
+    private AgentManager agentManager;
+    @Autowired
+    private AgentAreaManager agentAreaManager;
 
 
     @Override
@@ -84,6 +98,32 @@ public class ProductionAction extends SimpleJsonActionSupport<Production> {
     @Override
     public void delete() throws Exception {
         productionManager.delete(id);
+
+
+        List<Agent> agents = agentManager.findByProperty("productionId", id);
+        if (CollectionUtils.isNotEmpty(agents)) {
+            for (Agent agent : agents) {
+                //删除该代理商代理的订单
+                List<Order> orderList = orderManager.findByProperty("agentId", agent.getId());
+                if (CollectionUtils.isNotEmpty(orderList)) {
+                    for (Order order : orderList) {
+                        orderManager.delete(order.getId());
+                    }
+                }
+
+                //删除代理商的区域
+                List<AgentArea> agentAreas = agentAreaManager.findByProperty("agentId", agent.getId());
+                if (CollectionUtils.isNotEmpty(agentAreas)) {
+                    for (AgentArea agentArea : agentAreas) {
+                        agentAreaManager.delete(agentArea.getId());
+                    }
+                }
+
+                //删除代理商
+                agentManager.delete(agent.getId());
+            }
+        }
+
         Struts2Utils.renderHtml(DwzUtil.getNavtabReturn("w_production",
                 "操作成功"));
 

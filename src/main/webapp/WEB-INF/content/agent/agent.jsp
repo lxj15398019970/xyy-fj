@@ -33,7 +33,7 @@
                 <li><a class="toolBar-btn" href="${ctx}/agent/agent!input.action" target="navTab" rel="w_agent1">添加</a>
                 </li>
                 <li><a class="toolBar-btn2" href="${ctx}/agent/agent!delete.action?id={sid_user}" target="ajaxTodo"
-                       title="确定要删除吗？" warn="请选择一个代理商">删除</a></li>
+                       title="删除代理商的时候,将会删除该代理商以及与该代理商有关的订单，确定要删除吗？" warn="请选择一个代理商">删除</a></li>
                 <li><a class="toolBar-btn" href="${ctx}/agent/agent!input.action?id={sid_user}" target="navTab"
                        rel="w_agent1"
                        warn="请选择一个代理商">查看/修改</a></li>

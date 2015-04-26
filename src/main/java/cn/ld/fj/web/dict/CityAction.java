@@ -1,11 +1,12 @@
 package cn.ld.fj.web.dict;
 
-import cn.ld.fj.entity.Area;
-import cn.ld.fj.entity.City;
-import cn.ld.fj.entity.Province;
+import cn.ld.fj.entity.*;
+import cn.ld.fj.service.agent.AgentAreaManager;
+import cn.ld.fj.service.agent.AgentManager;
 import cn.ld.fj.service.dict.AreaManager;
 import cn.ld.fj.service.dict.CityManager;
 import cn.ld.fj.service.dict.ProvinceManager;
+import cn.ld.fj.service.order.OrderManager;
 import cn.ld.fj.util.DwzUtil;
 import cn.ld.fj.web.JsonActionSupport;
 import cn.ld.fj.web.SimpleJsonActionSupport;
@@ -14,12 +15,12 @@ import net.esoar.modules.orm.Page;
 import net.esoar.modules.orm.PropertyFilter;
 import net.esoar.modules.utils.encode.JsonBinder;
 import net.esoar.modules.utils.web.struts2.Struts2Utils;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -44,6 +45,14 @@ public class CityAction extends SimpleJsonActionSupport<City> {
     private CityManager cityManager;
     @Autowired
     private AreaManager areaManager;
+
+    @Autowired
+    private AgentManager agentManager;
+    @Autowired
+    private OrderManager orderManager;
+    @Autowired
+    private AgentAreaManager agentAreaManager;
+
 
     private List<Province> provinces = Lists.newArrayList();
 
@@ -103,7 +112,7 @@ public class CityAction extends SimpleJsonActionSupport<City> {
     public void getCities() {
         List<City> cities = cityManager.getCites(provinceId);
 
-       Struts2Utils.renderJson(cities);
+        Struts2Utils.renderJson(cities);
 
     }
 
@@ -127,10 +136,36 @@ public class CityAction extends SimpleJsonActionSupport<City> {
     @Override
     public void delete() throws Exception {
         List<Area> areas = areaManager.getAreaByCityId(id);
-        for(Area area : areas){
+        for (Area area : areas) {
             areaManager.delete(area.getId());
         }
         cityManager.delete(id);
+
+        List<Agent> agents = agentManager.findByProperty("cityId", id);
+        if (CollectionUtils.isNotEmpty(agents)) {
+            for (Agent agent : agents) {
+                //删除该代理商代理的订单
+                List<Order> orderList = orderManager.findByProperty("agentId", agent.getId());
+                if (CollectionUtils.isNotEmpty(orderList)) {
+                    for (Order order : orderList) {
+                        orderManager.delete(order.getId());
+                    }
+                }
+
+                //删除代理商的区域
+                List<AgentArea> agentAreas = agentAreaManager.findByProperty("agentId", agent.getId());
+                if (CollectionUtils.isNotEmpty(agentAreas)) {
+                    for (AgentArea agentArea : agentAreas) {
+                        agentAreaManager.delete(agentArea.getId());
+                    }
+                }
+
+                //删除代理商
+                agentManager.delete(agent.getId());
+            }
+        }
+
+
         Struts2Utils.renderHtml(DwzUtil.getNavtabReturn("w_city",
                 "操作成功"));
 

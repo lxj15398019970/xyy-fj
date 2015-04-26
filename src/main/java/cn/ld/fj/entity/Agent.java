@@ -167,6 +167,7 @@ public class Agent extends IdEntity {
         this.cityId = cityId;
     }
 
+    @Deprecated
     public String getAreaScope() {
         return areaScope;
     }
