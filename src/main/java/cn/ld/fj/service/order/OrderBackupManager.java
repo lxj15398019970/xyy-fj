@@ -32,4 +32,8 @@ public class OrderBackupManager {
     public void save(OrderBackup orderBackup) {
         orderBackupDao.save(orderBackup);
     }
+
+    public List<OrderBackup> getOrderback(List<PropertyFilter> filters) {
+        return orderBackupDao.find(filters);
+    }
 }

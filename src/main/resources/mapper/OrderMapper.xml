@@ -123,6 +123,11 @@
             </foreach>
         </if>
 
+        <if test="backStartTime != null">
+            and o.order_time &gt; #{orderNo}
+        </if>
+
+
         order by o.order_time desc
         limit #{start},#{end}
 
@@ -153,6 +158,10 @@
 
         <if test="orderNo != null">
             and o.order_no = #{orderNo}
+        </if>
+
+        <if test="backStartTime != null">
+            and o.order_time &gt; #{orderNo}
         </if>
 
         <if test="agentIds != null">

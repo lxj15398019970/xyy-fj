@@ -119,10 +119,6 @@ public class OrderBackupAction extends SimpleJsonActionSupport<OrderBackup> {
 
         Map<String, Object> map = new HashMap<String, Object>();
 
-        map.put("start", 0);
-        map.put("status", -1);
-        int totalCount = orderManager.getTotalCount(map);
-        map.put("end", totalCount);
 
         String loginName = SpringSecurityUtils.getCurrentUserName();
         User user = accountManager.findUserByLoginName(loginName);
@@ -140,7 +136,27 @@ public class OrderBackupAction extends SimpleJsonActionSupport<OrderBackup> {
             map.put("agentIds", agentIds);
         }
 
+
+        map.put("start", 0);
+        map.put("status", -1);
+        int totalCount = orderManager.getTotalCount(map);
+        map.put("end", totalCount);
+
+        List<PropertyFilter> filters = Lists.newArrayList();
+        filters.add(new PropertyFilter("EQS_createUser", SpringSecurityUtils.getCurrentUserName()));
+
+        List<OrderBackup> orderBackups = orderBackupManager.getOrderback(filters);
+
+        //从上一此备份点开始备份
+        if (CollectionUtils.isNotEmpty(orderBackups)) {
+            map.put("backStartTime", orderBackups.get(0).getBackTime());
+        }
+
         List<Order> orderList = orderManager.getOrders(map);
+        if (CollectionUtils.isEmpty(orderList)) {
+            Struts2Utils.renderHtml(DwzUtil.getFailReturn("还没有新的订单，无需备份"));
+            return;
+        }
         for (Order order : orderList) {
             order.setTotalMoney(order.getBuyCount() * order.getProduction().getPrice());
         }
