@@ -17,7 +17,6 @@ import cn.ld.fj.web.JsonActionSupport;
 import cn.ld.fj.web.SimpleJsonActionSupport;
 import com.google.common.collect.Lists;
 import net.esoar.modules.orm.Page;
-import net.esoar.modules.orm.PropertyFilter;
 import net.esoar.modules.utils.web.struts2.Struts2Utils;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
@@ -284,14 +283,12 @@ public class OrderAction extends SimpleJsonActionSupport<Order> {
                 continue;
             }
 
-            List<PropertyFilter> filters = Lists.newArrayList();
-            filters.add(new PropertyFilter("EQL_provinceId", province.getId() + ""));
-            filters.add(new PropertyFilter("EQL_cityId", city.getId() + ""));
-            filters.add(new PropertyFilter("EQL_areaId", area.getId() + ""));
-            filters.add(new PropertyFilter("EQL_productionId", production.getId() + ""));
+            if (production.getInventory() < entity.getBuyCount()) {
+                continue;
+            }
 
 
-            List<Agent> agents = agentManager.getAgents(filters);
+            List<AgentArea> agents = agentAreaManager.findByProperty("areaId", area.getId());
             if (CollectionUtils.isEmpty(agents)) {
                 continue;
             }
